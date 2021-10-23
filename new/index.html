@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="../lib/w3.css">
+
+<body class="w3-pale-blue">
+
+    <nav class="w3-sidenav w3-white w3-card-2 w3-center" style="display:none">
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-closenav w3-large">Close &times;</a>
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+        <a href="#">Link 4</a>
+        <a href="#">Link 5</a>
+        <a href="#">Link 5</a>
+        <a href="#">Link 5</a>
+        <a href="#">Link 5</a>
+        <a href="#">Link 5</a>
+        <a href="#">Link 5</a>
+        <a href="#">Link 5</a>
+        <a href="#">Link 5</a>
+        <a href="#">Link 5</a>
+        <a href="#">Link 5</a>
+    </nav>
+
+    <div id="main">
+
+        <header class="w3-container w3-teal">
+           
+           
+           
+            <div class="w3-row w3-center">
+                <div class="w3-col l1 m1 s1 w3-teal w3-center">
+                    <span class="w3-opennav w3-xlarge " onclick="w3_open()">&#9776;</span>
+                </div>
+                <div class="w3-col l9 m8 s8 w3-black w3-center w3-tag">
+                    <h4>Modern Shoe Store </h4>
+                </div>
+                <div class="w3-col l2 m3 s3 w3-teal w3-center">
+                    <p>Latif</p>
+                </div>
+            </div>
+
+
+           
+
+        </header>
+       
+        
+
+
+        <div class="w3-container w3-black w3-border-blue">
+            <marquee  direction="left" behavior="loop" scrollamount="6">
+
+                <span class="w3-padding-left">the is amy test for ava</span>
+                <span class="w3-padding-left">mijan k taka dao</span>
+                <span class="w3-padding-left">hfgh lkgj ldkjghdfjhg dkfjgh kj</span>
+                
+            </marquee>
+            
+        </div>
+        <div class="w3-container w3-teal w3-center">
+           <span class="w3-margin-2">Total:<span class="w3-tag w3-black w3-small">26</span></span>
+           <span class="w3-margin-2">DSR:<span class="w3-tag w3-black w3-small">26</span></span>
+           <span class="w3-margin-2">VRC:<span class="w3-tag w3-black w3-small">26</span></span>
+           <span class="w3-margin-2">BATA:<span class="w3-tag w3-black w3-small">26</span></span>
+          
+           
+        </div>
+        
+        
+       
+
+        <div class="w3-row w3-center">
+            
+
+            <nav class="w3-sidenav w3-black w3-card-1" style="width:20%">
+                
+                <a id="sell_btn" href="#" class="tablink w3-padding-16" onclick="openDiv(event, 'sell_item')">বিক্রি</a>
+                <a href="#" class="tablink w3-padding-16" onclick="openDiv(event, 'all_sell')">বিক্রিত</a>
+                <a href="#" class="tablink w3-padding-16" onclick="openDiv(event, 'due')">বাকী</a>
+                <a href="#" class="tablink w3-padding-16" onclick="openDiv(event, 'add')">জমা</a>
+                <a href="#" class="tablink w3-padding-16" onclick="openDiv(event, 'cost')">খরচ</a>
+                <a href="#" class="tablink w3-padding-16" onclick="openDiv(event, 'search')">খোজ</a>
+                <a href="#" class="tablink w3-padding-16" onclick="openDiv(event, 'back')">ফেরত</a>
+                
+                <a href="#" class="tablink w3-padding-8" onclick="openDiv(event, 'leave')">ছুটি</a>
+                <a href="#" class="tablink w3-padding-8" onclick="document.getElementById('remember').style.display='block'">মনে করো</a>
+                <a href="#" class="tablink w3-padding-16" onclick="openDiv(event, 'important')">তথ্য</a>
+                <a href="#" class="tablink w3-padding-16" onclick="openDiv(event, 'final')">হিসাব</a>
+              
+            </nav>
+            
+            <div class="w3-container w3-pale-blue" style="margin-left:12%">
+            
+                <div id="sell_item" class="w3-container city w3-animate-zoom " style="margin-top:50px;">
+                    
+                    <div class="w3-row">
+                    
+                        <div class="w3-col l4 m4 w3-hide-small"> &nbsp;  &nbsp;  </div>
+                        <div class="w3-col l4 m4 s12 article_form w3-blue-grey"> 
+
+                            <div class="w3-container w3-black">
+                                <h4>বিক্রিত জুতা তথ্য</h4>
+                            </div>
+                            
+                            <form class="w3-container">
+                                <label class="w3-label w3-text-black"><b>‍‌‍আর্টিকেল</b></label>
+                                <input required class="w3-input w3-border w3-light-grey" type="text">
+                            
+                                <label class="w3-label w3-text-black"><b>মুল্য</b></label>
+                                <input required class="w3-input w3-border w3-light-grey" type="number">
+                            
+                                <p>
+                                    <button type="submit" class="w3-btn w3-teal">যোগ করুন</button>
+                                </p>
+                            </form>
+
+                            <div class="w3-card w3-yellow">
+                                <p>যোগের পূর্বে সঠিক তথ্য দিন</p>
+                            </div>
+                        </div>
+
+                        <div class="w3-col l4 m4 w3-hide-small"> &nbsp; &nbsp;  </div>
+                    </div>
+
+                    
+                </div>
+            
+
+
+
+
+                <div id="all_sell" class="w3-container city w3-animate-zoom  w3-padding-24" >
+             
+                        <div class="w3-quarter w3-orange w3-center">
+                        
+                            <ul class="w3-ul w3-hoverable w3-text-center">
+                                <li><a href="#" class="tablink w3-padding-medium" onclick="openCity(event, 'vrc', 'sale')">VRC</a> </li>
+                                <li><a href="#" class="tablink w3-padding-medium" onclick="openCity(event, 'dsr','sale')">DSR</a> </li>
+                                <li><a href="#" class="tablink w3-padding-medium" onclick="openCity(event, 'apex','sale')">APEX</a> </li>
+                                <li><a href="#" class="tablink w3-padding-medium" onclick="openCity(event, 'bata','sale')">BATA</a> </li>
+                            </ul>
+                        
+                        </div>
+                        
+                        <div class="w3-threequarter w3-amber">
+                        
+                            <div id="dsr" class="w3-container3 sale w3-animate-zoom ">
+                        
+                                <div class="w3-black"> <h4> DSR SEll LIST</h4>  </div>
+                                <div class="w3-row">
+                                
+                                   
+
+                                    <div class="w3-third w3-padding-small w3-border">
+                                        <div class="w3-threequarter">
+                                            demo demo demo
+                                        </div>
+                                        <div class=" w3-quarter w3-cyan">
+                                            155
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                        
+                        
+                            </div>
+                        
+                            <div id="vrc" class="w3-container sale w3-animate-zoom ">
+                        
+                            <div class="w3-black">
+                                <h4> VRC SEll LIST</h4>
+                            </div>
+                            <div class="w3-row">
+                            
+                            
+                            
+                                <div class="w3-third w3-padding-small w3-border">
+                                    <div class="w3-threequarter">
+                                        demo demo demo
+                                    </div>
+                                    <div class=" w3-quarter w3-cyan">
+                                        155
+                                    </div>
+                                </div>
+                            
+                            
+                            
+                            </div>
+                        
+                        
+                            </div>
+                        
+                            <div id="bata" class="w3-container sale w3-animate-zoom ">
+                        
+                                <div class="w3-black">
+                                    <h4> BATA SEll LIST</h4>
+                                </div>
+                                <div class="w3-row">
+                                
+                                
+                                
+                                    <div class="w3-third w3-padding-small w3-border">
+                                        <div class="w3-threequarter">
+                                            demo demo demo
+                                        </div>
+                                        <div class=" w3-quarter w3-cyan">
+                                            155
+                                        </div>
+                                    </div>
+                                
+                                
+                                
+                                </div>
+                        
+                        
+                            </div>
+                            <div id="apex" class="w3-container sale w3-animate-zoom ">
+                            
+                                <div class="w3-black">
+                                    <h4> Apex SEll LIST</h4>
+                                </div>
+                                <div class="w3-row">
+                                
+                                
+                                
+                                    <div class="w3-third w3-padding-small w3-border">
+                                        <div class="w3-threequarter">
+                                            demo demo demo
+                                        </div>
+                                        <div class=" w3-quarter w3-cyan">
+                                            155
+                                        </div>
+                                    </div>
+                                
+                                
+                                
+                                </div>
+                            
+                            
+                            </div>
+                        
+                        </div>
+                        
+                      
+                    
+
+                   
+                   
+
+
+
+
+                </div>
+            
+
+
+                <div id="due" class="w3-container city w3-animate-zoom  w3-padding-24">
+
+                    <div class="w3-quarter w3-orange w3-center">
+
+                        <ul class="w3-ul w3-hoverable w3-text-center">
+                            <li><a href="#" class="tablink w3-padding-medium" onclick="opendue(event, 'due_item')"> বাকী তথ্য</a> </li>
+                            <li><a href="#" class="tablink w3-padding-medium" onclick="opendue(event, 'due_list')">আজকের বাকী </a> </li>
+                        </ul>
+
+                    </div>
+
+                    <div class="w3-threequarter w3-amber">
+
+                        <div id="due_list" class="w3-container3 due w3-animate-zoom ">
+
+                            <div class="w3-black">
+                                <h4> আজকের বাকী </h4>
+                            </div>
+                            <div class="w3-row">
+
+
+
+                                <div class="w3-third w3-padding-small w3-border">
+                                    <div class="w3-threequarter">
+                                        demo demo demo
+                                    </div>
+                                    <div class=" w3-quarter w3-cyan">
+                                        155
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+
+                        </div>
+
+                        <div id="due_item" class="w3-container due w3-animate-zoom ">
+
+                            <div class="w3-black">
+                                <h4> বাকীর তথ্য</h4>
+                            </div>
+                            <div class="w3-row">
+                                <form class="w3-container">
+                                    
+                                    <label class="w3-label w3-text-black"><b>‍এলাকা ‌‍</b></label>
+                                    <select required class="w3-select" name="option">
+                                        <option value="" disabled selected>Choose your option</option>
+                                        <option value="1">Option 1</option>
+                                        <option value="2">Option 2</option>
+                                        <option value="3">Option 3</option>
+                                    </select>
+
+                                    <label class="w3-label w3-text-black"><b>পেশা</b></label>
+                                    <select required class="w3-select" name="option">
+                                        <option value="" disabled selected>Choose your option</option>
+                                        <option value="1">Option 1</option>
+                                        <option value="2">Option 2</option>
+                                        <option value="3">Option 3</option>
+                                    </select>
+
+
+                                    <label class="w3-label w3-text-black"><b>নাম</b></label>
+                                    <input required="" class="w3-input w3-border w3-light-grey" type="text">
+
+                                    <label class="w3-label w3-text-black"><b>আর্টিকেল</b></label>
+                                    <input required="" class="w3-input w3-border w3-light-grey" list="f_article" type="text">
+                                
+                                    <label class="w3-label w3-text-black"><b>মুল্য</b></label>
+                                    <input required="" class="w3-input w3-border w3-light-grey" type="number">
+                                
+                                    <p>
+                                        <button type="submit" class="w3-btn w3-teal">যোগ করুন</button>
+                                    </p>
+                                </form>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+                <div id="add" class="w3-container city w3-animate-zoom  w3-padding-24">
+                
+                    <div class="w3-quarter w3-orange w3-center">
+                
+                        <ul class="w3-ul w3-hoverable w3-text-center">
+                            <li><a href="#" class="tablink w3-padding-medium" onclick="openCity(event, 'add_item','addition')"> জমা তথ্য</a> </li>
+                            <li><a href="#" class="tablink w3-padding-medium" onclick="openCity(event, 'add_list','addition')">আজকের জমা </a> </li>
+                        </ul>
+                
+                    </div>
+                
+                    <div class="w3-threequarter w3-amber">
+                
+                        <div id="add_list" class="w3-container3 addition w3-animate-zoom ">
+                
+                            <div class="w3-black">
+                                <h4> আজকের জমা </h4>
+                            </div>
+                            <div class="w3-row">
+                
+                
+                
+                                <div class="w3-third w3-padding-small w3-border">
+                                    <div class="w3-threequarter">
+                                        demo demo demo
+                                    </div>
+                                    <div class=" w3-quarter w3-cyan">
+                                        155
+                                    </div>
+                                </div>
+                
+                
+                
+                            </div>
+                
+                
+                        </div>
+                
+                        <div id="add_item" class="w3-container addition w3-animate-zoom ">
+                
+                            <div class="w3-black">
+                                <h4> জমার তথ্য</h4>
+                            </div>
+                            <div class="w3-row">
+                                <form class="w3-container">
+                
+                                    <label class="w3-label w3-text-black"><b>‍এলাকা ‌‍</b></label>
+                                    <select required class="w3-select" name="option">
+                                        <option value="" disabled selected>Choose your option</option>
+                                        <option value="1">Option 1</option>
+                                        <option value="2">Option 2</option>
+                                        <option value="3">Option 3</option>
+                                    </select>
+                
+                                    <label class="w3-label w3-text-black"><b>পেশা</b></label>
+                                    <select required class="w3-select" name="option">
+                                        <option value="" disabled selected>Choose your option</option>
+                                        <option value="1">Option 1</option>
+                                        <option value="2">Option 2</option>
+                                        <option value="3">Option 3</option>
+                                    </select>
+                
+                
+                                    <label class="w3-label w3-text-black"><b>নাম</b></label>
+                                    <input required="" class="w3-input w3-border w3-light-grey" type="text">
+                
+                                  
+                                    <label class="w3-label w3-text-black"><b>মুল্য</b></label>
+                                    <input required="" class="w3-input w3-border w3-light-grey" type="number">
+                
+                                    <p class="transactions"> </p>
+                                    <p>
+                                        <button type="submit" class="w3-btn w3-teal">যোগ করুন</button>
+                                    </p>
+                                </form>
+                
+                            </div>
+                
+                
+                        </div>
+                
+                
+                    </div>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                </div>
+
+
+
+
+                <div id="cost" class="w3-container city w3-animate-zoom  w3-padding-24">
+                
+                    <div class="w3-quarter w3-orange w3-center">
+                
+                        <ul class="w3-ul w3-hoverable w3-text-center">
+                            <li><a href="#" class="tablink w3-padding-medium" onclick="openCity(event, 'cost_item','cost')"> খরচ তথ্য</a> </li>
+                            <li><a href="#" class="tablink w3-padding-medium" onclick="openCity(event, 'cost_list','cost')">আজকের খরচ </a> </li>
+                        </ul>
+                
+                    </div>
+                
+                    <div class="w3-threequarter w3-amber">
+                
+                        <div id="cost_list" class="w3-container3 cost w3-animate-zoom ">
+                
+                            <div class="w3-black">
+                                <h4> আজকের খরচ </h4>
+                            </div>
+                            <div class="w3-row">
+                
+                
+                
+                                <div class="w3-third w3-padding-small w3-border">
+                                    <div class="w3-threequarter">
+                                        demo demo demo
+                                    </div>
+                                    <div class=" w3-quarter w3-cyan">
+                                        155
+                                    </div>
+                                </div>
+                
+                
+                
+                            </div>
+                
+                
+                        </div>
+                
+                        <div id="cost_item" class="w3-container cost w3-animate-zoom ">
+                
+                            <div class="w3-black">
+                                <h4> খরচ তথ্য</h4>
+                            </div>
+                            <div class="w3-row">
+                                <form class="w3-container">
+                
+                                    <label class="w3-label w3-text-black"><b>খরচের খাত ‌‍</b></label>
+                                    <select required class="w3-select" name="option">
+                                        <option value="" disabled selected>Choose your option</option>
+                                        <option value="1">Option 1</option>
+                                        <option value="2">Option 2</option>
+                                        <option value="3">Option 3</option>
+                                    </select>
+                
+                                    <label class="w3-label w3-text-black"><b>টাকা</b></label>
+                                    <input required="" class="w3-input w3-border w3-light-grey" type="number">
+                
+                                    <p>
+                                        <button type="submit" class="w3-btn w3-teal">যোগ করুন</button>
+                                    </p>
+                                </form>
+                
+                            </div>
+                
+                
+                        </div>
+                
+                
+                    </div>
+                
+                                
+                
+                
+                </div>
+
+
+                <div id="search" class="w3-container city w3-animate-zoom  w3-padding-24">
+                
+                    <div class="search_list search w3-padding-medium">
+
+                        <div class="w3-half w3-orange w3-center w3-padding-medium">
+                        
+                            <form class="w3-container">
+                                <label class="w3-label w3-text-black"><b>‍‌‍আর্টিকেল</b></label>
+                                <input required="" class="w3-input w3-border w3-light-grey" type="text">
+                        
+                        
+                                <p>
+                                    <button type="submit" class="w3-btn w3-teal">খোজ করুন</button>
+                                </p>
+                        
+                                <p>
+                                    <button type="submit" class="w3-btn w3-teal">সম্ভাব্য খোজ</button>
+                                </p>
+                            </form>
+                        
+                        </div>
+                        
+                        <div class="w3-half w3-amber w3-padding-medium">
+                        
+                            <form class="w3-container">
+                                <label class="w3-label w3-text-black"><b>মেমো নং</b></label>
+                                <input required="" class="w3-input w3-border w3-light-grey" type="text">
+                            
+                            
+                                <p>
+                                    <button type="submit" class="w3-btn w3-teal">খোজ করুন</button>
+                                </p>
+                            
+                            
+                                <div class="js_status">
+                                    <div class="status vrc_img">
+                                
+                                        <div class="cash_memo">
+                                
+                                            <div class="left_item">
+                                                ASIA-HILL-6-7
+                                            </div>
+                                            <div class="right_item">
+                                                <div class="item_date">
+                                                    17-Mar-2017
+                                                </div>
+                                                <div class="item_taka">
+                                                    130.00
+                                                </div>
+                                                <div class="item_signature">
+                                                    MIJANUR
+                                                </div>
+                                
+                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                            </form>
+                        
+                        
+                        </div>
+
+                    </div>
+                   
+                
+                
+                
+                
+                </div>
+
+
+
+                <div id="back" class="w3-container city w3-animate-zoom  w3-padding-24">
+
+                    <div class="w3-quarter w3-orange w3-center">
+
+                        <ul class="w3-ul w3-hoverable w3-text-center">
+                            <li><a href="#" class="tablink w3-padding-medium" onclick="openCity(event, 'back_item','back')"> ফেরত তথ্য</a>
+                            </li>
+                            <li><a href="#" class="tablink w3-padding-medium" onclick="openCity(event, 'back_list','back')">আজকের ফেরত
+                                </a> </li>
+                        </ul>
+
+                    </div>
+
+                    <div class="w3-threequarter w3-amber">
+
+                        <div id="back_list" class="w3-container3 back w3-animate-zoom ">
+
+                            <div class="w3-black">
+                                <h4> আজকের ফেরত </h4>
+                            </div>
+                            <div class="w3-row">
+
+
+
+                                <div class="w3-third w3-padding-small w3-border">
+                                    <div class="w3-threequarter">
+                                        demo demo demo
+                                    </div>
+                                    <div class=" w3-quarter w3-cyan">
+                                        155
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+
+                        </div>
+
+                        <div id="back_item" class="w3-container back w3-animate-zoom ">
+
+                            <div class="w3-black">
+                                <h4> ফেরত তথ্য</h4>
+                            </div>
+                            <div class="w3-row">
+                                <form class="w3-container">
+
+                                    <label class="w3-label w3-text-black"><b>আর্টিকেল ‌‍</b></label>
+                                    <input required="" class="w3-input w3-border w3-light-grey" list="f_article" type="text">
+
+                                    <label class="w3-label w3-text-black"><b>টাকা</b></label>
+                                    <input required="" class="w3-input w3-border w3-light-grey" type="number">
+
+                                    <p>
+                                        <button type="submit" class="w3-btn w3-teal">যোগ করুন</button>
+                                    </p>
+                                </form>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+                </div>
+
+
+
+                <div id="leave" class="w3-container city">
+                    <div class="w3-content w3-card-8 w3-padding-24">
+
+
+                        
+
+                        <header class="w3-container w3-teal">
+                            <h2>ছুটির তথ্য</h2>
+                        </header>
+                        <div class="w3-container leave_list w3-orange">
+                          
+                                <div class="w3-quarter">
+                                    mijan
+                                </div>
+                           
+                        
+                        </div>
+                        <form class="w3-container">
+                        
+                            <label class="w3-label w3-text-black"><b>নাম ‌‍</b></label>
+                            <select required="" class="w3-select" name="option">
+                                <option value="" disabled="" selected="">Choose your option</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                        
+                            <p>
+                                <label class="w3-label w3-text-black"><b>ছুটির পরিমান(দিন)</b></label>
+                                <input required="" class="w3-input w3-border w3-light-grey" type="number">
+                            
+                            </p>
+                            <p>
+                                <button type="submit" class="w3-btn w3-teal">যোগ করুন</button>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+
+
+
+
+                <div id="important" class="w3-container city">
+                    <div class="w3-content w3-card-8 w3-padding-16">
+                
+
+                        <form class="w3-container w3-card-4 w3-teal">
+                        
+                            <h2 class="w3-black">Important Note</h2>
+                        
+                            <p>
+                                <label>Title</label>
+                                <input class="w3-input w3-border w3-round" name="first" type="text">
+                            </p>
+                        
+                            <p>
+                                <label>Description</label>                        
+                            </p>
+                            
+                            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px;"></textarea>
+                        
+                            <p>
+                                <label>Picture</label>
+                                <input class="w3-input w3-border w3-round-xxlarge" name="last" type="file"></p>
+                        
+                        
+                            <p>
+                                <button type="submit" class="w3-btn w3-red">যোগ করুন</button>
+                            </p>
+                        
+                        
+                        </form>
+
+                    </div>
+                </div>
+
+
+
+
+
+                <div id="remember" class="w3-modal">
+                    <div class="w3-modal-content w3-card-8">
+                        <header class="w3-container w3-teal">
+                            <span onclick="document.getElementById('remember').style.display='none'" class="w3-closebtn">&times;</span>
+                            <h2>স্মরন রাখ</h2>
+                        </header>
+                        <div class="w3-container">
+                        <form class="w3-container">
+                        
+                            <label class="w3-label w3-text-black"><b>যা মনে রাখতে চান  ‌‍</b></label>
+                            <input required="" class="w3-input w3-border w3-light-grey"  type="text">
+                        
+                            <label class="w3-label w3-text-black"><b>তারিখ</b></label>
+                            <input required="" class="w3-input w3-border w3-light-grey" type="date">
+                        
+                            <p>
+                                <button type="submit" class="w3-btn w3-teal">যোগ করুন</button>
+                            </p>
+                        </form>
+                        </div>
+                
+                    </div>
+                </div>
+
+
+
+
+                <div id="final" class="w3-container city">
+                    <div class="w3-content w3-card-8 w3-padding-16">
+
+
+                        <div class="w3-container w3-card-4 w3-white">
+
+                            <h2 class="w3-black">Daily Account</h2>
+
+                           
+                            <table class="w3-table w3-striped">
+                            
+                            
+                                <tr>
+                                    <td>সম্রাট বিক্রী</td>
+                                    <td>94</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>অন্যান্য বিক্রী</td>
+                                    <td>94</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>বাটা বিক্রী</td>
+                                    <td>94</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>এপেক্স বিক্রী</td>
+                                    <td>94</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="w3-border-bottom w3-border-red">পেগাসাস বিক্রী</td>
+                                    <td class="w3-border-bottom w3-border-red">94</td>
+                                </tr>
+                            
+                            
+                            
+                                <tr>
+                                    <td>মোট বিক্রী</td>
+                                    <td>94</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>ফেরত</td>
+                                    <td>94</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="w3-border-bottom w3-border-red">বাকী</td>
+                                    <td class="w3-border-bottom w3-border-red">94</td>
+                                </tr>
+                            
+                            
+                                <tr>
+                                    <td>...</td>
+                                    <td>94</td>
+                                </tr>
+                            
+                            
+                                <tr>
+                                    <td>জমা</td>
+                                    <td>94</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="w3-border-bottom w3-border-red">ক্যাশ</td>
+                                    <td class="w3-border-bottom w3-border-red">94</td>
+                                </tr>
+                            
+                            
+                            
+                                <tr>
+                                    <td>মোট টাকা</td>
+                                    <td>94</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="w3-border-bottom w3-border-red">মোট খরচ</td>
+                                    <td class="w3-border-bottom w3-border-red">67</td>
+                                </tr>
+                            
+                            
+                                <td>সর্বশেষ</td>
+                                <td>67</td>
+                                </tr>
+                                <tr>
+                            
+                            </table>
+                           
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+
+            
+            </div>
+            
+            <script>
+                function openDiv(evt, cityName) {
+                    var i, x, tablinks;
+                    x = document.getElementsByClassName("city");
+                    for (i = 0; i < x.length; i++) {
+                        x[i].style.display = "none";
+                    }
+                    tablinks = document.getElementsByClassName("tablink");
+                    for (i = 0; i < x.length; i++) {
+                        tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+                    }
+                    document.getElementById(cityName).style.display = "block";
+                  
+                    evt.currentTarget.className += " w3-red";
+                }
+            </script>
+
+        </div>
+
+        <!-- <footer class="w3-container w3-teal">
+            <h5>Footer</h5>
+            <p>Footer information goes here</p>
+        </footer> -->
+
+    </div>
+
+    <script>
+        function w3_open() {
+            document.getElementById("main").style.marginLeft = "25%";
+            document.getElementsByClassName("w3-sidenav")[0].style.width = "25%";
+            document.getElementsByClassName("w3-sidenav")[0].style.display = "block";
+            document.getElementsByClassName("w3-opennav")[0].style.display = 'none';
+        }
+        function w3_close() {
+            document.getElementById("main").style.marginLeft = "0%";
+            document.getElementsByClassName("w3-sidenav")[0].style.display = "none";
+            document.getElementsByClassName("w3-opennav")[0].style.display = "inline-block";
+        }
+    </script>
+
+
+<script>
+    function openCity(evt, cityName,class_name) {
+        var i, x, tablinks;
+        x = document.getElementsByClassName(class_name);
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        // tablinks = document.getElementsByClassName("tablink");
+        // for (i = 0; i < x.length; i++) {
+        //     tablinks[i].className = tablinks[i].className.replace(" w3-border-red", "");
+        // }
+        document.getElementById(cityName).style.display = "block";
+          document.getElementById(cityName).style.minHeight = "300px";
+       // evt.currentTarget.firstElementChild.className += " w3-border-red";
+    }
+
+    function opendue(evt, cityName) {
+            var i, x, tablinks;
+            x = document.getElementsByClassName("due");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            // tablinks = document.getElementsByClassName("tablink");
+            // for (i = 0; i < x.length; i++) {
+            //     tablinks[i].className = tablinks[i].className.replace(" w3-border-red", "");
+            // }
+            document.getElementById(cityName).style.display = "block";
+            document.getElementById(cityName).style.minHeight = "300px";
+            // evt.currentTarget.firstElementChild.className += " w3-border-red";
+        }
+
+    
+</script>
+
+</body>
+
+</html>

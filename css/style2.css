@@ -1,0 +1,185 @@
+*{
+	margin:0;
+	padding:0;
+}
+a{
+	outline:none;
+	text-decoration:none;
+}
+body {
+    background-color: #FFFFFF;
+    color: #24272E;
+    font-family: helvetica,Arial,lucida Grande;
+    line-height: 18px;
+}
+select{
+    font-size: 16px;
+    background-color:#f4fff3;
+    height: 30px;
+    padding: 3px;
+    text-align: left;
+
+}
+img{
+	border:0;
+	margin:0;
+	padding:0;
+}
+
+.total_taka_show {
+
+    float: left;
+    margin-left: 115px;
+    text-align: center;
+    width: 90px;
+}
+input[type=text]{
+
+    color: #9a09ff;
+}
+
+.total_pair {
+
+    float: left;
+    margin-left: 365px;
+    text-align: center;
+    width: 74px;
+}
+ul {
+    list-style: none outside none;
+}
+.clear{
+	clear:both;
+}
+.outer-wrapper{
+	margin: 0 auto;
+    width: 1200px;
+}
+.inner-wrapper {
+    margin: 0 auto;
+    width: 650px;
+    min-height: 450px;
+    border: 2px solid red;
+}
+.memo_head{
+    height: 190px;
+    color: #ffffff;
+    background-color: darkred;
+    text-align: center;
+}
+.title1{
+    border: 1px none #000000;
+    font-size: 26px;
+    height: 25px;
+    padding: 15px;
+
+}
+.title2{
+   height: 25px;
+    font-size: 18px;
+    border: 1px #48ff2f;
+}
+.title3{
+
+   height: 22px;
+    border: 1px #ff7bf8;
+}
+.address{
+
+    margin-top:0;
+}
+
+.info{
+    background-color: palegoldenrod;
+    border-bottom: 1px solid #D1D1D1;
+    color: black;
+    font-weight: bold;
+    height: auto;
+    margin-top: 5px;
+    float: left;
+
+}
+.total_taka{
+    width: 70px;
+    margin-right: 10px;
+}
+.serial{
+    width: 20px;
+    margin-right: 30px;margin-left: 10px;
+}
+.article{
+    width: 300px;
+    margin-right: 99px;
+}
+.category{
+    width: 40px;
+    margin-right: 34px;
+}
+.pair{
+    width: 20px;
+    margin-right: 46px;
+}
+.actual_price{
+    width: 30px;
+    margin-right: 40px;
+}
+.memo_body{
+    background-color: #f4fff3;
+    height: 500px;
+
+}
+.red{
+    color: #ff0000;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.serial2 {
+   width: 34px;
+    padding-left: 6px;
+}
+.article2 {
+    padding-left:2px;
+
+}
+
+.persentage{
+   margin-left: 500px;
+}
+.category2 {
+      width: 80px;
+}
+
+.pair2 {
+    text-align: center;
+    width: 100px;
+}
+
+.actual_price2 {
+    width: 100px;
+    padding-left: 10px;
+}
+.total_taka2 {
+
+   text-align: left;
+}
+.row{
+    padding-bottom: 2px;
+    border-bottom: 1px solid #000000;
+}
+
+.total_info {
+    padding-bottom: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+

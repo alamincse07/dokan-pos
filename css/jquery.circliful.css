@@ -1,0 +1,136 @@
+
+.chart {
+    position: relative;
+    display: inline-block;
+    width: 110px;
+    height: 110px;
+   /* margin-top: 50px;
+    margin-bottom: 50px;*/
+    text-align: center;
+}
+.chart canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.percent {
+    display: inline-block;
+    line-height: 110px;
+    z-index: 2;
+    color: #f8981c;
+    font-size: 16px;
+    font-weight: bold;
+}
+.percent:after {
+    /* content:'%';*/
+    margin-left: 0.1em;
+    font-size: 16px;
+
+}
+
+
+.custom-single-loader{
+    display: block;
+    float: left;
+    margin-left: 30px;
+    width: auto;
+    text-align: center;
+    color: #fa9a1d;
+
+}
+.custom-text{
+    text-align: center;
+    margin: 12px 0 0;
+
+    text-decoration: underline;
+    font-size: 16px;
+    padding-left: 12px ;
+    padding-bottom: 6px ;
+    padding-top: 3px ;
+
+}
+.custom-text:hover{
+    background: none repeat scroll 0 0 #f8981c;
+    color: #fff;
+    text-decoration: none;
+}
+.custom-text.selected{
+    background: none repeat scroll 0 0 #f8981c;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 12px 0 0;
+    padding: 6px;
+    text-align: center;
+}
+/* above code for easy pie chart*/
+/*
+
+.circliful {
+    position: relative;
+    */
+/* color: #fa9a1d !important;*//*
+
+    left: 6px;
+    font-weight: bold;
+    top: 6px;
+}
+
+.circle-text, .circle-info, .circle-text-half, .circle-info-half {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    display: inline-block;
+    left: 1px;
+    top: 0px;
+    color: #fa9a1d;
+}
+
+.circle-info, .circle-info-half {
+    color: #fa9a1d;
+}
+
+.circliful .fa {
+    margin: -10px 3px 0 3px;
+    position: relative;
+    bottom: 4px;
+}
+.js_circular_loader {
+    top: -11px;
+    position: relative;
+}
+
+.custom-single-loader{
+    display: block;
+    float: left;
+    margin-left: 30px;
+    width: auto;
+    text-align: center;
+    color: #fa9a1d;
+
+}
+.custom-text{
+    text-align: center;
+    margin: 12px 0 0;
+
+    text-decoration: underline;
+    font-size: 16px;
+    padding-left: 12px ;
+    padding-bottom: 6px ;
+    padding-top: 3px ;
+
+}
+.custom-text:hover{
+    background: none repeat scroll 0 0 #f8981c;
+    color: #fff;
+    text-decoration: none;
+}
+.custom-text.selected{
+    background: none repeat scroll 0 0 #f8981c;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 12px 0 0;
+    padding: 6px;
+    text-align: center;
+}*/

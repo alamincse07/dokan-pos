@@ -1,0 +1,11 @@
+[19-Apr-2019 12:44:36 Asia/Dhaka] PHP Fatal error:  Allowed memory size of 2097152 bytes exhausted (tried to allocate 65536 bytes) in /home/skalamin/public_html/framework/web/CBaseController.php on line 126
+[19-Apr-2019 12:44:42 Asia/Dhaka] PHP Fatal error:  Allowed memory size of 2097152 bytes exhausted (tried to allocate 65536 bytes) in /home/skalamin/public_html/framework/web/CBaseController.php on line 126
+[19-Apr-2019 12:44:45 Asia/Dhaka] PHP Fatal error:  Allowed memory size of 2097152 bytes exhausted (tried to allocate 65536 bytes) in /home/skalamin/public_html/framework/web/CBaseController.php on line 126
+[06-May-2019 15:20:40 UTC] PHP Warning:  ini_set() has been disabled for security reasons in /home/skalamin/public_html/dokan/index.php on line 3
+[06-May-2019 15:20:43 UTC] PHP Warning:  ini_set() has been disabled for security reasons in /home/skalamin/public_html/dokan/index.php on line 3
+[06-May-2019 20:18:52 UTC] PHP Warning:  ini_set() has been disabled for security reasons in /home/skalamin/public_html/dokan/index.php on line 3
+[06-May-2019 21:23:20 UTC] PHP Warning:  ini_set() has been disabled for security reasons in /home/skalamin/public_html/dokan/index.php on line 3
+[07-May-2019 17:34:01 UTC] PHP Warning:  ini_set() has been disabled for security reasons in /home/skalamin/public_html/dokan/index.php on line 3
+[07-May-2019 17:34:02 UTC] PHP Warning:  ini_set() has been disabled for security reasons in /home/skalamin/public_html/dokan/index.php on line 3
+[07-May-2019 17:48:19 UTC] PHP Warning:  ini_set() has been disabled for security reasons in /home/skalamin/public_html/dokan/index.php on line 3
+[07-Mar-2021 06:31:58 UTC] PHP Warning:  exec() has been disabled for security reasons in /home/skalamin/public_html/dokan/db_backup.php on line 15

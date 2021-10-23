@@ -1,0 +1,60 @@
+.grid-view .items{
+    color: #000;
+    font-family: Helvetica,sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+}
+.grid-view table.items th, .grid-view table.items td {
+    border: 1px solid #e0e0e0;
+    font-size: 12px;
+    padding: 12px 15px;
+}
+table td {
+    color: #696969;
+    font-size: 12px;
+    font-weight: normal;
+    text-shadow: 0 1px 0 #ffffff;
+}
+.grid-view table.items th {
+    background: none repeat scroll 0 0 #f9f9f9;
+    font-family: arial;
+    text-align: center;
+    color: #9d9d9d;
+}
+.grid-view table.items tr.odd {
+    background: none repeat scroll 0 0 #f9f9f9!important;
+}
+.grid-view table.items tr.even {
+    background: none repeat scroll 0 0 #fff!important;
+}
+.grid-view table.items th a {
+    color: #9d9d9d !important;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+}
+.grid-view .pager {
+    color: #696969;
+    font-family: Droid Sans;
+    font-size: 12px;
+    margin: 15px 0 0;
+}
+ul.yiiPager a:link, ul.yiiPager a:visited {
+    border: 1px solid #cbcbcb;
+    border-radius: 2px;
+    color: #8f8f8f;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 5px 11px;
+    text-decoration: none;
+}
+ul.yiiPager .selected a {
+    background: none repeat scroll 0 0 #efefef;
+    font-weight: normal;
+}
+.grid-view .filters input, .grid-view .filters select {
+    border: 1px solid #ccc;
+    color: #696969;
+    padding: 3px 1px;
+    width: 100%;
+}

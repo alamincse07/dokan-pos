@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="language" content="en" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="/js/jquery.min.js"></script>
+
+    <title>Barcodes</title>
+
+
+        <style>
+            .blocktext {
+                margin-left: auto;
+                margin-right: auto;
+                width: 8em
+            }
+        
+            IMG.displayed {
+                display: block;
+                margin-left: auto;
+                margin-right: auto
+            }
+        
+        
+            @media print {
+                .noprint {
+                    display: none;
+                }
+            }
+        </style>
+        
+        
+        
+        
+        <script>
+
+            function addRow() {
+                var i = $('tr').length;
+               // console.log(num)
+                data={'article':'','count':4,'price':'','hint':''}
+                var tr =
+                `<tr>
+                         <td> Make <input type = "text" required name = "item[${i}][count]" value = "${data.hint}" size = "2"  maxlength="2" > </td>
+                            <td> barcodes of article <input type="text" name="item[${i}][article]" required value="${data.article}" size="20" maxlength="20" > </td>
+                            <td> with price
+                               
+                                <input type="text" name="item[${i}][price]" value="${data.price}" maxlength="4" size="4" >
+                           </td>
+
+                            <td class="remove" style="text-align: center">
+                                Short hint <input type="text" placeholder="2F, FL "  maxlength="3 size="3" name="item[${i}][hint]" value="${data.hint}" >
+                            </td>
+                             <td class="remove" style="text-align: center">
+                                <button onclick="deleteRow()">Remove</button>
+                             </td>
+                 </tr>`;
+
+                $('table').append(tr);
+            }
+
+            function deleteRow() {
+                $(document).on('click', '.remove', function () {
+                    $(this).parent('tr').remove();
+                });
+            }
+
+            function cannotdelete() {
+                alert('You cannot delete the first row!!!');
+            }
+
+
+        </script>
+
+</head>
+
+<body>
+    <div class="content container" id="page1">
+        
+    </div>
+
+
+
+</body>
+</html>

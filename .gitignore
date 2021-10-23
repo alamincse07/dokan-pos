@@ -1,0 +1,9 @@
+/assets
+!/assets/.gitkeep
+/protected/runtime
+!/protected/runtime/.gitkeep
+
+/protected/data
+/uploaded
+/.idea
+/protected/runtime
