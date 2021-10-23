@@ -42,7 +42,7 @@ class SimpleAjaxController extends Controller
     public function actionDueInformationAdd(){
         //name__sexyCombo
         $today=date('Y-m-d');
-        // Generic::_setTrace($_REQUEST);
+       //  Generic::_setTrace($_REQUEST);
         $manager= Yii::app()->session['user'];
        // $area= strtoupper(addslashes($_POST['due_area__sexyCombo']));
 		$area= strtoupper(addslashes($_POST['due_area']));
@@ -53,6 +53,7 @@ class SimpleAjaxController extends Controller
             die(json_encode(array('status'=>'failed','q'=>'সঠিক নাম ও পেশা দিন ')));
         }
         $amount= addslashes($_POST['due_amount']);
+        $partial_amount= addslashes($_POST['partial_due_amount']);
         $model= CustomerDueInformation::model()->find('area_name=:area_name AND occupation=:occupation AND name=:c_name', array(':area_name'=>$area,':occupation'=>$occupation,':c_name'=>$c_name));
         if($model){
 
@@ -76,8 +77,16 @@ class SimpleAjaxController extends Controller
         #Generic::_setTrace($model);
         if($model->save()){
             $customer_id= $model->id;
+
             $cq="insert into customer_transaction set customer_id=$customer_id, date='$today', amount=$amount,transaction_type='$article'";
             $re2s=Yii::app()->db->createCommand($cq)->execute();
+
+
+            if(isset($partial_amount) && ($partial_amount>0 && ($partial_amount < $amount))){
+
+                Generic::JomaTransaction($customer_id,$c_name,$partial_amount, true);
+            }
+
 
             die(json_encode(array('status'=>'success','c_name'=>$c_name)));
         }else{
@@ -100,7 +109,7 @@ class SimpleAjaxController extends Controller
 
             $article= strtoupper(trim($article));
             $up_q="select * from  articles   where  article like '$article' ";
-//die($up_q);
+
             $data=Yii::app()->db->createCommand($up_q)->queryRow();
 
 
@@ -223,25 +232,25 @@ class SimpleAjaxController extends Controller
     public  function  actionDailyAdd(){
 
         $today= date('Y-m-d');
-#die(print_r($_POST));
-        $manager= @Yii::app()->session['user'];
+            #die(print_r($_POST));
+                    $manager= @Yii::app()->session['user'];
 
-        $amount= trim($_POST['amount']);
+                    $amount= trim($_POST['amount']);
 
-        if(isset($_GET['lend'])){
+                    if(isset($_GET['lend'])){
 
 
-            $lender_id = trim($_POST['lender_id']);
-            if($lender_id>0){
+                        $lender_id = trim($_POST['lender_id']);
+                        if($lender_id>0){
 
-                $name= trim($_REQUEST['name']);
+                            $name= trim($_REQUEST['name']);
 
-                $inq="update  lenders   set amount=(amount-$amount),date='$today'  where  id=$lender_id" ;
+                            $inq="update  lenders   set amount=(amount-$amount),date='$today'  where  id=$lender_id" ;
 
-                $res=Yii::app()->db->createCommand($inq)->execute();
+                            $res=Yii::app()->db->createCommand($inq)->execute();
 
-                $q="insert into  daily_add_amount set category='Lend Paid',name='$name',amount=$amount,taken_by='$manager',date='$today' " ;
-//die($q);
+                            $q="insert into  daily_add_amount set category='Lend Paid',name='$name',amount=$amount,taken_by='$manager',date='$today' " ;
+            //die($q);
                 $res=Yii::app()->db->createCommand($q)->execute();
 
 
@@ -262,14 +271,17 @@ class SimpleAjaxController extends Controller
 
             $cid = trim(@$_POST['c_id']);
             if($cid>0){
+
                 $category='DUE';
                 $name=trim($_POST['customer_name']);
+                try {
+                    Generic::JomaTransaction($cid,$name,$amount);
+                  } catch(Exception $e) {
+                    die(json_encode(array('status'=>'failed','msg'=>'something was wrong while processing the transaction', 'error'=>$e->getMessage())));
+                  }
+                
 
-                $inq="update  customer_due_information   set amount=(amount-$amount),manager='$manager',date='$today'  where  id=$cid" ;
-                Yii::app()->db->createCommand($inq)->execute();
-
-                $cq="insert into customer_transaction set customer_id=$cid, date='$today', amount=$amount,transaction_type='PAID'";
-                $re2s=Yii::app()->db->createCommand($cq)->execute();
+               
             }
             else{
                 $category='OTHER';
@@ -295,24 +307,8 @@ class SimpleAjaxController extends Controller
 
     }
 
-    public  function actionCustomerDueAmount12(){
+    
 
-        $occupation=  addslashes($_POST['occupation']);
-        $name=  addslashes($_POST['name']);
-
-        $options='<option value="">Select</option>';
-        $q=" select id,amount  from customer_due_information where area_name like '$area_name' AND occupation like '$occupation' AND name ='$name' order by id limit 1" ;
-//die($q);
-        $row=Yii::app()->db->createCommand($q)->queryRow();
-        if($row){
-
-            //$row =$res->read();
-            die(json_encode(array('status'=>'success','id'=>$row['id'],"amount"=>$row['amount'])));
-        }
-        else{
-            die(json_encode(array('status'=>'failed','q'=>$q)));
-        }
-    }
     public  function actionDueCustomerNames(){
 
         $manager= Yii::app()->session['user'];
@@ -321,7 +317,7 @@ class SimpleAjaxController extends Controller
         $occupation=  addslashes($_POST['occupation']);
 
         $options='<option value="">Select or write</option>';
-        $q=" select name from customer_due_information where area_name like '$area_name' AND occupation like '$occupation' order by name " ;
+        $q=" select name from customer_due_information where area_name like '$area_name' AND occupation like '$occupation' AND amount > 0 order by name " ;
 //die($q);
         $res=Yii::app()->db->createCommand($q)->query();
         if($res){

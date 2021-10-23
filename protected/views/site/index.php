@@ -931,11 +931,22 @@ function GetPrice(art){
 
                             <div class="input-field-block">
                                 <div class="input-label-name">
-                                    টাকা
+                                নীট  টাকা
                                 </div>
 
                                 <div class="input-field-right">
                                     <input type="text" class="input-field" name="due_amount" id="due_amount" value="">
+                                </div>
+
+                                <div class="clear"></div>
+                            </div>
+                            <div class="input-field-block">
+                                <div class="input-label-name">
+                                এখন জমা 
+                                </div>
+
+                                <div class="input-field-right">
+                                    <input type="text" class="input-field" name="partial_due_amount" id="partial_due_amount" value="0">
                                 </div>
 
                                 <div class="clear"></div>

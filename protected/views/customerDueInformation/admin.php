@@ -24,6 +24,9 @@ $('.search-form form').submit(function(){
 	return false;
 });
 ");
+$found = stristr(Yii::app()->request->url,'?show=true');
+
+$visible = ($found)?true:false;
 ?>
 
 <h1>Manage Customer Due Informations</h1>
@@ -33,7 +36,7 @@ $('.search-form form').submit(function(){
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
+	//	'id',
 		'area_name',
 		'occupation',
 		'name',
@@ -44,6 +47,7 @@ $('.search-form form').submit(function(){
 		'date',
 
 		array(
+			'visible'=>$visible,
 			'class'=>'CButtonColumn',
 		),
 	),

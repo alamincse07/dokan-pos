@@ -27,6 +27,24 @@ class Generic {
         }
     }
 
+    // make common transaction
+    public static function JomaTransaction($cid,$name,$amount, $showtojoma=false){
+        $manager= Yii::app()->session['user'];
+       
+        $today= date('Y-m-d');
+        $inq="update  customer_due_information   set amount=(amount-$amount),manager='$manager',date='$today'  where  id=$cid" ;
+        Yii::app()->db->createCommand($inq)->execute();
+
+        $cq="insert into customer_transaction set customer_id=$cid, date='$today', amount=$amount,transaction_type='PAID'";
+        $re2s=Yii::app()->db->createCommand($cq)->execute();
+
+        if($showtojoma){
+            $q="insert into  daily_add_amount set category='DUE',name='$name',amount=$amount,taken_by='$manager',date='$today' " ;
+            $res=Yii::app()->db->createCommand($q)->execute();
+        }
+       // print($re2s);
+    }
+
     /**
      * @param $model
      * @return mixed
@@ -1285,4 +1303,7 @@ class Generic {
         $result = Yii::app()->db->createCommand($sql)->queryRow();
         return $result;
     }
+
+
+    
 } 

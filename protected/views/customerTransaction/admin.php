@@ -27,7 +27,14 @@ $('.search-form form').submit(function(){
 ?>
 
 <h1>Manage Customer Transactions</h1>
-<?php $this->widget('MGridView', array(
+<?php 
+
+
+$found = stristr(Yii::app()->request->url,'?show=true');
+
+$visible = ($found)?true:false;
+
+$this->widget('MGridView', array(
 	'id'=>'customer-transaction-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
@@ -39,6 +46,7 @@ $('.search-form form').submit(function(){
 		'total_due',
 		'customer_id',
 		array(
+			'visible'=>$visible,
 			'class'=>'CButtonColumn',
 		),
 	),
