@@ -78,6 +78,10 @@ $pega_list='';
 $total_pega_taka=0;
 $total_pega_sold=0;
 
+$lotto_list='';
+$total_lotto_taka=0;
+$total_lotto_sold=0;
+
 $apex_list='';
 $total_apex_taka=0;
 $total_apex_sold=0;
@@ -153,6 +157,19 @@ if($vrc_res){
                                 <div class="clear"></div>
                             </div>';
         }
+        if(strtoupper($val['category'])=='LOTTO'){
+
+            $total_lotto_sold++;
+            $total_lotto_taka = ($total_lotto_taka+$val['price']);
+            $lotto_list .='<div class="single-product-info">
+                                <div class="serial-no">'.$total_lotto_sold.'.</div>
+                                <div class="product-name">'.$val['article'].'</div>
+                                <div class="sell-no">'.$val['size'].'</div>
+                                <div class="author-name">'.$val['sells_man'].'</div>
+                                <div class="product-no '.$loss.'">'.$val['price'].'</div>
+                                <div class="clear"></div>
+                            </div>';
+        }
         if(strtoupper($val['category'])=='APEX'){
 
 
@@ -175,10 +192,11 @@ $total_vrc_taka= ceil($total_vrc_taka);
 $total_dsr_taka= ceil($total_dsr_taka);
 $total_indian_taka= ceil($total_indian_taka);
 $total_pega_taka= ceil($total_pega_taka);
+$total_lotto_taka= ceil($total_lotto_taka);
 $total_bata_taka= ceil($total_bata_taka);
 $total_apex_taka= ceil($total_apex_taka);
 
-$total_all_sold = $total_vrc_sold+$total_dsr_sold+$total_pega_sold+$total_indian_sold+$total_bata_sold+$total_apex_sold;
+$total_all_sold = $total_vrc_sold+$total_dsr_sold+$total_pega_sold+$total_lotto_sold+$total_indian_sold+$total_bata_sold+$total_apex_sold;
 
 //die($all_sells_man_name);
 
@@ -542,6 +560,7 @@ function GetPrice(art){
                         <li>INDIAN : <span class="product-counter total_sold_dsr_counter"><?=$total_indian_sold;?></span></li>
                         <li>অন্যান্য : <span class="product-counter total_sold_vrc_counter"><?=$total_vrc_sold;?></span> </li>
                         <li>পেগাসাস : <span class="product-counter total_sold_pega_counter"><?=$total_pega_sold;?></span></li>
+                        <li>LOTTO : <span class="product-counter total_sold_lotto_counter"><?=$total_lotto_sold;?></span></li>
                         <li>এপেক্স : <span class="product-counter total_sold_apex_counter"><?=$total_apex_sold;?></span></li>
                         <!-- <li>MEMO : <span class="product-counter total_sold_memo_counter">2563</span></li>-->
                     </ul>
@@ -593,6 +612,7 @@ function GetPrice(art){
 
 
         <li><a onclick="open_and_show('pega');" href="javascript:void(0);">পেগা</a></li>
+        <li><a onclick="open_and_show('lotto');" href="javascript:void(0);">LOTTO</a></li>
         <li><a onclick="open_and_show('due');" href="javascript:void(0);">বাকী</a></li>
         <li><a onclick="open_and_show('add');" href="javascript:void(0);">জমা</a></li>
         <li><a onclick="open_and_show('search');" href="javascript:void(0);">খোজ</a></li>
@@ -830,7 +850,7 @@ function GetPrice(art){
                 </div>
             </div>
         </div>
-       
+
         <div  class="single-tab pega_div non-print">
 
             <div  >
@@ -854,6 +874,29 @@ function GetPrice(art){
                 </div>
             </div>
         </div>
+        <div  class="single-tab lotto_div non-print">
+
+<div  >
+
+    <div class="index-container-left">
+        <div class="product-collection ">
+            <div class="product-head">
+                <div class="products-buyer-info">LOTTO বিক্রয় তালিকা -
+
+                    মোট টাকা : <span id="total_lotto_taka"><?=$total_lotto_taka;?></span>.00/-
+                    মোট জোড়া  : <span class="total_sold_lotto_counter"><?=$total_lotto_sold;?> </span>
+                </div>
+            </div>
+            <div class="lotto_products_sold">
+
+                <?=$lotto_list;?>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+</div>
         <div  class="single-tab baki_div">
 
 
@@ -1397,6 +1440,17 @@ function GetPrice(art){
 
                                 <div class="input-field-right">
                                     <span id="final_pega">0</span>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+
+                            <div class="input-field-block">
+                                <div class="input-label-name">
+                                    LOTTO  বিক্রী
+                                </div>
+
+                                <div class="input-field-right">
+                                    <span id="final_lotto">0</span>
                                 </div>
                                 <div class="clear"></div>
                             </div>

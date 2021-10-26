@@ -57,9 +57,9 @@ ul {
     color: #FFFFFF;
     float: left;
     padding-bottom: 20px;
-    padding-left: 10px;
+    padding-left: 5px;
     padding-top: 20px;
-    width: 17%;
+    width: 15%;
 }
 .user-name {
     font-size: 16px;
@@ -979,6 +979,6 @@ margin: 5px;
 
 .resp-tab-item a {
     color: ghostwhite;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
 }

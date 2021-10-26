@@ -33,6 +33,8 @@ function get_cash_amount() {
       $("#final_bata").html(bata_sell);
       var apex_sell = parseInt($("#total_apex_taka").html());
       $("#final_apex").html(apex_sell);
+      var lotto_sell = parseInt($("#total_lotto_taka").html());
+      $("#final_lotto").html(lotto_sell);
       var pega_sell = parseInt($("#total_pega_taka").html());
       $("#final_pega").html(pega_sell);
       var dsr_sell = parseInt($("#total_dsr_taka").html());
@@ -42,7 +44,7 @@ function get_cash_amount() {
       var vrc_sell = parseInt($("#total_vrc_taka").html());
       $("#final_vrc").html(vrc_sell);
 
-      var final_sell = bata_sell + apex_sell + pega_sell + dsr_sell + indian_sell + vrc_sell;
+      var final_sell = bata_sell + apex_sell + pega_sell + lotto_sell + dsr_sell + indian_sell + vrc_sell;
       $("#final_sell").html(final_sell);
 
       var total_due = parseInt($(".total_due").html());
@@ -211,6 +213,9 @@ function Common_add(e, obj, price, category) {
             }
             if (data.category.toLowerCase() == "pega") {
               var bn_text = "পেগাসাসে  যোগ হয়েছে ";
+            }
+            if (data.category.toLowerCase() == "lotto") {
+              var bn_text = "LOTTO  যোগ হয়েছে ";
             }
             if (data.category.toLowerCase() == "bata") {
               var bn_text = "বাটাতে  যোগ হয়েছে ";

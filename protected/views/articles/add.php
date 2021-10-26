@@ -90,7 +90,7 @@ $base_url= Yii::app()->request->baseUrl;
                 $('.single_pair_rate').hide();
                 $('.commision').hide();
             }
-            else if (cat == 'BATA' || cat == 'APEX' || cat == 'PEGA'){
+            else if (cat == 'BATA' || cat == 'APEX' || cat == 'PEGA' || cat == 'LOTTO'){
                 $('.single_pair_rate').hide();
                 $('.commision').show();
             }
@@ -242,6 +242,7 @@ function checkSubmit(e){
             <li class="big"><a target=""  href="<?=$base_url?>/articles/add?cat=VRC">VRC ADD </a></li>
             <li class="big"><a target=""  href="<?=$base_url?>/articles/add?cat=APEX">APEX ADD </a></li>
             <li class="big"><a target=""  href="<?=$base_url?>/articles/add?cat=PEGA">PEGA ADD </a></li>
+            <li class="big"><a target=""  href="<?=$base_url?>/articles/add?cat=LOTTO">LOTTO ADD </a></li>
             <li class="big"><a target=""  href="<?=$base_url?>/articles/add?cat=BATA">BATA ADD </a></li>
             <li class="big"><a target=""  href="<?=$base_url?>/articles/add?cat=INDIAN">INDIAN ADD </a></li>
 
@@ -316,6 +317,7 @@ function checkSubmit(e){
 
                     <option value="BATA">BATA</option>
                     <option value="PEGA">PEGA</option>
+                    <option value="LOTTO">LOTTO</option>
                     <option value="APEX">APEX</option>
 
 

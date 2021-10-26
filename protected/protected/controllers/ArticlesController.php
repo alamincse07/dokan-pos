@@ -277,7 +277,7 @@ class ArticlesController extends Controller
                         $msg='Please Give body rate';
                     }
                 }
-                elseif(strtoupper($category=='BATA') || strtoupper($category=='APEX')  || strtoupper($category=='PEGA')){
+                elseif(strtoupper($category=='BATA') || strtoupper($category=='APEX')  || strtoupper($category=='PEGA') || strtoupper($category=='LOTTO')){
                     $percentage= (($_POST['percentage']*1) / 100);
                     //Generic::_setTrace($_POST,false);
                    // Generic::_setTrace($percentage);

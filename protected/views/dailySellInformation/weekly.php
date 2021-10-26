@@ -18,16 +18,16 @@ if(isset($_REQUEST['start'],$_REQUEST['end'])){
     $condition= "date BETWEEN '".$_REQUEST['start']."' AND '".$_REQUEST['end']."' ";
     $label=$_REQUEST['start']." to  ".$_REQUEST['end'];
 }else{
-    $end= date('Y-m-d',strtotime($today.' -42 days'));
+    $end= date('Y-m-d',strtotime($today.' -180 days'));
     $condition= " date BETWEEN '$end' AND '$today' ";
-    $label=' Last month ';
+    $label=' Last 6 month ';
 }
 //die($condition);
 $dates=array();
 $tableData=array();
 $tableData2=array();
 $tableData3=array();
-$categories=['JSR','PEGA','APEX','DSR','BATA','VRC','INDIAN'];
+$categories=['LOTTO','PEGA','APEX','DSR','BATA','VRC','INDIAN'];
 //$con = new mysqli('localhost','root','','dokan');
 //$con= new PDO('pgsql:host=localhost;dbname=dokan', 'postgres', 'root');
 if (1){
@@ -37,13 +37,14 @@ if (1){
     (
       MONTHNAME(date),
       '-',
-      WEEK(date)
+      YEAR(date)
     ) AS week
   FROM daily_sell_information
   WHERE $condition
-  GROUP BY WEEK(date)
-  ORDER BY YEARWEEK(date, 2)
-  ";
+  GROUP BY YEAR(date), MONTH(date)
+	
+    
+  ORDER BY YEARWEEK(date, 2)";
 
     //die($pair);
     $profit_sql=" select  SUM(profit) AS val, 
@@ -51,11 +52,13 @@ if (1){
     (
       MONTHNAME(date),
       '-',
-      WEEK(date)
+      YEAR(date)
     ) AS week
   FROM daily_sell_information
   WHERE $condition
-  GROUP BY WEEK(date)
+  GROUP BY YEAR(date), MONTH(date)
+	
+    
   ORDER BY YEARWEEK(date, 2)
   ";
 
@@ -64,11 +67,13 @@ if (1){
     (
       MONTHNAME(date),
       '-',
-      WEEK(date)
+      YEAR(date)
     ) AS week
   FROM daily_sell_information
   WHERE $condition
-  GROUP BY WEEK(date)
+  GROUP BY YEAR(date), MONTH(date)
+	
+    
   ORDER BY YEARWEEK(date, 2)
   ";
 

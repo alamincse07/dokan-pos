@@ -83,6 +83,7 @@ $base_url= Yii::app()->request->baseUrl;
                             <option value="BATA">BATA</option>
                             <option value="PEGA">PEGA</option>
                             <option value="APEX">APEX</option>
+                            <option value="LOTTO">LOTTO</option>
                             <option value="VRC">VRC</option>
                             <option value="INDIAN">INDIAN</option>
                             <option value="DSR">DSR</option>
@@ -123,6 +124,7 @@ $base_url= Yii::app()->request->baseUrl;
                         <select style="width: 75px;" name="profit_with_category">
                             <option value="BATA">BATA</option>
                             <option value="PEGA">PEGA</option>
+                            <option value="LOTTO">LOTTO</option>
                             <option value="APEX">APEX</option>
                             <option value="VRC">VRC</option>
                             <option value="INDIAN">INDIAN</option>
