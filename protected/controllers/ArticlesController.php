@@ -95,13 +95,13 @@ class ArticlesController extends Controller
         //DIE($ar_q);
         $res_all= Yii::app()->db->createCommand($ar_q)->queryAll();
         //$res_all = $res_ar_q->fetch_all(MYSQLI_ASSOC);
-        $all_articles='';
+        $all_articles='<option value="">Select</option>';
         //die(print_r($sells_mana));
         foreach($res_all as $k=>$val){
         //print $val['member_name'];
             $all_articles.='<option value="'.$val['article'].'">'.$val['article'].'</option>';
         }
-        $html='<select style="min-width: 220px; float: right;" id="common_article" name="stock_article"  size="1">
+        $html='<select style="min-width: 220px; float: right;" id="common_article" onchange="GetPrice(this)" name="stock_article"  size="1">
 
                     '.$all_articles.'
 

@@ -110,7 +110,7 @@ function GetK($kenadam){
 			   $letters[] = str_repeat('i', $fractions5);
 		   }
 		  // print_r($letters);
-		   $dam = Date('dm-').(implode('', $letters));
+		  $dam = Date('my-').(implode('', $letters));
 		   //print($dam);
 		   return trim($dam);
 	

@@ -20,6 +20,33 @@ $base_url= Yii::app()->request->baseUrl;
 
 <script src="<?=$base_url?>/js/themes/jquery-ui.custom.min.js" type="text/javascript"></script>
 <script>
+window.price_list=[];
+    $(document).ready(function(){
+    
+        // $('#common_article').on('change', function(event, params) {
+           
+        //         GetPrice($(this).val());
+
+        //   });
+
+
+        $.ajax({
+            dataType:"json"
+
+            ,url:"<?=$base_url?>/SimpleAjax/ArticleInfo?all=true"
+
+            ,success: function(data) {
+                if (data.status == 'success')
+                {
+                    if (window.price_list.length<1) {
+
+                        window.price_list=data.price_list;
+                    }
+
+                }
+            }
+        });
+    });
     function restore_article(){
         $.ajax({
             dataType:"json"
@@ -37,6 +64,20 @@ $base_url= Yii::app()->request->baseUrl;
         });
     }
 
+    function GetPrice(obj){
+        var art = $(obj).val();
+     
+    
+    if(art !='' && art!='undefined'&& window.price_list[art]!='undefined' && window.price_list[art] > 1)
+       {
+           
+        $('input[name="article_body_rate"]').val(window.price_list[art]);
+
+       }else{
+
+        $('input[name="article_body_rate"]').val('');
+       }
+}
     function calculateSum() {
 
 		var sum = 0;
@@ -117,8 +158,7 @@ $base_url= Yii::app()->request->baseUrl;
                     autoFill: true
                     //triggerSelected: true            //skin: "custom"
                 });
-              //  console.log(data.options);
-
+              
                 } 
             }
         });
@@ -411,7 +451,7 @@ function checkSubmit(e){
 
             <div class="form-header noprint">
 
-                <form id="barcode_form" onsubmit2="checkSubmit(event)" action="/barcode/barcode.php" target="_blank" method="POST">
+                <form id="barcode_form" onsubmit2="checkSubmit(event)" action="<?=$base_url?>/barcode/barcode.php" target="_blank" method="GET">
                     <table>
                         
 
