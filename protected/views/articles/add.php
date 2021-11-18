@@ -451,7 +451,7 @@ function checkSubmit(e){
 
             <div class="form-header noprint">
 
-                <form id="barcode_form" onsubmit2="checkSubmit(event)" action="<?=$base_url?>/barcode/barcode.php" target="_blank" method="GET">
+                <form id="barcode_form" onsubmit2="checkSubmit(event)" action="<?=$base_url?>/barcode/barcode.php" target="_blank" method="POST">
                     <table>
                         
 
