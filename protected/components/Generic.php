@@ -32,12 +32,15 @@ class Generic {
         $manager= Yii::app()->session['user'];
        
         $today= date('Y-m-d');
-        $inq="update  customer_due_information   set amount=(amount-$amount),manager='$manager',date='$today'  where  id=$cid" ;
-        Yii::app()->db->createCommand($inq)->execute();
-
+        
         $cq="insert into customer_transaction set customer_id=$cid, date='$today', amount=$amount,transaction_type='PAID'";
         $re2s=Yii::app()->db->createCommand($cq)->execute();
 
+
+        $inq="update  customer_due_information   set amount=(amount-$amount),manager='$manager',date='$today'  where  id=$cid" ;
+        Yii::app()->db->createCommand($inq)->execute();
+
+        
         if($showtojoma){
             $q="insert into  daily_add_amount set category='DUE',name='$name',amount=$amount,taken_by='$manager',date='$today' " ;
             $res=Yii::app()->db->createCommand($q)->execute();

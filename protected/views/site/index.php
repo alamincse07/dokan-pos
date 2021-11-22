@@ -252,31 +252,53 @@ foreach($occupations as $k=>$val){
     $all_occupation.='<option value="'.$val['occupation'].'">'.ucwords($val['occupation']).'</option>';
 }
 
-$vrc_q=" SELECT
+$vrc_q="SELECT
 customer_due_information.`name`,
+customer_due_information.`id`,
 customer_transaction.transaction_type,
-customer_transaction.amount
+customer_transaction.amount,
+customer_transaction.total_due
 FROM
 customer_due_information
 INNER JOIN customer_transaction ON customer_due_information.id = customer_transaction.customer_id
- WHERE customer_transaction.transaction_type !='PAID' and  customer_transaction.date='$today'  " ;
+ WHERE   customer_transaction.date='$today' order by customer_transaction.id asc " ;
 //die($vrc_q);
 $vrc_res_all= Yii::app()->db->createCommand($vrc_q)->queryAll();
 //$vrc_res_all=$vrc_res->fetch_all(MYSQLI_ASSOC);
+// print_r($vrc_res_all);
+$cus_articles_due= [];
 $due_list='';
 $total_due_today=0;
 $total_due_sold=count($vrc_res_all);
 foreach($vrc_res_all as $k=>$val){
+     //total_due =1 means the linked payment
+    if($val['transaction_type'] == 'PAID' && $val['total_due'] =='1'){
+        if(isset($cus_articles_due[$val['id']])){
+           
+            $amount = $cus_articles_due[$val['id']]['amount'] -  $val['amount'];
+            $cus_articles_due[$val['id']] = ['name'=> $val['name'], 'amount'=>$amount];
+        }
+    }else{
+        $cus_articles_due[$val['id']] = ['name'=> $val['name'], 'amount'=>$val['amount']];
+
+    }
+
+
+}
+
+foreach($cus_articles_due as $k=>$val){
     $total_due_today = ($total_due_today+$val['amount']);
     //$articles = explode(',',$val['articles']);
     $due_list .='<div class="single-product-info">
                                 <div class="serial-no"></div>
-                                <div class="product-name">'.$val['transaction_type'].'</div>
+                               
                                 <div class="sell-no"></div>
                                 <div class="author-name">'.$val['name'].'</div>
                                 <div class="product-no">---'.$val['amount'].'</div>
                                 <div class="clear"></div>
                             </div>';
+
+
 }
 
 

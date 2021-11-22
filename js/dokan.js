@@ -322,15 +322,12 @@ function Due_add(e, obj, customer_name, due_amount) {
           var new_html =
             '<div class="single-product-info">' +
             '<div class="serial-no"></div>' +
-            '<div class="product-name">' +
-            article +
-            "</div>" +
             '<div class="sell-no"></div>' +
             '<div class="author-name">' +
             data.c_name +
             "</div>" +
             '<div class="product-no">---' +
-            fprice +
+            data.due_amount +
             "</div>" +
             '<div class="clear"></div>' +
             "</div>";
@@ -338,7 +335,7 @@ function Due_add(e, obj, customer_name, due_amount) {
 
           $(".due_last_added").html(html);
 
-          $(".total_due").html(parseInt($(".total_due").html()) + parseInt(fprice));
+          $(".total_due").html(parseInt($(".total_due").html()) + parseInt(data.due_amount));
 
           $(".due_items").append(new_html);
 

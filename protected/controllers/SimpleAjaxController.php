@@ -54,18 +54,31 @@ class SimpleAjaxController extends Controller
         }
         $amount= addslashes($_POST['due_amount']);
         $partial_amount= addslashes($_POST['partial_due_amount']);
+        if(!is_numeric( $partial_amount)){
+
+            $partial_amount = 0;
+        }
+
+        $due_amount = $amount;
+        if(isset($partial_amount) && ($partial_amount>0 && ($partial_amount < $amount))){
+
+           
+            $due_amount = $amount - $partial_amount ;
+        }
+        
+
         $model= CustomerDueInformation::model()->find('area_name=:area_name AND occupation=:occupation AND name=:c_name', array(':area_name'=>$area,':occupation'=>$occupation,':c_name'=>$c_name));
         if($model){
 
             $old=$model->articles;
-            $model->amount= ($model->amount + $amount);
+            $model->amount= ($model->amount + $due_amount);
             $model->articles = $article.', '.$old  ;
             $model->manager=$manager;
             $model->date=$today;
         }else{
 
             $model= new CustomerDueInformation();
-            $model->amount=$amount;
+            $model->amount=$due_amount;
             $model->manager=$manager;
             $model->area_name=$area;
             $model->occupation=$occupation;
@@ -74,21 +87,24 @@ class SimpleAjaxController extends Controller
             $model->date=$today;
         }
 
-        #Generic::_setTrace($model);
+        // Generic::_setTrace($model);
+
         if($model->save()){
             $customer_id= $model->id;
 
             $cq="insert into customer_transaction set customer_id=$customer_id, date='$today', amount=$amount,transaction_type='$article'";
             $re2s=Yii::app()->db->createCommand($cq)->execute();
 
-
+            $cq2='';
             if(isset($partial_amount) && ($partial_amount>0 && ($partial_amount < $amount))){
 
-                Generic::JomaTransaction($customer_id,$c_name,$partial_amount, true);
+                $cq2="insert into customer_transaction set customer_id=$customer_id, date='$today', total_due='1', amount=$partial_amount,transaction_type='PAID'";
+                 $re2s=Yii::app()->db->createCommand($cq2)->execute();
+
             }
 
 
-            die(json_encode(array('status'=>'success','c_name'=>$c_name)));
+            die(json_encode(array('status'=>'success','c_name'=>$c_name,'due_amount'=>$due_amount, 'cq1'=>$cq,'cq2'=>$cq2)));
         }else{
             die(json_encode(array('status'=>'failed','q'=>$model->errors)));//Generic::_setTrace($model->errors);
         }
