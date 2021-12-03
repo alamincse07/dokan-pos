@@ -109,4 +109,14 @@ class DailySellInformation extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	public function getTotal($records, $column)
+    {
+        $records->pagination=false;
+        $data=$records->getData();
+        $total = 0;
+        foreach ($data as $record) {
+            $total += $record->$column;
+        }
+        return $total;
+    }
 }

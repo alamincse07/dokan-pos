@@ -46,7 +46,12 @@ $profit_visible = (isset(Yii::app()->session['user_type'] ) && Yii::app()->sessi
         ),
 
         'date',
-       // 'manager',
+        array(
+            'name'=>'manager',
+            'footer'=>(!empty($model->manager) && !empty($model->date))? $model->getTotal($model->search(), 'price'): '',
+
+        ),
+       
         'sells_man',
 		//'size',
 		//'color',

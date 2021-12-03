@@ -10,7 +10,7 @@ class MGridView extends CGridView{
     function init(){
         //$pageSize=(!empty(Yii::app()->request->getParam('pageSize')))?Yii::app()->request->getParam('pageSize'):10;#Yii::app()->user()->hasState('page-size') ? user()->getState('page-size'):20;
        // $pageSize = (Yii::app()->request->getParam('pageSize')>0)?Yii::app()->request->getParam('pageSize'):5;
-        $this->dataProvider->pagination->pageSize=5;
+        $this->dataProvider->pagination->pageSize=10;
 
 
         //Generic::_setTrace($_GET);
