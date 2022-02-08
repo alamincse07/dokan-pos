@@ -253,15 +253,15 @@ foreach($occupations as $k=>$val){
 }
 
 $vrc_q="SELECT
-customer_due_information.`name`,
-customer_due_information.`id`,
-customer_transaction.transaction_type,
-customer_transaction.amount,
-customer_transaction.total_due
-FROM
-customer_due_information
-INNER JOIN customer_transaction ON customer_due_information.id = customer_transaction.customer_id
- WHERE   customer_transaction.date='$today' order by customer_transaction.id asc " ;
+    customer_due_information.`name`,
+    customer_due_information.`id`,
+    customer_transaction.transaction_type,
+    customer_transaction.amount,
+    customer_transaction.total_due
+    FROM
+    customer_due_information
+    INNER JOIN customer_transaction ON customer_due_information.id = customer_transaction.customer_id
+    WHERE   customer_transaction.date='$today' order by customer_transaction.id asc " ;
 //die($vrc_q);
 $vrc_res_all= Yii::app()->db->createCommand($vrc_q)->queryAll();
 //$vrc_res_all=$vrc_res->fetch_all(MYSQLI_ASSOC);
@@ -279,8 +279,11 @@ foreach($vrc_res_all as $k=>$val){
             $cus_articles_due[$val['id']] = ['name'=> $val['name'], 'amount'=>$amount];
         }
     }else{
-        $cus_articles_due[$val['id']] = ['name'=> $val['name'], 'amount'=>$val['amount']];
+        if($val['transaction_type'] !== 'PAID'){
+            $cus_articles_due[$val['id']] = ['name'=> $val['name'], 'amount'=>$val['amount']];
 
+        }
+       
     }
 
 

@@ -69,7 +69,7 @@ class CustomerTransaction extends CActiveRecord
 			'date' => 'তারিখ',
 			'transaction_type' => 'দেয়াও / নেওয়া',
 			'amount' => 'টাকা',
-			'total_due' =>'যে সময় দেওয়া ',
+			'total_due' =>'ঐ সময় দেওয়া ',
 			'customer_id' => 'ক্রেতা ',
 		);
 	}
