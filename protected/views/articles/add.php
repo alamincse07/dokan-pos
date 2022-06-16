@@ -126,7 +126,7 @@ window.price_list=[];
 
             var cat = $(obj).val();
 
-            if (cat == 'DSR'){
+            if (cat == 'DSR' || cat == 'ESR'){
 
                 $('.single_pair_rate').hide();
                 $('.commision').hide();
@@ -279,6 +279,7 @@ function checkSubmit(e){
         <ul>
 
             <li class="big"><a target=""  href="<?=$base_url?>/articles/add?cat=DSR">DSR ADD </a></li>
+            <li class="big"><a target=""  href="<?=$base_url?>/articles/add?cat=ESR">ESR ADD </a></li>
             <li class="big"><a target=""  href="<?=$base_url?>/articles/add?cat=VRC">VRC ADD </a></li>
             <li class="big"><a target=""  href="<?=$base_url?>/articles/add?cat=APEX">APEX ADD </a></li>
             <li class="big"><a target=""  href="<?=$base_url?>/articles/add?cat=PEGA">PEGA ADD </a></li>
@@ -350,7 +351,7 @@ function checkSubmit(e){
                 <select onchange="showoptions(this)"  id="cat" style="float: right;" name="category_stock">
 
                     <option value="DSR">DSR</option>
-
+                    <option value="ESR">ESR</option>
                     <option value="VRC">VRC</option>
 
                     <option value="INDIAN">INDIAN</option>

@@ -65,6 +65,10 @@ $dsr_list='';
 $total_dsr_taka=0;
 $total_dsr_sold=0;
 
+$esr_list='';
+$total_esr_taka=0;
+$total_esr_sold=0;
+
 $bata_list='';
 $total_bata_taka=0;
 $total_bata_sold=0;
@@ -105,6 +109,20 @@ if($vrc_res){
                                 <div class="clear"></div>
                             </div>';
         }
+        if(strtoupper($val['category'])=='ESR'){
+            $total_esr_sold++;
+            $total_esr_taka = ($total_esr_taka+$val['price']);
+
+            $esr_list .='<div class="single-product-info">
+                                <div class="serial-no">'.$total_esr_sold.'.</div>
+                                <div class="product-name">'.$val['article'].'</div>
+                                <div class="sell-no">'.$val['size'].'</div>
+                                <div class="author-name">'.$val['sells_man'].'</div>
+                                <div class="product-no '.$loss.'">'.$val['price'].'</div>
+                                <div class="clear"></div>
+                            </div>';
+        }
+
         if(strtoupper($val['category'])=='INDIAN'){
 
             $total_indian_sold++;
@@ -190,13 +208,14 @@ if($vrc_res){
 
 $total_vrc_taka= ceil($total_vrc_taka);
 $total_dsr_taka= ceil($total_dsr_taka);
+$total_esr_taka= ceil($total_esr_taka);
 $total_indian_taka= ceil($total_indian_taka);
 $total_pega_taka= ceil($total_pega_taka);
 $total_lotto_taka= ceil($total_lotto_taka);
 $total_bata_taka= ceil($total_bata_taka);
 $total_apex_taka= ceil($total_apex_taka);
 
-$total_all_sold = $total_vrc_sold+$total_dsr_sold+$total_pega_sold+$total_lotto_sold+$total_indian_sold+$total_bata_sold+$total_apex_sold;
+$total_all_sold = $total_vrc_sold+$total_dsr_sold+$total_esr_taka+$total_pega_sold+$total_lotto_sold+$total_indian_sold+$total_bata_sold+$total_apex_sold;
 
 //die($all_sells_man_name);
 
@@ -580,7 +599,7 @@ function GetPrice(art){
                     <ul>
                         <li>মোটজোড়া : <span class="product-counter total_sold_counter"><?=$total_all_sold;?></span></li>
                         <li>বাটা : <span class="product-counter total_sold_bata_counter"><?=$total_bata_sold;?></span></li>
-                        
+                        <li>ঈগল  : <span class="product-counter total_sold_esr_counter"><?=$total_esr_sold;?></span></li>
                         <li>ঢাকা : <span class="product-counter total_sold_dsr_counter"><?=$total_dsr_sold;?></span></li>
                         <li>INDIAN : <span class="product-counter total_sold_dsr_counter"><?=$total_indian_sold;?></span></li>
                         <li>অন্যান্য : <span class="product-counter total_sold_vrc_counter"><?=$total_vrc_sold;?></span> </li>
@@ -630,7 +649,9 @@ function GetPrice(art){
         <li class="js_sale"><a  href="javascript:void(0);" onclick="open_and_show('common')">বিক্রিত</a></li>
         <li><a onclick="open_and_show('bata');" href="javascript:void(0);">বাটা</a></li>
 
-        <li><a onclick="open_and_show('dsr');" href="javascript:void(0);">ঢাকা</a></li>
+                <li><a onclick="open_and_show('dsr');" href="javascript:void(0);">ঢাকা</a></li>
+                <li><a onclick="open_and_show('esr');" href="javascript:void(0);">ঈগল </a></li>
+
         <li><a onclick="open_and_show('indian');" href="javascript:void(0);">INDIAN</a></li>
         <li><a onclick="open_and_show('vrc');" href="javascript:void(0);">অন্যান্য</a></li>
         <li><a onclick="open_and_show('apex');" href="javascript:void(0);">এপেক্স</a></li>
@@ -809,6 +830,30 @@ function GetPrice(art){
                 </div>
             </div>
         </div>
+
+        <div  class="single-tab esr_div non-print">
+            <div >
+
+                <div class="index-container-left">
+                    <div class="product-collection ">
+                        <div class="product-head">
+                            <div class="products-buyer-info"> ঈগল  সম্রাট  বিক্রয় তালিকা -
+
+                                মোট টাকা : <span id="total_esr_taka"><?=$total_esr_taka;?></span>.00/-
+                                মোট জোড়া  : <span class="total_sold_esr_counter"><?=$total_esr_sold;?> </span>
+                            </div>
+                        </div>
+                        <div class="esr_products_sold">
+
+                            <?=$esr_list;?>
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div  class="single-tab indian_div non-print">
             <div >
 
@@ -1487,6 +1532,17 @@ function GetPrice(art){
 
                                 <div class="input-field-right">
                                     <span id="final_dsr">0</span>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+
+                            <div class="input-field-block">
+                                <div class="input-label-name">
+                                ঈগল  সম্রাট বিক্রী
+                                </div>
+
+                                <div class="input-field-right">
+                                    <span id="final_esr">0</span>
                                 </div>
                                 <div class="clear"></div>
                             </div>

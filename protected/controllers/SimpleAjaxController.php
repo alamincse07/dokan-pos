@@ -619,10 +619,10 @@ class SimpleAjaxController extends Controller
                     $right_class='dsr_right_item';
                     $left_class='dsr_left_item';
                 }
-                if($cat=='jsr'){
+                if($cat=='esr'){
 
-                    $right_class='jsr_right_item';
-                    $left_class='jsr_left_item';
+                    $right_class='esr_right_item';
+                    $left_class='esr_left_item';
                 }
                 $html='
 
@@ -689,8 +689,8 @@ class SimpleAjaxController extends Controller
                 if(empty($category)){
                     die(json_encode(array('status'=>'failed','category'=>$category,'article'=>'','sells_man'=>'','size'=>'','price'=>'','color'=>'2')));
                 }
-                if($category=='JSR'){
-                    $profit= intval($category_price * 0.18);
+                if($category=='ESR'){
+                    $profit= intval($category_price * 0.28);
                 }
 
                 if($category=='DSR'){

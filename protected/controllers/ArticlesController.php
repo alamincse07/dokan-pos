@@ -224,7 +224,7 @@ class ArticlesController extends Controller
 				
 			 }
             
-            elseif(isset($_POST['article_body_rate']) && $_POST['article_body_rate']=='' && strtoupper($_REQUEST['category_stock'])=='DSR'){
+            elseif(isset($_POST['article_body_rate']) && $_POST['article_body_rate']=='' && (strtoupper($_REQUEST['category_stock'])=='DSR' || strtoupper($_REQUEST['category_stock'])=='ESR' )){
                 $msg='বডিরেট দিন';
             }
             elseif(isset($_POST['article_body_rate']) && $_POST['article_body_rate']=='' && strtoupper($_REQUEST['category_stock'])=='BATA'){
@@ -263,7 +263,7 @@ class ArticlesController extends Controller
 
 
                 }
-                elseif(strtoupper($category=='DSR')){
+                elseif(strtoupper($category)=='DSR' || strtoupper($category)=='ESR' ){
                     $percentage=0.28;
 
                     $body_rate =  addslashes(trim(strtoupper($_REQUEST['article_body_rate'])));

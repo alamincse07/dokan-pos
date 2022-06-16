@@ -27,7 +27,7 @@ $dates=array();
 $tableData=array();
 $tableData2=array();
 $tableData3=array();
-$categories=['LOTTO','PEGA','APEX','DSR','BATA','VRC','INDIAN'];
+$categories=['LOTTO','PEGA','APEX','DSR','ESR','BATA','VRC','INDIAN'];
 //$con = new mysqli('localhost','root','','dokan');
 //$con= new PDO('pgsql:host=localhost;dbname=dokan', 'postgres', 'root');
 if (1){

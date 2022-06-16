@@ -86,6 +86,7 @@ $base_url= Yii::app()->request->baseUrl;
                             <option value="LOTTO">LOTTO</option>
                             <option value="VRC">VRC</option>
                             <option value="INDIAN">INDIAN</option>
+                            <option value="ESR">ESR</option>
                             <option value="DSR">DSR</option>
 
                         </select>
@@ -128,6 +129,7 @@ $base_url= Yii::app()->request->baseUrl;
                             <option value="APEX">APEX</option>
                             <option value="VRC">VRC</option>
                             <option value="INDIAN">INDIAN</option>
+                            <option value="ESR">ESR</option>
                             <option value="DSR">DSR</option>
 
                         </select>
