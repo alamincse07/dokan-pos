@@ -39,12 +39,14 @@ function get_cash_amount() {
       $("#final_pega").html(pega_sell);
       var dsr_sell = parseInt($("#total_dsr_taka").html());
       $("#final_dsr").html(dsr_sell);
+      var esr_sell = parseInt($("#total_esr_taka").html());
+      $("#final_esr").html(esr_sell);
       var indian_sell = parseInt($("#total_indian_taka").html());
       $("#final_indian").html(indian_sell);
       var vrc_sell = parseInt($("#total_vrc_taka").html());
       $("#final_vrc").html(vrc_sell);
 
-      var final_sell = bata_sell + apex_sell + pega_sell + lotto_sell + dsr_sell + indian_sell + vrc_sell;
+      var final_sell = bata_sell + apex_sell + pega_sell + lotto_sell + dsr_sell + esr_sell+ indian_sell + vrc_sell;
       $("#final_sell").html(final_sell);
 
       var total_due = parseInt($(".total_due").html());
@@ -207,6 +209,9 @@ function Common_add(e, obj, price, category) {
             }
             if (data.category.toLowerCase() == "dsr") {
               var bn_text = "ঢাকা সম্রাটে  যোগ হয়েছে ";
+            }
+            if (data.category.toLowerCase() == "esr") {
+              var bn_text = "ঈগল  সম্রাটে  যোগ হয়েছে ";
             }
             if (data.category.toLowerCase() == "indian") {
               var bn_text = "INDIAN যোগ হয়েছে ";

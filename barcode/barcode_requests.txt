@@ -119,3 +119,7 @@
 2021-10-08-18-46  ------------/barcode/print.php?per_row=4&images%5B..%2Fbarcodes%2FAS-202725.png%5D=6
 2021-10-08-18-47  ------------/barcode/print.php?per_row=4&images%5B..%2Fbarcodes%2FAS-202-725.png%5D=6
 2021-10-08-18-48  ------------/barcode/print.php?per_row=4&images%5B..%2Fbarcodes%2FJ-234495.png%5D=1
+2021-11-14-10-09  ------------/barcode/print.php?per_row=4&images%5B..%2Fbarcodes%2FTY-85350.png%5D=10
+2021-11-14-10-12  ------------/barcode/print.php?per_row=4&images%5B..%2Fbarcodes%2FRT-85250.png%5D=1
+2021-11-14-10-13  ------------/barcode/print.php?per_row=4&images%5B..%2Fbarcodes%2FRT-85250.png%5D=1
+2021-11-14-10-14  ------------/barcode/print.php?per_row=4&images%5B..%2Fbarcodes%2FRT-85250.png%5D=1
