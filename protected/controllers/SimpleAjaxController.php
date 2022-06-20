@@ -620,7 +620,7 @@ class SimpleAjaxController extends Controller
                     $left_class='dsr_left_item';
                 }
                 if($cat=='esr'){
-
+                    $img_class='dsr_img';
                     $right_class='esr_right_item';
                     $left_class='esr_left_item';
                 }

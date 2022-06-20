@@ -215,7 +215,7 @@ $total_lotto_taka= ceil($total_lotto_taka);
 $total_bata_taka= ceil($total_bata_taka);
 $total_apex_taka= ceil($total_apex_taka);
 
-$total_all_sold = $total_vrc_sold+$total_dsr_sold+$total_esr_taka+$total_pega_sold+$total_lotto_sold+$total_indian_sold+$total_bata_sold+$total_apex_sold;
+$total_all_sold = $total_vrc_sold+$total_dsr_sold+$total_esr_sold+$total_pega_sold+$total_lotto_sold+$total_indian_sold+$total_bata_sold+$total_apex_sold;
 
 //die($all_sells_man_name);
 

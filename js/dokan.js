@@ -26,7 +26,7 @@ function get_cash_amount() {
   var cash = prompt(" পূর্বের ক্যাশ দিন ", "25000");
   if (cash != null && cash != "") {
     if (!isNaN(cash)) {
-      console.log(cash);
+      //console.log(cash);
 
       cash = parseInt(cash);
       var bata_sell = parseInt($("#total_bata_taka").html());
