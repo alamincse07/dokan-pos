@@ -614,15 +614,13 @@ class SimpleAjaxController extends Controller
                 $right_class='right_item';
                 $left_class='left_item';
 
-                if($cat=='dsr'){
+                if($cat=='dsr' || $cat=='esr'){
 
                     $right_class='dsr_right_item';
                     $left_class='dsr_left_item';
                 }
                 if($cat=='esr'){
-                    $img_class='dsr_img';
-                    $right_class='esr_right_item';
-                    $left_class='esr_left_item';
+                    $img_class='dsr_img'; // need to update the image
                 }
                 $html='
 
