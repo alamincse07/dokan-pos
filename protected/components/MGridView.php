@@ -34,7 +34,7 @@ class MGridView extends CGridView{
                    $this->columns[$key]['header']='Options';
 
                    if(@Yii::app()->session['user_type']==1){
-                       $this->columns[$key]['template']='{update}{delete}';
+                       $this->columns[$key]['template']='{view}{update}{delete}';
                    }else{
                        $this->columns[$key]['template']='{view}';
                    }

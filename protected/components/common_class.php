@@ -1,5 +1,60 @@
 <?php
  class common_class   {
+
+   public static function getCardDiv($val, $type='sell'){
+        $content1 =  'success';
+        $content4 = '';
+        $content5 = '';
+    
+        if($type === 'sell'){
+            $content1 = ($val['profit']< 0) ? 'danger': 'success';
+            $content2 = $val['article'];
+            $content3 = $val['price'];
+            $content4 = $val['sells_man'];
+            $content5 = '#'.$val['id'];
+        }
+    
+        elseif($type === 'add'){
+           
+            $content2 = $val['name'];
+            $content3 = $val['amount'];
+            $content4 = $val['category'];
+    
+        }
+        elseif($type === 'due'){       
+            $content2 = $val['name']; $content3 = $val['amount'];
+        }
+    
+        elseif($type === 'cost'){
+            $content2 = $val['cost_type'];  $content3 = $val['amount'];
+        }
+    
+        elseif($type === 'back'){
+            $content2 = $val['article'];  $content3 = $val['amount'];
+        }
+    
+       
+    
+        $content = '<div class="col-xl-4 col-md-6 mb-1">
+        <div class="card border-left-'.$content1.' shadow h-30 py-2">
+          <div class="p-2">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-sm font-weight-bold text-primary text-uppercase mb-1">'.$content2.'</div>
+                <div class="h6 mb-0 font-weight-bold text-gray-600">'.$content3.'</div>
+              </div>
+              <div class="col-auto">
+                <span class="badge badge-secondary">'.$content4.'</span>
+                <span class="badge badge-light">'.$content5.'</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>';
+      //die($content);
+
+      return $content;
+    }
    public static  function  Convert($number){
 
        $bn_digits=array('০','১','২','৩','৪','৫','৬','৭','৮','৯');

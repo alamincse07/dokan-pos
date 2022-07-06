@@ -32,6 +32,7 @@ class DailySellInformation extends CActiveRecord
 	 */
 	public function tableName()
 	{
+		// return 'daily_sell_information_processing';
 		return 'daily_sell_information';
 	}
 
@@ -93,7 +94,9 @@ class DailySellInformation extends CActiveRecord
 		// should not be searched.
 
 		$criteria=new CDbCriteria;
-
+		if(isset($_REQUEST['memo'])){
+            $this->id=$_REQUEST['memo'];
+        }
 		$criteria->compare('id',$this->id);
 		$criteria->compare('category',$this->category,true);
 		$criteria->compare('date',$this->date,true);

@@ -104,7 +104,7 @@ class SimpleAjaxController extends Controller
             }
 
 
-            die(json_encode(array('status'=>'success','c_name'=>$c_name,'due_amount'=>$due_amount, 'cq1'=>$cq,'cq2'=>$cq2)));
+            die(json_encode(array('status'=>'success','c_name'=>$c_name,'due_amount'=>$due_amount, 'cq1'=>$cq,'cq2'=>$cq2,'submitted'=>$_POST)));
         }else{
             die(json_encode(array('status'=>'failed','q'=>$model->errors)));//Generic::_setTrace($model->errors);
         }
@@ -142,11 +142,24 @@ class SimpleAjaxController extends Controller
     }
 
     public function actionFerot(){
-        $manager= Yii::app()->session['user'];
-        $amount=  addslashes($_POST['amount']);
-        $article=  addslashes($_POST['article']);
+        $manager= @Yii::app()->session['user'];
+        $amount=  addslashes(@$_POST['amount']);
+        $article=  addslashes(@$_POST['article']);
         $today=date('Y-m-d');
         $article= strtoupper(trim($article));
+
+        if(isset($_POST['back_memo']) && !empty(trim($_POST['back_memo']))){
+            $memo_id=$_POST['back_memo'];
+            $up_q="select * from  daily_sell_information where  id = '$memo_id' ";
+
+            $data=Yii::app()->db->createCommand($up_q)->queryRow();
+            if($data){
+                $amount= $data['price'];
+                $article= $data['article'];
+            }
+
+
+        }
         $up_q="update articles set total_pair=total_pair+1 , total_taka= total_taka+actual_price,added_date='$today'  where  upper(article)='$article' ";
 //die($up_q);
         $res=Yii::app()->db->createCommand($up_q)->execute();
@@ -157,7 +170,7 @@ class SimpleAjaxController extends Controller
 //die($q);
             $res=Yii::app()->db->createCommand($q)->execute();
 
-            die(json_encode(array('status'=>'success')));
+            die(json_encode(array('status'=>'success','article'=>$article,'price'=>$amount, 'memo'=>@$_POST['back_memo'])));
         }else{
             die(json_encode(array('status'=>'failed','msg'=>'সঠিক আর্টিকেল দিন ')));
         }
@@ -201,7 +214,7 @@ class SimpleAjaxController extends Controller
                     <div style="float: right;color:red;">'.$cost_amount.'</div>
                     <div class="clear"></div>
                 </div>';
-                die(json_encode(array('status'=>'success','html'=>$html)));
+                die(json_encode(array('status'=>'success','html'=>$html,'costName'=>$cost_type,'amount'=>$cost_amount)));
             }
         }
         else{
@@ -227,7 +240,7 @@ class SimpleAjaxController extends Controller
                     <div style="float: right;color:red;">'.$cost_amount.'</div>
                     <div class="clear"></div>
                 </div>';
-                die(json_encode(array('status'=>'success','html'=>$html)));
+                die(json_encode(array('status'=>'success','html'=>$html, 'costName'=>$cost_type,'amount'=>$cost_amount)));
             }
 
         }
@@ -313,7 +326,7 @@ class SimpleAjaxController extends Controller
             <div class="product-no">'.$amount.'</div>
             <div class="clear"></div>
             </div>';
-                die(json_encode(array('status'=>'success','html'=>$html)));
+                die(json_encode(array('status'=>'success','html'=>$html,'category'=>$category,'name'=>$name,'amount'=>$amount)));
             }
             else{
                 die(json_encode(array('status'=>'failed','q'=>$q)));
@@ -340,12 +353,20 @@ class SimpleAjaxController extends Controller
             while( $row= $res->read()){
                 $options.='<option value="'.$row['name'].'">'.ucwords($row['name']).'</option>';
             }
+            $newHtml= '
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">নাম </span>
+            </div>
+            <select class="form-control" onchange="GetDueTaka(this);" id="customer_name" name="customer_name" size="1">
+              <option value="">Select </option><option value="ANIS">ANIS</option>
+              </select>
+          ';
 
-            $html='<div class="input-label-name">
-                            নাম
-                        </div>
-                        <div class="input-field-right">
-                            <select onchange="GetDueTaka(this);" id="customer_name" name="customer_name"  size="1">
+            $html='<div class="input-label-name input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default2">নাম </span>
+                     </div>
+                        <div class="input-field-right form-control">
+                            <select class="1form-control"  onchange="GetDueTaka(this);" id="customer_name" name="customer_name"  size="1">
                             '.$options.'
                             </select>
                         </div>
@@ -372,23 +393,28 @@ class SimpleAjaxController extends Controller
 
     public function actionCustomerDueAmount(){
 
-        $manager= Yii::app()->session['user'];
-        $area_name=  addslashes($_POST['area_name']);
-        $occupation=  addslashes($_POST['occupation']);
-        $name=  addslashes($_POST['name']);
+        if(!empty($_POST['area_name'])){
 
-        $options='<option value="">Select</option>';
-        $q=" select id,amount  from customer_due_information where area_name like '$area_name' AND occupation like '$occupation' AND name ='$name' order by id limit 1" ;
-//die($q);
-        $res=Yii::app()->db->createCommand($q)->query();
-        if($res){
+            
+            $manager= Yii::app()->session['user'];
+            $area_name=  addslashes($_POST['area_name']);
+            $occupation=  addslashes($_POST['occupation']);
+            $name=  addslashes($_POST['name']);
 
-            $row =$res->read();
-            die(json_encode(array('status'=>'success','id'=>$row['id'],"amount"=>$row['amount'])));
+            $options='<option value="">Select</option>';
+            $q=" select id,amount  from customer_due_information where area_name like '$area_name' AND occupation like '$occupation' AND name ='$name' order by id limit 1" ;
+    //die($q);
+            $res=Yii::app()->db->createCommand($q)->query();
+            if($res){
+
+                $row =$res->read();
+                die(json_encode(array('status'=>'success','id'=>$row['id'],"amount"=>$row['amount'])));
+            }else{
+                die(json_encode(array('status'=>'failed','q'=>quoted_printable_encode)));
+            }
         }
-        else{
-            die(json_encode(array('status'=>'failed','q'=>$q)));
-        }
+            die(json_encode(array('status'=>'failed','q'=>'invalid')));
+        
 
         /*
         $html='
@@ -410,18 +436,20 @@ class SimpleAjaxController extends Controller
             $manager= Yii::app()->session['user'];
             $area_name=  addslashes($_POST['area_name']);
 
-            $options='<option value="">Select</option>';
-            $q=" select occupation from customer_due_information where area_name like '$area_name'  group by occupation order by occupation " ;
+            $options='<option value="">-----</option>';
+            $q=" select occupation from customer_due_information where area_name like '$area_name' AND  amount>0  group by occupation order by occupation " ;
             $res=Yii::app()->db->createCommand($q)->query();
             if($res){
                 while( $row= $res->read()){
                     $options.='<option value="'.$row['occupation'].'">'.ucwords($row['occupation']).'</option>';
                 }
 
-                $html='<div class="input-label-name">
-                            পেশা
+                $html='
+                
+                <div class="input-label-name input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-defaultp">পেশা</span>
                         </div>
-                        <div class="input-field-right">
+                        <div class="input-field-right form-control">
                             <select onchange="GetDueNames(this);" id="due_occupation" name="due_occupation"  size="1">
                             '.$options.'
                             </select>
@@ -463,12 +491,13 @@ class SimpleAjaxController extends Controller
             $html='
 
 
-                        <div class="input-label-name">
-                            ‍এলাকা ‌‍
+                        <div class="input-label-name input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-defaultpesas">এলাকা ‌‍</span>
+                            ‍
                         </div>
 
-                        <div class="input-field-right">
-                            <select  onchange="get_due_occupation_name(this);" id="add_area" name="add_area"  size="1">
+                        <div class="input-field-right form-control">
+                            <select   onchange="get_due_occupation_name(this);" id="add_area" name="add_area"  size="1">
 
                                '.$all_areas_due_name.'
 
@@ -645,7 +674,8 @@ class SimpleAjaxController extends Controller
                                 </div>
                         ';
                 $html='<div class="status '.$img_class.'">'.$html.'</div>';
-                die(json_encode(array('status'=>'success','html'=>$html,'data'=>$row,'img_class'=>$img_class)));
+                $url = Yii::app()->request->baseUrl."/memo.php?article=".$row['article']."&price=".$row['price']."&date=".$row['date']."&category=".$row['category']."&id=".$row['id'];
+                die(json_encode(array('status'=>'success','memo'=>$url,'html'=>$html,'data'=>$row,'img_class'=>$img_class)));
 
             }else{
                 die(json_encode(array('status'=>'failed','html'=>'','data'=>'')));
@@ -713,8 +743,9 @@ class SimpleAjaxController extends Controller
                 }
 
 
+                $url = Yii::app()->request->baseUrl."/memo.php?".http_build_query($model->attributes);
                 Yii::app()->session['last_article_sold']=$category_article;
-                die(json_encode(array('status'=>'success','token'=>$token,'category'=>strtolower($category),'article'=>$category_article,'sells_man'=>$category_sells_man,'size'=>$category_size,'profit'=>$profit,'price'=>number_format($category_price,2),'color'=>'2')));
+                die(json_encode(array('status'=>'success','memo'=>$url,'token'=>$token,'category'=>strtolower($category),'article'=>$category_article,'sells_man'=>$category_sells_man,'size'=>$category_size,'profit'=>$profit,'price'=>number_format($category_price),'color'=>'2')));
 
 
 
@@ -725,7 +756,7 @@ class SimpleAjaxController extends Controller
             $res=Yii::app()->db->createCommand($inq);
             $token=Yii::app()->db->insert_id;
             if(!$res){die(Yii::app()->db->error.$inq);}
-            die(json_encode(array('status'=>'success','token'=>$token,'category'=>$category,'article'=>$category_article,'sells_man'=>$category_sells_man,'size'=>$category_size,'price'=>number_format($category_price,2),'color'=>'2')));
+            die(json_encode(array('status'=>'success','token'=>$token,'category'=>$category,'article'=>$category_article,'sells_man'=>$category_sells_man,'size'=>$category_size,'price'=>number_format($category_price),'color'=>'2')));
         }else{
             die(json_encode(array('status'=>'failed','category'=>$category,'article'=>'','sells_man'=>'','size'=>'','price'=>'','color'=>'2')));
         }

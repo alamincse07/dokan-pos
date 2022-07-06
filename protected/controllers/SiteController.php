@@ -38,15 +38,15 @@ class SiteController extends Controller
         if(!Yii::app()->user->isGuest){
             $type=User::model()->findByPk(Yii::app()->user->id );
 //            Generic::_setTrace($type->type);
-            /*if($type->type!='Client'){
+            /*if($type->type!='Client')){
 
             }*/
-            $mob=new  MobileDetect();
-            if($mob->isMobile()){
-                $this->layout="empty-layout";
-                $this->render('index2');
+            $this->layout="empty-layout";
+            if(isset($_REQUEST['old'])){
+               
+                $this->render('index');
             }else{
-                 $this->render('index');
+                 $this->render('index-new');
             }
            
         }else{

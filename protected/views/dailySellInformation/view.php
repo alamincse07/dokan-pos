@@ -7,6 +7,7 @@ $this->breadcrumbs=array(
 	$model->id,
 );
 
+$url = Yii::app()->request->baseUrl.'/memo.php?'.http_build_query($model->attributes);
 $this->menu=array(
 	array('label'=>'List DailySellInformation', 'url'=>array('index')),
 	array('label'=>'Create DailySellInformation', 'url'=>array('create')),
@@ -39,4 +40,16 @@ $this->menu=array(
             'htmlOptions'=>array('style'=>'display:none'),*/
         ),
 	),
-)); ?>
+)); 
+
+
+
+
+if(isset($_REQUEST['print'])){ ?>
+
+
+<script>
+
+window.location.href= '<?php echo $url; ?>';
+</script>
+<?php } ?>

@@ -1,16 +1,27 @@
+<?php
+$article = (isset($_REQUEST['article']))? $_REQUEST['article'] :'';
+$originalDate = (isset($_REQUEST['date']))? $_REQUEST['date'] : date(DATE_RSS);
+$date = date("d M g:ha", strtotime($originalDate));
+$price = (isset($_REQUEST['price']))? $_REQUEST['price'] :'';
+$category = (isset($_REQUEST['category']))? $_REQUEST['category'] :'';
+$id = (isset($_REQUEST['id']))? $_REQUEST['id'] :'';
+$terms= in_array($category, ['DSR','ESR'])? '*3 Month Free Service' : ''; 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <style>
       body {
-        margin: 1px;
+        
         padding: 0;
+        margin:0;
         font-family: "PT Sans", sans-serif;
       }
 
       @page {
-        size: 2.8in 11.5in;
-        margin: 1cm;
+        size: 2.5in 11.5in;
+        margin: 0.25cm;
       }
 
       table {
@@ -31,8 +42,7 @@
         text-align: center;
         -webkit-align-content: center;
         align-content: center;
-        padding: 5px;
-        margin: 2px;
+
         display: block;
         margin: 0 auto;
       }
@@ -54,7 +64,7 @@
       }
 
       .bill-details td {
-        font-size: 12px;
+        font-size: 10px;
       }
 
       .receipt {
@@ -62,8 +72,8 @@
       }
 
       .items .heading {
-        font-size: 11px;
-        text-transform: uppercase;
+        font-size: 9px;
+      
         border-top: 1px solid black;
         margin-bottom: 4px;
         border-bottom: 1px solid black;
@@ -81,11 +91,11 @@
 
       .items thead tr th:last-child,
       .items tbody tr td:last-child {
-        text-align: right;
+        text-align: center;
       }
 
       .items td {
-        font-size: 12px;
+        font-size: 10px;
         text-align: center;
         vertical-align: bottom;
       }
@@ -93,24 +103,24 @@
       .price::before {
         content: " ";
         font-family: Arial;
-        text-align: right;
+        text-align: center;
       }
 
       .sum-up {
         text-align: right !important;
       }
       .total {
-        font-size: 13px;
+        font-size: 10px;
         border-top: 1px dashed black !important;
         border-bottom: 1px dashed black !important;
       }
       .total.text,
       .total.price {
-        text-align: right;
+        text-align: center;
       }
       .total.price::before {
         content: " ";
-        text-align: right;
+        text-align: center;
       }
       .line {
         border-top: 1px solid black !important;
@@ -130,47 +140,31 @@
       }
       section,
       footer {
-        font-size: 12px;
+        font-size: 11px;
       }
       .small {
-        font-size: 12px;
+        font-size: 10px;
       }
       .sales {
-        padding: 5px;
+
         display: inline;
       }
     </style>
   </head>
 
   <body>
-    <div class="input-label-name1">
-      <div class="hide hidden d-none">
-        <input title="মোট টাকা দিবেন " type="radio" id="paikari_chk" onchange="multi_sell();" name="sell_type" />
-
-        <span title="মোট টাকা দিবেন "> পাইকারী </span>
-
-        <input type="radio" title="জোড়ার  টাকা দিবেন " id="single_chk" onchange="single_sell();" name="sell_type" />
-
-        <span title="জোড়ার  টাকা দিবেন "> খুচরা </span>
-
-        <input type="text" id="multipair" value="1" size="1" /> Pair
-      </div>
-
-      <input type="checkbox" id="isPrint" name="isPrint" value="isPrint" />
-      <label for="isPrint"> Print Memo</label><br />
-    </div>
     <header>
       <div>
         <img id="logo" class="media" data-src="logo.png" src="./print-logo.png" />
-        Modern Shoes
+        Modern Shoe Store
       </div>
     </header>
     <p class="small center-align">Jotin Kashem Road, Chuknagar Bazar, Khulna</p>
     <p>&nbsp;</p>
 
     <div class="sales small">
-      <div style="float: left">Invoice #46546</div>
-      <div style="float: right">12-06-2022 12:45pm</div>
+      <div style="float: left">Invoice #<?=$id?></div>
+      <div style="float: right;margin-right:15px;"><?=$date?></div>
     </div>
 
     <table class="items">
@@ -184,35 +178,51 @@
 
       <tbody>
         <tr>
-          <td>Chocolate milkshake frappe</td>
+          <td><?=$article?></td>
           <!-- <td></td> -->
 
-          <td class="price1">1200</td>
+          <td class="price1"><?=number_format($price)?></td>
         </tr>
 
         <tr>
-          <td>BATA</td>
+          <td><?=$category?></td>
           <!-- <td></td> -->
           <td class="price1"></td>
         </tr>
 
         <tr style="height: 2rem">
-          <td></td>
+          <td><?=$terms?></td>
           <!-- <td></td> -->
           <td class="price1"></td>
         </tr>
 
         <tr>
           <th colspan="1" class="total text">Total</th>
-          <th class="total price">1132</th>
+          <th class="total price"><?=number_format($price)?></th>
         </tr>
       </tbody>
     </table>
-    <section>
-      <p style="text-align: center; margin-top: 30px">Thank you for your visit!</p>
+    <section class='small'>
+      <p style="text-align: center; margin-top: 20px">*** Thank you for your visit ***</p>
+
     </section>
-    <footer style="text-align: center">
-      <b>To Exchange Must Bring This Receipt</b>
+    <footer style="text-align: left">
+      <b>In case of exchange you must bring this receipt. </b>
     </footer>
+
+
+<?php
+if(!empty($id) && !empty($price)){ ?> 
+
+    <script>
+         if(window.location.href.length >0){
+            window.print();
+        
+             window.close();
+
+         }
+            
+    </script>
+<?php } ?>
   </body>
 </html>
