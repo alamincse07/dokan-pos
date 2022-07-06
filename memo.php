@@ -1,7 +1,8 @@
 <?php
 $article = (isset($_REQUEST['article']))? $_REQUEST['article'] :'';
+$manager = (isset($_REQUEST['manager']))? $_REQUEST['manager'] :'';
 $originalDate = (isset($_REQUEST['date']))? $_REQUEST['date'] : date(DATE_RSS);
-$date = date("d M g:ha", strtotime($originalDate));
+$date = date("dM/y g:ha", strtotime($originalDate));
 $price = (isset($_REQUEST['price']))? $_REQUEST['price'] :'';
 $category = (isset($_REQUEST['category']))? $_REQUEST['category'] :'';
 $id = (isset($_REQUEST['id']))? $_REQUEST['id'] :'';
@@ -12,16 +13,17 @@ $terms= in_array($category, ['DSR','ESR'])? '*3 Month Free Service' : '';
 <html lang="en">
   <head>
     <style>
+  
       body {
         
         padding: 0;
-        margin:0;
+        margin: 0;
         font-family: "PT Sans", sans-serif;
       }
 
       @page {
-        size: 2.5in 11.5in;
-        margin: 0.25cm;
+        size: 2.5in 8.5in;
+        margin: 0cm;
       }
 
       table {
@@ -141,6 +143,7 @@ $terms= in_array($category, ['DSR','ESR'])? '*3 Month Free Service' : '';
       section,
       footer {
         font-size: 11px;
+        margin-bottom:10px:
       }
       .small {
         font-size: 10px;
@@ -159,7 +162,7 @@ $terms= in_array($category, ['DSR','ESR'])? '*3 Month Free Service' : '';
         Modern Shoe Store
       </div>
     </header>
-    <p class="small center-align">Jotin Kashem Road, Chuknagar Bazar, Khulna</p>
+    <p class="small center-align">Jotin Kashem Road, Chuknagar Bazar,Dumuria, Khulna</p>
     <p>&nbsp;</p>
 
     <div class="sales small">
@@ -202,12 +205,18 @@ $terms= in_array($category, ['DSR','ESR'])? '*3 Month Free Service' : '';
         </tr>
       </tbody>
     </table>
-    <section class='small'>
+    <div class='small'>
       <p style="text-align: center; margin-top: 20px">*** Thank you for your visit ***</p>
 
-    </section>
-    <footer style="text-align: left">
+    </div>
+    <footer style="text-align: left;">
       <b>In case of exchange you must bring this receipt. </b>
+      <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  </p>
+      <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  </p>
+      <p class="small">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; printed by:&nbsp; <?=$manager?> </p>
+    
+      
+
     </footer>
 
 
@@ -218,7 +227,10 @@ if(!empty($id) && !empty($price)){ ?>
          if(window.location.href.length >0){
             window.print();
         
-             window.close();
+        setTimeout(() => {
+          window.close();
+        }, 5000);
+            
 
          }
             
