@@ -581,15 +581,15 @@ function Insert_back_amount(e, obj, amount, error_div) {
   var html = "যোগের পূর্বে সঠিক তথ্য দিন ";
 
   var fprice = $(amount).val();
-  var back_article = $("#back_article").val().toUpperCase();
+  var back_article = $("#back_article").val();
 
   var process = 0;
 
-  var back_memo = $("#back_memo").val().toUpperCase();
+  var back_memo = $("#back_memo").val();
 
   if (!back_memo) {
     if (isNaN(fprice) || fprice == null || fprice == "") {
-      $(error_div).html('<span class="red">সঠিক মূল্য দিন?</span>');
+      $(error_div).html('<span class="red">সঠিক তথ্য দিন?</span>');
       return false;
     } else {
       process = 1;
@@ -1070,8 +1070,6 @@ $(document).ready(function () {
         $("#loadingModal").modal("hide");
       }, 500);
     });
-
-
 });
 
 function GetPrice(art) {

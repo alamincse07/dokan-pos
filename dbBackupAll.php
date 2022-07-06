@@ -7,5 +7,6 @@
 
    include_once(dirname(__FILE__) . '/mysqldump-php-master/src/Ifsnop/Mysqldump/Mysqldump.php');
    $dump = new Ifsnop\Mysqldump\Mysqldump("mysql:host=localhost;dbname=$dbName", "$dbuser", "$dbpass");
-   $dump->start('db-dump.sql');
+   $dump->start('dokan-db-dump.sql');
+   echo " Dump done!";
 ?>
