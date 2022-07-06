@@ -43,7 +43,7 @@ $all_sells_man_name='<option>select</option>';
 
 
 
-$vrc_q=" select * from daily_sell_information_processing where DATE(date) ='$today'  order by category desc , id asc " ;
+$vrc_q=" select * from daily_sell_information where DATE(date) ='$today'  order by category desc , id asc " ;
 //die($vrc_q);
 $vrc_res= Yii::app()->db->createCommand($vrc_q)->query();
 //$vrc_res_all=$vrc_res->fetch_all(MYSQLI_ASSOC);
