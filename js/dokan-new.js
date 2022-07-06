@@ -268,7 +268,7 @@ function Common_add(e, obj, price, category) {
               <li class="list-group-item col-5">${data.article}</li>
               <li class="list-group-item col-2">${data.category}</li>
               <li class="list-group-item col-2">${data.price}</li>
-              <li class="list-group-item col-3 "><a target="_blank" href="http://localhost/dokan/dailySellInformation/${data.token}?print"><i class="fas fa-print"> #${data.token}</i></a></li>
+              <li class="list-group-item col-3 "><a target="_blank" href="${SITE_URL}dailySellInformation/${data.token}?print"><i class="fas fa-print"> #${data.token}</i></a></li>
             </ul>`;
               $("#memolist").append(lastsold);
             }
