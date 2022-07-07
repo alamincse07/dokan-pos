@@ -380,7 +380,7 @@ function Due_add(e, obj, customer_name, due_amount) {
                 </div>
                 <div class="col-auto">
                   <span class="badge badge-secondary">${data.submitted.due_area}</span>
-                  <span class="badge badge-light">${data.submitted.due_article}</span>
+                  <span class="badge badge-light d-none">${data.submitted.due_article}</span>
                 </div>
               </div>
             </div>

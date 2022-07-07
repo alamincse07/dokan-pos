@@ -3,7 +3,11 @@
 $this->pageTitle=Yii::app()->name;
 
 $base_url= Yii::app()->request->baseUrl;
-
+$mob=new  MobileDetect();
+$is_mobile = false;
+if($mob->isMobile()){
+  $is_mobile = true;
+}
 
 $user_name= $this->getUserFullName();
 $user_type=1;
@@ -798,7 +802,7 @@ if($resl){
                           <div class="custom-control custom-checkbox small">
                             <input
                               type="checkbox"
-                              checked
+                              <?php if(!$is_mobile){echo 'checked'; } ?>
                               class="custom-control-input"
                               aria-describedby="isPrint"
                               id="isPrint"
@@ -1905,6 +1909,10 @@ if($resl){
           $(".content-tab").hide();
           $(div).show();
           $(".collapse").removeClass("show");
+          <?php if($is_mobile){
+              echo " $('#sidebarToggleTop').trigger('click');";
+          }?>
+
         }
       });
 
@@ -1912,6 +1920,9 @@ if($resl){
         $(".content-tab").hide();
         $("#sale").show();
         $(".collapse").removeClass("show");
+        <?php if($is_mobile){
+              echo " $('#sidebarToggleTop').trigger('click');";
+          }?>
       });
 
       $("#finalClose").click((e) => {
@@ -1919,6 +1930,9 @@ if($resl){
         get_cash_amount();
         $("#final").show();
         $(".collapse").removeClass("show");
+        <?php if($is_mobile){
+              echo " $('#sidebarToggleTop').trigger('click');";
+          }?>
       });
 
 

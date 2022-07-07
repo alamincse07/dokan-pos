@@ -45,7 +45,7 @@
               </div>
               <div class="col-auto">
                 <span class="badge badge-secondary">'.$content4.'</span>
-                <span class="badge badge-light">'.$content5.'</span>
+                <span class="badge badge-light d-none" >'.$content5.'</span>
               </div>
             </div>
           </div>

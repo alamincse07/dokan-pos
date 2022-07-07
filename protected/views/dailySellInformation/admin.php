@@ -23,7 +23,15 @@ $profit_visible = (isset(Yii::app()->session['user_type'] ) && Yii::app()->sessi
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
+		// 'id',
+        array(
+            'name'=>'id',
+            'value'=>'$data->id',
+            'visible'=>$profit_visible,
+            /*'header'=>false,
+            'filter'=>false,
+            'htmlOptions'=>array('style'=>'display:none'),*/
+        ),
 
         array(
            
