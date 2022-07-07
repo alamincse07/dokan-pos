@@ -22,7 +22,7 @@ $terms= in_array($category, ['DSR','ESR'])? '*3 Month Free Service' : '';
       }
 
       @page {
-        size: 2.5in 8.5in;
+        size: 2.75in 8.5in;
         margin: 0cm;
       }
 
@@ -148,6 +148,16 @@ $terms= in_array($category, ['DSR','ESR'])? '*3 Month Free Service' : '';
       .small {
         font-size: 10px;
       }
+      .small-m {
+        font-size: 9px;
+        margin-top:15px;
+      }
+      .small-xm {
+        font-size: 8px;
+      }
+      .small-xmm {
+        font-size: 7.5px;
+      }
       .sales {
 
         display: inline;
@@ -206,19 +216,21 @@ $terms= in_array($category, ['DSR','ESR'])? '*3 Month Free Service' : '';
       </tbody>
     </table>
     <div class='small'>
-      <p style="text-align: center; margin-top: 20px">*** Thank you for your visit ***</p>
+      <p style="text-align: center; margin-top: 20px"> Thank you for your visit </p>
 
     </div>
-    <footer style="text-align: left;"class="small">
+    <footer style="text-align: left;"class="small-m">
 
-      <i>পরিবর্তনের ক্ষেত্রে অবশ্যই মেমো আনতে হবে</i>
-      <p class="small">বিদেশী জুতা,পাথর-পুতির ওয়ারেন্টি নেই</p>
-      <p class="small"> যেকোনো বিষয়ে কর্তৃপক্ষের সিদ্ধান্তই চূড়ান্ত </p>
-      <!-- <p class="small">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; printed by:&nbsp; <?=$manager?> </p>
-     -->
+      <b>**** পরিবর্তনের ক্ষেত্রে অবশ্যই ***** ********** মেমো আনতে হবে *********<b>
+      <p class="small-xm">বিদেশী জুতা,পাথর-পুতির ওয়ারেন্টি নেই</p>
+      <p class="small-xmm">যেকোনো বিষয়ে কর্তৃপক্ষের সিদ্ধান্তই চূড়ান্ত</p>
+      <p class="small-xmm" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; printed by:&nbsp; <?=$manager?> </p>
+          
       
 
     </footer>
+    <p class="small-xmm" style="margin-bottom: 5px">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .&nbsp; </p>
+
 
 
 <?php
@@ -229,7 +241,7 @@ if(!empty($id) && !empty($price)){ ?>
             window.print();
         
         setTimeout(() => {
-          // window.close();
+           window.close();
         }, 5000);
             
 
