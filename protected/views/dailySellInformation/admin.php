@@ -18,7 +18,15 @@ $profit_visible = (isset(Yii::app()->session['user_type'] ) && Yii::app()->sessi
 
 <h1>Manage Daily Sell Informations </h1>
 
-<?php $this->widget('MGridView', array(
+<?php 
+
+
+if(@Yii::app()->session['user_type']==1){
+    $template='{view}{update}{delete}{print}';
+}else{
+    $template ='{print}';
+}
+$this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'daily-sell-information-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
@@ -72,6 +80,16 @@ $profit_visible = (isset(Yii::app()->session['user_type'] ) && Yii::app()->sessi
 		*/
 		array(
 			'class'=>'CButtonColumn',
+            'template' =>$template,
+            'buttons' => array
+            (
+                'print' =>array
+                (
+                    'label' => 'Print Memo',
+                    'ImageUrl' => yii::app ( )->request->baseurl. ' /images/edit.png ',
+                    'url'=>'Yii::app()->createUrl("dailySellInformation/$data->id", array("print"=>$data->id))',
+                ),
 		),
 	),
+    )
 )); ?>

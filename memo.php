@@ -209,12 +209,13 @@ $terms= in_array($category, ['DSR','ESR'])? '*3 Month Free Service' : '';
       <p style="text-align: center; margin-top: 20px">*** Thank you for your visit ***</p>
 
     </div>
-    <footer style="text-align: left;">
-      <b>In case of exchange you must bring this receipt. </b>
-      <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  </p>
-      <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  </p>
-      <p class="small">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; printed by:&nbsp; <?=$manager?> </p>
-    
+    <footer style="text-align: left;"class="small">
+
+      <i>পরিবর্তনের ক্ষেত্রে অবশ্যই মেমো আনতে হবে</i>
+      <p class="small">বিদেশী জুতা,পাথর-পুতির ওয়ারেন্টি নেই</p>
+      <p class="small"> যেকোনো বিষয়ে কর্তৃপক্ষের সিদ্ধান্তই চূড়ান্ত </p>
+      <!-- <p class="small">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; printed by:&nbsp; <?=$manager?> </p>
+     -->
       
 
     </footer>
@@ -228,7 +229,7 @@ if(!empty($id) && !empty($price)){ ?>
             window.print();
         
         setTimeout(() => {
-          window.close();
+          // window.close();
         }, 5000);
             
 
