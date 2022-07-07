@@ -209,8 +209,8 @@ $terms= in_array($category, ['DSR','ESR'])? '*3 Month Free Service' : '';
         </tr>
 
         <tr>
-          <th colspan="1" class="total text">Total</th>
-          <th class="total price"><?=number_format($price)?></th>
+          <td colspan="1" class="total text">Total</td>
+          <td class="total price"><?=number_format($price)?></td>
         </tr>
       </tbody>
     </table>
@@ -227,7 +227,7 @@ $terms= in_array($category, ['DSR','ESR'])? '*3 Month Free Service' : '';
           
       
     </footer>
-   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.
+   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.
 
 
 <?php
