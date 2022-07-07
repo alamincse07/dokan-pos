@@ -12,157 +12,156 @@ $terms= in_array($category, ['DSR','ESR'])? '*3 Month Free Service' : '';
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <style>
+  <style>
   
-      body {
-        
-        padding: 0;
-        margin: 0;
-        font-family: "PT Sans", sans-serif;
-      }
+  body {
+    
+    padding: 0;
+    margin: 0;
+    font-family: "PT Sans", sans-serif;
+  }
 
-      @page {
-        size: 2.75in 8.5in;
-        margin: 0cm;
-      }
+  @page {
+    size: 2.5in 8.5in;
+    margin: 0cm;
+  }
 
-      table {
-        width: 100%;
-      }
+  table {
+    width: 100%;
+  }
 
-      tr {
-        width: 100%;
-      }
+  tr {
+    width: 100%;
+  }
 
-      h1 {
-        text-align: center;
-        vertical-align: middle;
-      }
+  h1 {
+    text-align: center;
+    vertical-align: middle;
+  }
 
-      #logo {
-        width: 30px;
-        text-align: center;
-        -webkit-align-content: center;
-        align-content: center;
+  #logo {
+    width: 30px;
+    text-align: center;
+    -webkit-align-content: center;
+    align-content: center;
 
-        display: block;
-        margin: 0 auto;
-      }
+    display: block;
+    margin: 0 auto;
+  }
 
-      header {
-        width: 100%;
-        text-align: center;
-        -webkit-align-content: center;
-        align-content: center;
-        vertical-align: middle;
-      }
+  header {
+    width: 100%;
+    text-align: center;
+    -webkit-align-content: center;
+    align-content: center;
+    vertical-align: middle;
+  }
 
-      .items thead {
-        text-align: center;
-      }
+  .items thead {
+    text-align: center;
+  }
 
-      .center-align {
-        text-align: center;
-      }
+  .center-align {
+    text-align: center;
+  }
 
-      .bill-details td {
-        font-size: 10px;
-      }
+  .bill-details td {
+    font-size: 11px;
+  }
 
-      .receipt {
-        font-size: medium;
-      }
+  .receipt {
+    font-size: medium;
+  }
 
-      .items .heading {
-        font-size: 9px;
-      
-        border-top: 1px solid black;
-        margin-bottom: 4px;
-        border-bottom: 1px solid black;
-        vertical-align: middle;
-      }
+  .items .heading {
+    font-size: 10px;
+  
+    border-top: 1px solid black;
+    margin-bottom: 4px;
+    border-bottom: 1px solid black;
+    vertical-align: middle;
+  }
 
-      .items thead tr th:first-child,
-      .items tbody tr td:first-child {
-        width: 47%;
-        min-width: 47%;
-        max-width: 47%;
-        word-break: break-all;
-        text-align: left;
-      }
+  .items thead tr th:first-child,
+  .items tbody tr td:first-child {
+    width: 47%;
+    min-width: 47%;
+    max-width: 47%;
+    word-break: break-all;
+    text-align: left;
+  }
 
-      .items thead tr th:last-child,
-      .items tbody tr td:last-child {
-        text-align: center;
-      }
+  .items thead tr th:last-child,
+  .items tbody tr td:last-child {
+    text-align: center;
+  }
 
-      .items td {
-        font-size: 10px;
-        text-align: center;
-        vertical-align: bottom;
-      }
+  .items td {
+    font-size: 11px;
+    text-align: center;
+    vertical-align: bottom;
+  }
 
-      .price::before {
-        content: " ";
-        font-family: Arial;
-        text-align: center;
-      }
+  .price::before {
+    content: " ";
+    font-family: Arial;
+    text-align: center;
+  }
 
-      .sum-up {
-        text-align: right !important;
-      }
-      .total {
-        font-size: 10px;
-        border-top: 1px dashed black !important;
-        border-bottom: 1px dashed black !important;
-      }
-      .total.text,
-      .total.price {
-        text-align: center;
-      }
-      .total.price::before {
-        content: " ";
-        text-align: center;
-      }
-      .line {
-        border-top: 1px solid black !important;
-      }
-      .heading.rate {
-        width: 20%;
-      }
-      .heading.amount {
-        width: 25%;
-      }
-      .heading.qty {
-        width: 5%;
-      }
-      p {
-        padding: 1px;
-        margin: 0;
-      }
-      section,
-      footer {
-        font-size: 11px;
-        margin-bottom:10px:
-      }
-      .small {
-        font-size: 10px;
-      }
-      .small-m {
-        font-size: 9px;
-        margin-top:15px;
-      }
-      .small-xm {
-        font-size: 8px;
-      }
-      .small-xmm {
-        font-size: 7.5px;
-      }
-      .sales {
+  .sum-up {
+    text-align: right !important;
+  }
+  .total {
+    font-size: 11px;
+    border-top: 1px dashed black !important;
+    border-bottom: 1px dashed black !important;
+  }
+  .total.text,
+  .total.price {
+    text-align: center;
+  }
+  .total.price::before {
+    content: " ";
+    text-align: center;
+  }
+  .line {
+    border-top: 1px solid black !important;
+  }
+  .heading.rate {
+    width: 20%;
+  }
+  .heading.amount {
+    width: 25%;
+  }
+  .heading.qty {
+    width: 5%;
+  }
+  p {
+    padding: 1px;
+    margin: 0;
+  }
+  section,
+  footer {
+    font-size: 12px;
+    margin-bottom:10px:
+  }
+  .small {
+    font-size: 11px;
+  }
+  .small-m {
+    font-size: 10px;
+  }
+  .small-xm {
+    font-size: 9px;
+  }
+  .small-l {
+    font-size: 12px;
+  }
+  .sales {
 
-        display: inline;
-      }
-    </style>
+    display: inline;
+  }
+</style>
   </head>
 
   <body>
@@ -215,22 +214,20 @@ $terms= in_array($category, ['DSR','ESR'])? '*3 Month Free Service' : '';
         </tr>
       </tbody>
     </table>
-    <div class='small'>
+    <div class="small">
       <p style="text-align: center; margin-top: 20px"> Thank you for your visit </p>
 
     </div>
-    <footer style="text-align: left;"class="small-m">
+    <footer style="text-align: left;margin-top: 10px">
 
-      <b>**** পরিবর্তনের ক্ষেত্রে অবশ্যই ***** ********** মেমো আনতে হবে *********<b>
-      <p class="small-xm">বিদেশী জুতা,পাথর-পুতির ওয়ারেন্টি নেই</p>
-      <p class="small-xmm">যেকোনো বিষয়ে কর্তৃপক্ষের সিদ্ধান্তই চূড়ান্ত</p>
-      <p class="small-xmm" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; printed by:&nbsp; <?=$manager?> </p>
+      <b class="small-l">***** পরিবর্তনের ক্ষেত্রে অবশ্যই ***** ********* মেমো আনতে হবে  *********<b>
+      <p class="small-m">বিদেশী জুতা,পাথর-পুতির ওয়ারেন্টি নেই</p>
+      <p class="small-m">যেকোনো বিষয়ে কর্তৃপক্ষের সিদ্ধান্তই চূড়ান্ত</p>
+      <p class="small-xm" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; printed by:&nbsp; Hasib </p>
           
       
-
     </footer>
-    <p class="small-xmm" style="margin-bottom: 5px">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .&nbsp; </p>
-
+   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.
 
 
 <?php
