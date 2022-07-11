@@ -322,7 +322,7 @@ $cost_items_all='';
 
 
 foreach($cost_items as $k=>$val){
-    $cost_items_all.='<option value="'.$val['cost_name'].'">'.ucwords($val['cost_name']).'</option>';
+    $cost_items_all.='<option value="'.$val['cost_name'].'">'.($val['cost_name']).'</option>';
 }
 
 

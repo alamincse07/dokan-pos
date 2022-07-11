@@ -108,6 +108,10 @@ class Kormocari extends CActiveRecord
 
     public function getTotal($records, $column)
     {
+		if(!isset($_REQUEST['k_name'])){
+
+			return '';
+		}
         $records->pagination=false;
         $data=$records->getData();
         $total = 0;
