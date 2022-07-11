@@ -318,7 +318,7 @@ $dsr_cq=" select * from cost_items  order by  cost_name asc" ;
 //die($dsr_q);
 $cost_items= Yii::app()->db->createCommand($dsr_cq)->queryAll();
 //$cost_items =$dsr_resc->fetch_all(MYSQLI_ASSOC);
-$cost_items_all='';
+$cost_items_all='<option value="">Select</option>';
 
 
 foreach($cost_items as $k=>$val){
@@ -1410,18 +1410,15 @@ if($resl){
                           <span class="input-group-text" id="inputGroup-sizing-defaultcost">খরচের খাত ‌‍</span>
                         </div>
 
-                        <input
-                          type="text"
-                          list="cost_items"
+                        <select
                           name="cost_items_all"
                           id="cost_items_all"
-                          class="form-control common_article"
+                          class="form-control"
                           aria-label="Default"
                           aria-describedby="inputGroup-sizing-default"
-                        />
-                        <datalist id="cost_items">
-                             <?=$cost_items_all;?>
-                        </datalist>
+                        >
+                         <?=$cost_items_all;?>
+                        </select>
                       </div>
 
                       <div class="input-group mb-3">
