@@ -185,7 +185,7 @@ class SimpleAjaxController extends Controller
         $qr_res= Yii::app()->db->createCommand($qr)->query();
 //$dokan_stuff=$qr_res->fetch_all(MYSQLI_ASSOC);
         while($row=$qr_res->read()){
-            $dokan_stuff[]= $row['cost_name'];
+            $dokan_stuff[]= strtolower($row['cost_name']);
         }
 //die(print_r($dokan_stuff));
 
@@ -221,7 +221,7 @@ class SimpleAjaxController extends Controller
 
             $cost_type= $cost_name;
             $q=" Insert into daily_cost_items  set cost_type='$cost_type' , date='$today' , amount=$cost_amount, manager='$manager' ";
-            if(in_array($cost_name,$dokan_stuff)){
+            if(in_array(strtolower($cost_name),$dokan_stuff)){
                 $qsr=" Insert into kormocari  set name='$cost_name' , taken_date='$today' , amount=$cost_amount, manager='$manager' ";
                 // die($inuq);
                 $up=Yii::app()->db->createCommand($qsr)->execute();
