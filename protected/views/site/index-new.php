@@ -1410,15 +1410,20 @@ if($resl){
                           <span class="input-group-text" id="inputGroup-sizing-defaultcost">খরচের খাত ‌‍</span>
                         </div>
 
-                        <select
+                        <input 
+                          type="text"
                           name="cost_items_all"
                           id="cost_items_all"
                           class="form-control"
+                          list="cost_items_list"
                           aria-label="Default"
                           aria-describedby="inputGroup-sizing-default"
-                        >
-                         <?=$cost_items_all;?>
-                        </select>
+                        />
+                         
+                        
+                        <datalist id="cost_items_list">
+                        <?=$cost_items_all;?>
+                        </datalist>
                       </div>
 
                       <div class="input-group mb-3">
