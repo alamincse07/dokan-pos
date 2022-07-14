@@ -1712,7 +1712,8 @@ if($resl){
                 <select class="form-control" id="salesmans" name="name" size="1">
                   <option value="">Salesman</option>
                   <?=$dokan_stuff;?>
-              </div>
+                </select>
+                </div>
 
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
