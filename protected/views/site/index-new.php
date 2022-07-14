@@ -1711,13 +1711,7 @@ if($resl){
                 </div>
                 <select class="form-control" id="salesmans" name="name" size="1">
                   <option value="">Salesman</option>
-                  <option value="Mijan-juta">Mijan-juta</option>
-                  <option value="EASIN-JUTA">EASIN-JUTA</option>
-                  <option value="JUEL-JUTA">JUEL-JUTA</option>
-                  <option value="alamin-juta">alamin-juta</option>
-                  <option value="Hasib-juta">Hasib-juta</option>
-                  <option value="Abdullah-Juta">Abdullah-Juta</option>
-                </select>
+                  <?=$dokan_stuff;?>
               </div>
 
               <div class="input-group mb-3">
@@ -1782,6 +1776,7 @@ if($resl){
                 <input
                   type="date"
                   name="note_date"
+                  value="<?=$today;?>"
                   id="note_date"
                   class="form-control"
                   aria-label="Default"
