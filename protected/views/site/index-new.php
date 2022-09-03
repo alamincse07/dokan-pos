@@ -360,6 +360,8 @@ if($resl){
     <link href="../css/fontawesome-free-all.min.css" rel="stylesheet" type="text/css" />
 
     <link href="../css/sb-admin-2.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
+   
   </head>
 
   <body id="page-top">
@@ -638,8 +640,8 @@ if($resl){
                 </a>
                 <!-- Dropdown - Alerts -->
                 <div
-                  class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                  aria-labelledby="alertsDropdown"
+                  class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in print"
+                  aria-labelledby="alertsDropdown" id="js_sell_count"
                 >
                   <h6 class="dropdown-header">Pairs</h6>
 
@@ -1360,7 +1362,7 @@ if($resl){
                 <div class="card shadow mb-4"></div>
               </div>
 
-              <div class="card shadow mb-1 col-lg-6">
+              <div class="card shadow mb-1 col-lg-6" id="js_due_count">
                 <!-- Card Header - Dropdown -->
 
                 <div class="card-header py-1">
@@ -1382,7 +1384,7 @@ if($resl){
 
           <div id="cost" class="container-fluid content-tab">
             <div class="row">
-              <div class="card shadow mb-1 col-lg-6">
+              <div class="card shadow mb-1 col-lg-6" id="js_cost_count">
                 <!-- Card Header - Dropdown -->
 
                 <div class="card-header py-1">
@@ -1519,7 +1521,7 @@ if($resl){
                       </div>
                     <?php  } ?>
 
-                      <div class="input-group mb-3">
+                      <div class="input-group mb-3 d-none hidden hide">
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-default">মেমো নং ‌‍</span>
                         </div>
@@ -1548,12 +1550,12 @@ if($resl){
 
           <div id="final" class="container-fluid content-tab">
             <div class="row">
-              <div class="card shadow mb-1 col-12">
+              <div class="card shadow mb-1 col-4">
                 <!-- Card Header - Dropdown -->
 
                 <div class="card-header py-1 mx-auto">
                   <div class="row">
-                    <div class="font-weight-bold text-primary">আজকের ব্যবসার হিসাব</div>
+                    <div class="font-weight-bold text-primary"><?=$today?> ব্যবসার হিসাব </div>
                   </div>
                 </div>
 
@@ -1660,6 +1662,22 @@ if($resl){
                   <hr />
                 </div>
               </div>
+
+              <div class="card shadow mb-1 col-2">
+                 <div class="js_sell_count"> sell count:</div>
+
+              </div>
+
+              <div class="card shadow mb-1 col-3">
+                 <div class="js_due_count">Due Info</div>
+
+              </div>
+
+              <div class="card shadow mb-1 col-3">
+              <div class="js_cost_count"> Cost Info</div>
+
+              </div>
+             
             </div>
           </div>
 
@@ -1928,6 +1946,9 @@ if($resl){
         get_cash_amount();
         $("#final").show();
         $(".collapse").removeClass("show");
+        $('.js_sell_count').html($('#js_sell_count').html());
+        $('.js_cost_count').html($('#js_cost_count').html());
+        $('.js_due_count').html($('#js_due_count').html());
         <?php if($is_mobile){
               echo " $('#sidebarToggleTop').trigger('click');";
           }?>
