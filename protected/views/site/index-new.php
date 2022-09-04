@@ -1548,7 +1548,7 @@ if($resl){
             </div>
           </div>
 
-          <div id="final" class="container-fluid content-tab">
+          <div id="final" class="container-fluid content-tab mt-4">
             <div class="row">
               <div class="card shadow mb-1 col-4">
                 <!-- Card Header - Dropdown -->

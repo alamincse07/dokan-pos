@@ -43,7 +43,7 @@ $base_url= Yii::app()->request->baseUrl;
 <div class="inner-wrapper">
     <div class="main-container single-page-container">
         <!--<div class="single-page-left"></div>-->
-        <div class="single-page-content1">
+        <div class="single-page-content1" style="display:flex">
 
             <div  class="search_admin_all" >
                 <div class="single-search2" >
