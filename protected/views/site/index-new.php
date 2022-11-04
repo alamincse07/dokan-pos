@@ -1663,17 +1663,17 @@ if($resl){
                 </div>
               </div>
 
-              <div class="card shadow mb-1 col-2">
+              <div class="card shadow mb-1 col-2 d-none d-md-block">
                  <div class="js_sell_count"> sell count:</div>
 
               </div>
 
-              <div class="card shadow mb-1 col-3">
+              <div class="card shadow mb-1 col-3  d-none d-md-block">
                  <div class="js_due_count">Due Info</div>
 
               </div>
 
-              <div class="card shadow mb-1 col-3">
+              <div class="card shadow mb-1 col-3  d-none d-md-block">
               <div class="js_cost_count"> Cost Info</div>
 
               </div>
