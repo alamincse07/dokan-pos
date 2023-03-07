@@ -340,7 +340,7 @@ function checkSubmit(e){
 
             <div class="single-search" >
 
-                <span  class="input_label"> বিবরণ </span>
+                <span  class="input_label"> বক্সের উপর লেখ  </span>
 
                 <input class="text_sinput  fors_article" id="hintList"  list="hints" type="text"   name="hint">
 
