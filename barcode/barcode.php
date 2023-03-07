@@ -84,7 +84,7 @@ foreach( $_POST['item'] as $single  ){
 
 #die('pp');
 
-$printable='/dokan/barcode/print.php?per_row='.@$_REQUEST['per_row'].'&'.http_build_query($total);
+$printable='/barcode/print.php?per_row='.@$_REQUEST['per_row'].'&'.http_build_query($total);
 file_put_contents('barcode_requests.txt',date('Y-m-d-H-i'."  ------------").$printable.PHP_EOL,FILE_APPEND);
 
 if(count($total)<1){ die('No image barcode generated');}

@@ -214,7 +214,7 @@ window.price_list=[];
     });
 
 
-            function addRow(data={'article':'','count':4,'price':'','kenadam':'','hint':''}) {
+            function addRow(data={'article':'','count':6,'price':'','kenadam':'','hint':''}) {
                 var i = $('tr').length;
                // console.log(data)
                 //data={'article':'','count':4,'price':'','hint':''}
@@ -467,7 +467,7 @@ function checkSubmit(e){
                     </select>
                     <input class="btn btn-info" type="submit"   value="Print Barcodes">
                     Per Row
-                    <input type="text" id="per_row" name="per_row" size="3" value="4">
+                    <input type="text" id="per_row" name="per_row" size="3" value="2">
                      <button  class="btn btn-info" onclick="addRow()"> Add </button>
 
                      <SPAN id="sug"> </SPAN>
