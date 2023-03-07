@@ -1,5 +1,45 @@
 <?php
-//echo " <pre>";
+require_once __DIR__.'/Unicode2Bijoy.php';
+require_once __DIR__.'/Texter.php';
+
+function getBigBarcode($code_string,$text,$price,$kenadam, $hint){
+	
+	$texter = new Texter();
+	$image = imagecreate(350, 130);
+	imagecolorallocate($image, 255, 255, 255);
+	$texter->startFrom(5, 15)->width(100)->on($image)->align('left')->fontSize(12)->color('333333');
+	$texter->text($kenadam)->write();
+
+	// bars here
+    // $texter->startFrom(5, 40)->width(400)->on($image)->align('left')->fontSize(10)->color('333333');
+	// $texter->text('|bars||')->write();
+	$image = makeBars($image,$code_string);
+
+	
+    $texter->startFrom(5, 70)->width(400)->on($image)->align('left')->fontSize(18)->color('333333');
+	$texter->text('# '.$text)->write();
+
+    $texter->startFrom(220, 55)->width(400)->on($image)->align('left')->fontSize(25)->color('000000');
+	$texter->text($price)->write();
+
+    $texter->startFrom(1, 120)->width(350)->on($image)->align('center')->fontSize(26)->color('000000');
+    $texter->text($hint)->write();
+
+
+	return $image;
+}
+function makeBars( $image,$code_string){
+	$black = imagecolorallocate ($image, 2, 0, 0);
+	$white = imagecolorallocate ($image, 255, 255, 255);
+
+	$location = 10;
+	for ( $position = 1 ; $position <= strlen($code_string); $position++ ) {
+		$cur_size = $location + ( substr($code_string, ($position-1), 1) );
+		imagefilledrectangle( $image, $location, 20, $cur_size, 40, ($position % 2 == 0 ? $white : $black) );
+		$location = $cur_size;
+	}
+	return $image;
+}
 
 if(!isset($_POST['item'])) ( die(' not print items found'));
 
@@ -19,7 +59,7 @@ $sizefactor = (isset($_GET["sizefactor"])?$_GET["sizefactor"]:"1");
 
 //$single=$_POST['item'][0];
 
-#print_r($single);
+// print_r($single);
 // This function call can be copied into your project and can be made from anywhere in your code
 
 $total=[];
@@ -29,7 +69,7 @@ foreach( $_POST['item'] as $single  ){
 
  
   // $text = (isset($single["article"])?$single["article"]:"");
-    $filepath='../barcodes/'.$filename.'.png';
+    $filepath= "../barcodes/".$filename.'.png';
 
  
    if(file_exists($filepath) && isset($single['count']) ){
@@ -44,11 +84,11 @@ foreach( $_POST['item'] as $single  ){
 
 #die('pp');
 
-$printable='/barcode/print.php?per_row='.@$_REQUEST['per_row'].'&'.http_build_query($total);
+$printable='/dokan/barcode/print.php?per_row='.@$_REQUEST['per_row'].'&'.http_build_query($total);
 file_put_contents('barcode_requests.txt',date('Y-m-d-H-i'."  ------------").$printable.PHP_EOL,FILE_APPEND);
 
 if(count($total)<1){ die('No image barcode generated');}
-header("Location:".$printable);
+ header("Location:".$printable);
 die($printable);
 
 $printable='';
@@ -123,10 +163,12 @@ function barcode( $filepath="", $info, $size="30", $orientation="horizontal", $c
 	$rate = (isset($info["price"])?$info["price"]:"");
 	$kenadam = (isset($info["kenadam"])?GetK($info["kenadam"]):"");
 	$text = (isset($info["article"])?$info["article"]:"");
-	$size = (isset($info["size"])?$info["size"]:"30");
+	$size = (isset($info["size"])?$info["size"]:"40");
 	$hint = (isset($info["hint"])?$info["hint"]:"");
 	$code = (isset($info["code"])?$info["code"]:"code128");
-
+	if($price){
+		$price= " Tk.$price";
+	}
 	$text = createSlug($text);
 
 	$bar_text=$text;
@@ -149,6 +191,9 @@ function barcode( $filepath="", $info, $size="30", $orientation="horizontal", $c
 		$code_string = "211214" . $code_string . "2331112";
 	} 
 
+	if(strlen($hint) > 2){
+		$image = getBigBarcode($code_string,$text,$price,$kenadam, $hint);
+	}else{
 	// Pad the edges of the barcode
 	$code_length = 20;
 	if ($print) {
@@ -196,7 +241,7 @@ function barcode( $filepath="", $info, $size="30", $orientation="horizontal", $c
 
 
 	if($price){
-		$price= " Tk.$price";		
+			
 
 		$total_text = strlen($bar_text.$price);
 		$space_left = intval((strlen($code_string)/4)) -  $total_text ;
@@ -220,17 +265,14 @@ function barcode( $filepath="", $info, $size="30", $orientation="horizontal", $c
 		imagestring($image, 4, 1, $img_height-$price_text_reduce, $bar_text, $black );
 	}
 
-	$location = 1;
-	for ( $position = 1 ; $position <= strlen($code_string); $position++ ) {
-		$cur_size = $location + ( substr($code_string, ($position-1), 1) );
-		if ( strtolower($orientation) == "horizontal" )
-			//imagefilledrectangle( $image, 0, 0, $cur_size*$SizeFactor, $img_height, ($position % 2 == 0 ? $white : $black) );
-			imagefilledrectangle( $image, $location*$SizeFactor, $bar_code_starting, $cur_size*$SizeFactor, $img_height-$price_text_reduce, ($position % 2 == 0 ? $white : $black) );
-		$location = $cur_size;
 	}
 	
+
+	
+	$image = makeBars($image,$code_string);
+	
 	$filepath='../barcodes/'.createSlug($text).'.png';
-	$filename=$text.$rate;
+	$filename=$text.$rate.'-hint';
 	$filepath='../barcodes/'.$filename.'.png';
 	
 	//echo $filepath;

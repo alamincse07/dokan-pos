@@ -113,7 +113,7 @@ window.price_list=[];
 			//add only if the value is number
 			if(this.value.length  > 12) {
                 
-				$('#per_row').val('4');
+				$('#per_row').val('2');
 				$('#sug').html('Not use cutting paper');
 
 			}
@@ -177,37 +177,38 @@ window.price_list=[];
         showoptions($('#cat'));
 		
 		$('#article_add').submit(function(e){
-		e.preventDefault();
-		
-		 var print_data={}
-		var form_data=$('#article_add').serialize();
-		$.ajax({
-            dataType:"json"
-            ,type:"POST"
-            ,url:"<?=$base_url?>/articles/add"
-			,data:form_data
-            ,success: function(data) {
-                alert(data.status);
-				$('.MSG').html(data.status);
-                print_data={
-                    "article":data.info.stock_article__sexyCombo,
-                    "price":data.info.article_body_rate,
-                    "kenadam":data.info.actual_rate || '',
-                    "count":data.info.article_pair,
-                    "hint":'',
+            e.preventDefault();
+            
+            var print_data={}
+            var form_data=$('#article_add').serialize();
+            $.ajax({
+                dataType:"json"
+                ,type:"POST"
+                ,url:"<?=$base_url?>/articles/add"
+                ,data:form_data
+                ,success: function(data) {
+                    alert(data.status);
+                    $('.MSG').html(data.status);
+                    print_data={
+                        "article":data.info.stock_article__sexyCombo,
+                        "price":data.info.article_body_rate,
+                        "kenadam":data.info.actual_rate || '',
+                        "count":data.info.article_pair,
+                        "hint":data.info.hint || ''
+                    }
+
+                    if(data.status=='added')
+                    {
+                        $('#hintList').val('');
+
+                        addRow(print_data);
+                        calculateSum();
+                        setPerRow();
+
+                    } 
                 }
-
-            if(data.status=='added')
-              {
-
-                addRow(print_data);
-                calculateSum();
-                setPerRow();
-
-              } 
-            }
-        });
-		
+            });
+            
 			
 		});
     });
@@ -231,7 +232,7 @@ window.price_list=[];
 
                             <td>                               
                                  
-                                <input type="hidden" placeholder="2F, FL "  maxlength="2" size="2" name="item[${i}][hint]" value="${data.hint}" >
+                                <input type="text" placeholder="2F, FL "  name="item[${i}][hint]" value="${data.hint}" >
                            </td>
                             <td> বারকোড কপি <input  class ="print_count" type ="text" required name = "item[${i}][count]" value = "${data.count}" size = "3"  maxlength="3" > </td>
                         
@@ -331,20 +332,21 @@ function checkSubmit(e){
             </div>
             <div class="single-search" >
 
-
-
-
-
                 <span  class="input_label"> বডিরেট</span>
 
                 <input class="text_input  for_article"   type="text"   name="article_body_rate">
 
+            </div>
+
+            <div class="single-search" >
+
+                <span  class="input_label"> বিবরণ </span>
+
+                <input class="text_sinput  fors_article" id="hintList"  list="hints" type="text"   name="hint">
+
 
             </div>
             <div class="single-search" >
-
-
-
 
                 <span  class="input_label"> ক্যাটাগরি</span>
                 <!--<input class="text_input  for_article" type="text" name="stock">-->
@@ -479,7 +481,93 @@ function checkSubmit(e){
         </div>
 
         
+<datalist id="hints">
+<option value="">
+<option value="জেঃ ২ পার্ট">
+<option value="জেঃ ২ ফিতা">
+<option value="জেঃ আং">
+<option value="জেঃ একট">
+<option value="জেঃ বেল">
+<option value="জেঃ নাগিন বেল">
+<option value="জেঃ সাচ্চি বেল">
+<option value="জেঃ আং বেল">
+<option value="জেঃ চায়না বেল">
+<option value="জেঃ ফ্লাট বেল ">
+<option value="জেঃ ফ্লাট ২ ফিতা">
+<option value="জেঃ ফ্লাট ২ পার্ট">
+<option value="জেঃ ফ্লাট আং">
+<option value="জেঃ ফ্লাট একট">
+<option value="জেঃ কলাপুরী ২ পার্ট">
+<option value="জেঃ কলাপুরী আং">
+<option value="জেঃ নাগিন আং ">
 
+<option value="জেঃ লোফার">
+<option value="জেঃ সু">
+<option value="জেঃ সাইকেল সু">
+<option value="জেঃ হাফ সু">
+<option value="জেঃ ১/৪ বেল ">
+<option value="জেঃ ১/৪ মোটা বেল">
+<option value="জেঃ ১/৪ ২ ফিতা">
+
+<option value="জেঃ ১/৪  আং">
+<option value="জেঃ ১/৪ ২ পার্ট">
+<option value="জেঃ ১/৪ লোফার">
+<option value="জেঃ ১/৪ সু">
+<option value="জেঃ ১/৪ সাইকেল সু">
+
+
+<option value="জেঃ ৬/৯ বেল">
+<option value="জেঃ ৬/৯ মোটা বেল">
+<option value="জেঃ ৬/৯ ২ ফিতা">
+
+<option value="জেঃ ৬/৯  আং">
+<option value="জেঃ ৬/৯ ২ পার্ট">
+<option value="জেঃ ৬/৯ লোফার">
+<option value="জেঃ ৬/৯ সু">
+<option value="জেঃ ৬/৯ সাইকেল সু">
+
+
+<option value="জেঃ বেবি ২ ফিতা">
+<option value="জেঃ বেবি আং">
+<option value="জেঃ বেবি বেল">
+<option value="জেঃ বেবি সাইকেল সু">
+
+<option value=" ">
+<option value=" ">
+
+<option value="লে ঢালাই ২ ফিতা কাজকরা">
+<option value="লে ঢালাই ২ ফিতা">
+<option value="লে ঢালাই আং">
+<option value="লে ঢালাই একট">
+<option value="লে ঢালাই বেল">
+
+<option value="লে ফ্লাট ২ ফিতা">
+<option value="লে ফ্লাট ২ ফিতা কাজকরা">
+<option value="লে ফ্লাট আং">
+<option value="লে ফ্লাট বেল">
+<option value="লে পাম্পি">
+<option value="লে হাফ সু">
+<option value="লে হাফ বেল">
+<option value="লে বুস্টন একট কাজকরা">
+<option value="লে বুস্টন একট">
+<option value="লে বুস্টন ২ ফিতা">
+<option value="লে বুস্টন ২ ফিতা চায়না">
+<option value="লে বুস্টন ২ ফিতা কাজকরা">
+<option value="লে ১/৪ ঢালাই বেল">
+<option value="লে ১/৪ ২ ফিতা">
+<option value="লে ১/৪ ফ্লাট ২ ফিতা">
+<option value="লে ১/৪ ঢালাই আং">
+<option value="লে ১/৪ ফ্লাট আং">
+<option value="লে ১/৪ পাম্পি">
+<option value="লে ১/৪ হাফ সু বেল">
+<option value="লে বেবি ২ ফিতা">
+<option value="লে বেবি আং">
+<option value="লে বেবি একট">
+<option value="লে বেবি বেল">
+<option value="লে বেবি বেল চায়না">
+
+
+  </datalist>
     
 
 
@@ -529,4 +617,12 @@ span#art_list {
     .container{
         width:98% !important;
     }
+    
+
+input#hintList {
+    width: 150px;
+    margin: 3px;
+    padding: 5px;
+    float: right;
+}
 </style>
