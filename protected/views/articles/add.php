@@ -194,13 +194,15 @@ window.price_list=[];
                         "price":data.info.article_body_rate,
                         "kenadam":data.info.actual_rate || '',
                         "count":data.info.article_pair,
-                        "hint":data.info.hint || ''
+                        "hint":data.info.hint__sexyCombo || ''
                     }
 
                     if(data.status=='added')
                     {
-                        $('#hintList').val('');
 
+                        $('#hintList').val('');
+                        $('[name="hint__sexyCombo"]').val('');
+                        $('[name="hint__sexyComboHidden"]').val('');
                         addRow(print_data);
                         calculateSum();
                         setPerRow();
@@ -318,12 +320,8 @@ function checkSubmit(e){
 
             <div class="single-search " >
 
-
-
-
                 <span  class="input_label">আর্টিকেল  </span>
-                <!--<input required="true" AUTOFOCUS="TRUE" class="text_input  for_article" type="text" name="stock_article">-->
-                
+                 
                 <span id="art_list"> </span>
 
 
@@ -339,8 +337,94 @@ function checkSubmit(e){
             <div class="single-search" >
 
                 <span  class="input_label"> বক্সের উপর লেখ  </span>
+                <select id="hintList" class="input_label select" name="hint" >
+                        <option value=""></option>
+                        <option value="জেঃ ২ পার্ট">জেঃ ২ পার্ট</option>
+                        <option value="জেঃ ২ ফিতা">জেঃ ২ ফিতা</option>
+                        <option value="জেঃ আং">জেঃ আং</option>
+                        <option value="জেঃ একট">জেঃ একট</option>
+                        <option value="জেঃ বেল">জেঃ বেল</option>
+                        <option value="জেঃ নাগিন বেল">জেঃ নাগিন বেল</option>
+                        <option value="জেঃ সাচ্চি বেল">জেঃ সাচ্চি বেল</option>
+                        <option value="জেঃ আং বেল">জেঃ আং বেল</option>
+                        <option value="জেঃ চায়না বেল">জেঃ চায়না বেল</option>
+                        <option value="জেঃ ফ্লাট বেল ">জেঃ ফ্লাট বেল </option>
+                        <option value="জেঃ ফ্লাট ২ ফিতা">জেঃ ফ্লাট ২ ফিতা</option>
+                        <option value="জেঃ ফ্লাট ২ পার্ট">জেঃ ফ্লাট ২ পার্ট</option>
+                        <option value="জেঃ ফ্লাট আং">জেঃ ফ্লাট আং</option>
+                        <option value="জেঃ ফ্লাট একট">জেঃ ফ্লাট একট</option>
+                        <option value="জেঃ কলাপুরী ২ পার্ট">জেঃ কলাপুরী ২ পার্ট</option>
+                        <option value="জেঃ কলাপুরী আং">জেঃ কলাপুরী আং</option>
+                        <option value="জেঃ নাগিন আং ">জেঃ নাগিন আং </option>
 
-                <input class="text_sinput  fors_article" id="hintList"  list="hints" type="text"   name="hint">
+                        <option value="জেঃ লোফার">জেঃ লোফার</option>
+                        <option value="জেঃ সু">জেঃ সু</option>
+                        <option value="জেঃ সাইকেল সু">জেঃ সাইকেল সু</option>
+                        <option value="জেঃ হাফ সু">জেঃ হাফ সু</option>
+                        <option value="জেঃ ১/৪ বেল ">জেঃ ১/৪ বেল </option>
+                        <option value="জেঃ ১/৪ মোটা বেল">জেঃ ১/৪ মোটা বেল</option>
+                        <option value="জেঃ ১/৪ ২ ফিতা">জেঃ ১/৪ ২ ফিতা</option>
+
+                        <option value="জেঃ ১/৪  আং">জেঃ ১/৪  আং</option>
+                        <option value="জেঃ ১/৪ ২ পার্ট">জেঃ ১/৪ ২ পার্ট</option>
+                        <option value="জেঃ ১/৪ লোফার">জেঃ ১/৪ লোফার</option>
+                        <option value="জেঃ ১/৪ সু">জেঃ ১/৪ সু</option>
+                        <option value="জেঃ ১/৪ সাইকেল সু">জেঃ ১/৪ সাইকেল সু</option>
+
+
+                        <option value="জেঃ ৬/৯ বেল">জেঃ ৬/৯ বেল</option>
+                        <option value="জেঃ ৬/৯ মোটা বেল">জেঃ ৬/৯ মোটা বেল</option>
+                        <option value="জেঃ ৬/৯ ২ ফিতা">জেঃ ৬/৯ ২ ফিতা</option>
+
+                        <option value="জেঃ ৬/৯  আং">জেঃ ৬/৯  আং</option>
+                        <option value="জেঃ ৬/৯ ২ পার্ট">জেঃ ৬/৯ ২ পার্ট</option>
+                        <option value="জেঃ ৬/৯ লোফার">জেঃ ৬/৯ লোফার</option>
+                        <option value="জেঃ ৬/৯ সু">জেঃ ৬/৯ সু</option>
+                        <option value="জেঃ ৬/৯ সাইকেল সু">জেঃ ৬/৯ সাইকেল সু</option>
+
+
+                        <option value="জেঃ বেবি ২ ফিতা">জেঃ বেবি ২ ফিতা</option>
+                        <option value="জেঃ বেবি আং">জেঃ বেবি আং</option>
+                        <option value="জেঃ বেবি বেল">জেঃ বেবি বেল</option>
+                        <option value="জেঃ বেবি সাইকেল সু">জেঃ বেবি সাইকেল সু</option>
+
+                    
+
+                        <option value="লে ঢালাই ২ ফিতা কাজকরা">লে ঢালাই ২ ফিতা কাজকরা</option>
+                        <option value="লে ঢালাই ২ ফিতা">লে ঢালাই ২ ফিতা</option>
+                        <option value="লে ঢালাই আং">লে ঢালাই আং</option>
+                        <option value="লে ঢালাই একট">লে ঢালাই একট</option>
+                        <option value="লে ঢালাই বেল">লে ঢালাই বেল</option>
+
+                        <option value="লে ফ্লাট ২ ফিতা">লে ফ্লাট ২ ফিতা</option>
+                        <option value="লে ফ্লাট ২ ফিতা কাজকরা">লে ফ্লাট ২ ফিতা কাজকরা</option>
+                        <option value="লে ফ্লাট আং">লে ফ্লাট আং</option>
+                        <option value="লে ফ্লাট বেল">লে ফ্লাট বেল</option>
+                        <option value="লে পাম্পি">লে পাম্পি</option>
+                        <option value="লে হাফ সু">লে হাফ সু</option>
+                        <option value="লে হাফ বেল">লে হাফ বেল</option>
+                        <option value="লে বুস্টন একট কাজকরা">লে বুস্টন একট কাজকরা</option>
+                        <option value="লে বুস্টন একট">লে বুস্টন একট</option>
+                        <option value="লে বুস্টন ২ ফিতা">লে বুস্টন ২ ফিতা</option>
+                        <option value="লে বুস্টন ২ ফিতা চায়না">লে বুস্টন ২ ফিতা চায়না</option>
+                        <option value="লে বুস্টন ২ ফিতা কাজকরা">লে বুস্টন ২ ফিতা কাজকরা</option>
+                        <option value="লে ১/৪ ঢালাই বেল">লে ১/৪ ঢালাই বেল</option>
+                        <option value="লে ১/৪ ২ ফিতা">লে ১/৪ ২ ফিতা</option>
+                        <option value="লে ১/৪ ফ্লাট ২ ফিতা">লে ১/৪ ফ্লাট ২ ফিতা</option>
+                        <option value="লে ১/৪ ঢালাই আং">লে ১/৪ ঢালাই আং</option>
+                        <option value="লে ১/৪ ফ্লাট আং">লে ১/৪ ফ্লাট আং</option>
+                        <option value="লে ১/৪ পাম্পি">লে ১/৪ পাম্পি</option>
+                        <option value="লে ১/৪ হাফ সু বেল">লে ১/৪ হাফ সু বেল</option>
+                        <option value="লে বেবি ২ ফিতা">লে বেবি ২ ফিতা</option>
+                        <option value="লে বেবি আং">লে বেবি আং</option>
+                        <option value="লে বেবি একট">লে বেবি একট</option>
+                        <option value="লে বেবি বেল">লে বেবি বেল</option>
+                        <option value="লে বেবি বেল চায়না">লে বেবি বেল চায়না</option>
+
+
+                </select>
+
+                <!-- <input class="text_sinput  fors_article" id="hintxList"  list="hints" type="text"   name="hint"> -->
 
 
             </div>
@@ -478,99 +562,6 @@ function checkSubmit(e){
 
         </div>
 
-        
-<datalist id="hints">
-<option value="">
-<option value="জেঃ ২ পার্ট">
-<option value="জেঃ ২ ফিতা">
-<option value="জেঃ আং">
-<option value="জেঃ একট">
-<option value="জেঃ বেল">
-<option value="জেঃ নাগিন বেল">
-<option value="জেঃ সাচ্চি বেল">
-<option value="জেঃ আং বেল">
-<option value="জেঃ চায়না বেল">
-<option value="জেঃ ফ্লাট বেল ">
-<option value="জেঃ ফ্লাট ২ ফিতা">
-<option value="জেঃ ফ্লাট ২ পার্ট">
-<option value="জেঃ ফ্লাট আং">
-<option value="জেঃ ফ্লাট একট">
-<option value="জেঃ কলাপুরী ২ পার্ট">
-<option value="জেঃ কলাপুরী আং">
-<option value="জেঃ নাগিন আং ">
-
-<option value="জেঃ লোফার">
-<option value="জেঃ সু">
-<option value="জেঃ সাইকেল সু">
-<option value="জেঃ হাফ সু">
-<option value="জেঃ ১/৪ বেল ">
-<option value="জেঃ ১/৪ মোটা বেল">
-<option value="জেঃ ১/৪ ২ ফিতা">
-
-<option value="জেঃ ১/৪  আং">
-<option value="জেঃ ১/৪ ২ পার্ট">
-<option value="জেঃ ১/৪ লোফার">
-<option value="জেঃ ১/৪ সু">
-<option value="জেঃ ১/৪ সাইকেল সু">
-
-
-<option value="জেঃ ৬/৯ বেল">
-<option value="জেঃ ৬/৯ মোটা বেল">
-<option value="জেঃ ৬/৯ ২ ফিতা">
-
-<option value="জেঃ ৬/৯  আং">
-<option value="জেঃ ৬/৯ ২ পার্ট">
-<option value="জেঃ ৬/৯ লোফার">
-<option value="জেঃ ৬/৯ সু">
-<option value="জেঃ ৬/৯ সাইকেল সু">
-
-
-<option value="জেঃ বেবি ২ ফিতা">
-<option value="জেঃ বেবি আং">
-<option value="জেঃ বেবি বেল">
-<option value="জেঃ বেবি সাইকেল সু">
-
-<option value=" ">
-<option value=" ">
-
-<option value="লে ঢালাই ২ ফিতা কাজকরা">
-<option value="লে ঢালাই ২ ফিতা">
-<option value="লে ঢালাই আং">
-<option value="লে ঢালাই একট">
-<option value="লে ঢালাই বেল">
-
-<option value="লে ফ্লাট ২ ফিতা">
-<option value="লে ফ্লাট ২ ফিতা কাজকরা">
-<option value="লে ফ্লাট আং">
-<option value="লে ফ্লাট বেল">
-<option value="লে পাম্পি">
-<option value="লে হাফ সু">
-<option value="লে হাফ বেল">
-<option value="লে বুস্টন একট কাজকরা">
-<option value="লে বুস্টন একট">
-<option value="লে বুস্টন ২ ফিতা">
-<option value="লে বুস্টন ২ ফিতা চায়না">
-<option value="লে বুস্টন ২ ফিতা কাজকরা">
-<option value="লে ১/৪ ঢালাই বেল">
-<option value="লে ১/৪ ২ ফিতা">
-<option value="লে ১/৪ ফ্লাট ২ ফিতা">
-<option value="লে ১/৪ ঢালাই আং">
-<option value="লে ১/৪ ফ্লাট আং">
-<option value="লে ১/৪ পাম্পি">
-<option value="লে ১/৪ হাফ সু বেল">
-<option value="লে বেবি ২ ফিতা">
-<option value="লে বেবি আং">
-<option value="লে বেবি একট">
-<option value="লে বেবি বেল">
-<option value="লে বেবি বেল চায়না">
-
-
-  </datalist>
-    
-
-
-
-
 
 </div>
 
@@ -617,10 +608,10 @@ span#art_list {
     }
     
 
-input#hintList {
+/* input#hintList {
     width: 150px;
     margin: 3px;
     padding: 5px;
     float: right;
-}
+} */
 </style>
