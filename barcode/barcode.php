@@ -271,9 +271,8 @@ function barcode( $filepath="", $info, $size="30", $orientation="horizontal", $c
 	
 	$image = makeBars($image,$code_string);
 	
-	$filepath='../barcodes/'.createSlug($text).'.png';
-	$filename=$text.$rate.$kenadam;
-	$filepath='../barcodes/'.$filename.'.png';
+	$filepath='../barcodes/'.createSlug($text.$rate.$kenadam).'.png';
+
 	
 	//echo $filepath;
 	// Draw barcode to the screen or save in a file
