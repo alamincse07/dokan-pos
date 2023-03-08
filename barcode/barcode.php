@@ -5,7 +5,7 @@ require_once __DIR__.'/Texter.php';
 function getBigBarcode($code_string,$text,$price,$kenadam, $hint){
 	
 	$texter = new Texter();
-	$image = imagecreate(350, 125);
+	$image = imagecreate(350, 130);
 	imagecolorallocate($image, 255, 255, 255);
 	$texter->startFrom(5, 15)->width(100)->on($image)->align('left')->fontSize(12)->color('333333');
 	$texter->text($kenadam)->write();
@@ -22,7 +22,7 @@ function getBigBarcode($code_string,$text,$price,$kenadam, $hint){
     $texter->startFrom(220, 55)->width(400)->on($image)->align('left')->fontSize(25)->color('000000');
 	$texter->text($price)->write();
 
-    $texter->startFrom(1, 115)->width(350)->on($image)->align('center')->fontSize(26)->color('000000');
+    $texter->startFrom(1, 120)->width(350)->on($image)->align('center')->fontSize(26)->color('000000');
     $texter->text($hint)->write();
 
 
@@ -272,7 +272,7 @@ function barcode( $filepath="", $info, $size="30", $orientation="horizontal", $c
 	$image = makeBars($image,$code_string);
 	
 	$filepath='../barcodes/'.createSlug($text).'.png';
-	$filename=$text.$rate.$kenadam.(strlen($hint) >2)? 'hint':'';
+	$filename=$text.$rate.$kenadam;
 	$filepath='../barcodes/'.$filename.'.png';
 	
 	//echo $filepath;
