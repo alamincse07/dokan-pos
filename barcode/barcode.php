@@ -270,8 +270,8 @@ function barcode( $filepath="", $info, $size="30", $orientation="horizontal", $c
 
 	
 	$image = makeBars($image,$code_string);
-	
-	$filepath='../barcodes/'.createSlug($text.$rate.$kenadam).'.png';
+	$filename = createSlug($text.$rate.$kenadam).'.png';
+	$filepath='../barcodes/'.$filename;
 
 	
 	//echo $filepath;
