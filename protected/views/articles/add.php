@@ -549,7 +549,7 @@ function checkSubmit(e){
                     </select>
                     <input class="btn btn-info" type="submit"   value="Print Barcodes">
                     Per Row
-                    <input type="text" id="per_row" name="per_row" size="3" value="2">
+                    <input type="text" id="per_row" name="per_row" size="3" value="3">
                      <button  class="btn btn-info" onclick="addRow()"> Add </button>
 
                      <SPAN id="sug"> </SPAN>
