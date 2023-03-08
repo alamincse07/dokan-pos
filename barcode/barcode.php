@@ -69,7 +69,7 @@ foreach( $_POST['item'] as $single  ){
 
  
   // $text = (isset($single["article"])?$single["article"]:"");
-    $filepath= "../barcodes/".$filename.'.png';
+    $filepath= "../barcodes/".$filename;
 
  
    if(file_exists($filepath) && isset($single['count']) ){
@@ -191,6 +191,7 @@ function barcode( $filepath="", $info, $size="30", $orientation="horizontal", $c
 		$code_string = "211214" . $code_string . "2331112";
 	} 
 
+	///////////// BIG barcode //////////////////////
 	if(strlen($hint) > 2){
 		$image = getBigBarcode($code_string,$text,$price,$kenadam, $hint);
 	}else{

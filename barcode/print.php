@@ -1,6 +1,6 @@
 <?php
 
-// print_r($_REQUEST);
+ // print_r($_REQUEST);
 // die;
 
 $COLOR='red';
@@ -43,6 +43,9 @@ $COLOR='red';
 
               td {
                     padding: .7mm 0mm;
+                    border-left:0.5px dashed black;
+                    border-right:0.5px dashed black;
+                    border-bottom:1px dashed black;
                 }
             td {
 
@@ -107,7 +110,7 @@ $COLOR='red';
                 foreach (array_chunk($print_cp, $per_row) as $row) { ?>
 					<tr>
 					<?php foreach ($row as $img) { ?>
-						<td><?php echo '<IMG class="displayed" src="/'.$img.'" >'; ?></td>
+						<td><?php echo '<IMG class="displayed" src="'.$img.'" >'; ?></td>
 					<?php } ?>
 					</tr>
 				<?php } ?>
