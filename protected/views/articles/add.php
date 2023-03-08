@@ -294,9 +294,7 @@ function checkSubmit(e){
 
         <div style="font-size: 15px; height: auto;line-height: 23px;" class="single-page-header black">
         <div class="new_generate_article1">
-            সবগুলো নতুন  আর্টিকেল ষ্টকে যোগকরার পরে
-            দেখার জন্য
-            <button onclick="window.location='<?=$base_url?>'">এখানে চাপুন </button>
+        বক্সের মাল আলাদা তুলুন 
 
             <span id="print_count"><span>
 
