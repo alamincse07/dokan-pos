@@ -370,6 +370,7 @@ function checkSubmit(e){
                         <option value="জেঃ সাইকেল সু">জেঃ সাইকেল সু</option>
                         <option value="জেঃ হাফ সু">জেঃ হাফ সু</option>
                         <option value="জেঃ ১/৪ বেল ">জেঃ ১/৪ বেল </option>
+                        <option value="জেঃ ১/৪ নাগিন বেল">জেঃ ১/৪ নাগিন বেল</option>
                         <option value="জেঃ ১/৪ মোটা বেল">জেঃ ১/৪ মোটা বেল</option>
                         <option value="জেঃ ১/৪ ২ ফিতা">জেঃ ১/৪ ২ ফিতা</option>
 
@@ -382,6 +383,7 @@ function checkSubmit(e){
 
                         <option value="জেঃ ৬/৯ বেল">জেঃ ৬/৯ বেল</option>
                         <option value="জেঃ ৬/৯ মোটা বেল">জেঃ ৬/৯ মোটা বেল</option>
+                        <option value="জেঃ ৬/৯ নাগিন বেল">জেঃ ৬/৯ নাগিন বেল</option>
                         <option value="জেঃ ৬/৯ ২ ফিতা">জেঃ ৬/৯ ২ ফিতা</option>
 
                         <option value="জেঃ ৬/৯  আং">জেঃ ৬/৯  আং</option>
