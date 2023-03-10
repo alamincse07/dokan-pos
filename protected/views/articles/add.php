@@ -413,7 +413,8 @@ function checkSubmit(e){
                         <option value="লে হাফ বেল">লে হাফ বেল</option>
                         <option value="লে বুস্টন একট কাজকরা">লে বুস্টন একট কাজকরা</option>
                         <option value="লে বুস্টন একট">লে বুস্টন একট</option>
-                        <option value="লে বুস্টন ২ ফিতা">লে বুস্টন ২ ফিতা</option>
+                        <option value="লে বুস্টন একট চায়না">লে বুস্টন একট চায়না</option>
+                        <option value="লে বুস্টন ২ ফিতা">লে বুস্টন ২ ফিতা </option>
                         <option value="লে বুস্টন ২ ফিতা চায়না">লে বুস্টন ২ ফিতা চায়না</option>
                         <option value="লে বুস্টন ২ ফিতা কাজকরা">লে বুস্টন ২ ফিতা কাজকরা</option>
                         <option value="লে ওভার ২ ফিতা">লে ওভার ২ ফিতা</option>
