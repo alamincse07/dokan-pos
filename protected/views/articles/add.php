@@ -409,14 +409,15 @@ function checkSubmit(e){
                         <option value="লে ফ্লাট আং">লে ফ্লাট আং</option>
                         <option value="লে ফ্লাট বেল">লে ফ্লাট বেল</option>
                         <option value="লে পাম্পি">লে পাম্পি</option>
+                        <option value="লে পাম্পি লোফার ">লে পাম্পি লোফার </option>
                         <option value="লে হাফ সু">লে হাফ সু</option>
                         <option value="লে হাফ বেল">লে হাফ বেল</option>
                         <option value="লে বয়স্ক ২ ফিতা">লে বয়স্ক  ২ ফিতা</option>
-                        <option value="লে বয়স্ক  ২ ফিতা কাজকরা">লে বয়স্ক9 ২ ফিতা কাজকরা</option>
+                 
                         <option value="লে বয়স্ক  আং">লে বয়স্ক  আং</option>
                         <option value="লে বয়স্ক  বেল">লে বয়স্ক  বেল</option>
                         <option value="লে বয়স্ক  একট">লে বয়স্ক  একট</option>
-                        
+
                         <option value="লে বুস্টন একট কাজকরা">লে বুস্টন একট কাজকরা</option>
                         <option value="লে বুস্টন একট">লে বুস্টন একট</option>
                         <option value="লে বুস্টন একট চায়না">লে বুস্টন একট চায়না</option>
