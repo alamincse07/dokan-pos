@@ -14,15 +14,15 @@ function getBigBarcode($code_string,$text,$price,$kenadam, $hint){
     // $texter->startFrom(5, 40)->width(400)->on($image)->align('left')->fontSize(10)->color('333333');
 	// $texter->text('|bars||')->write();
 	$image = makeBars($image,$code_string);
-
-	
+    $ln = strlen($hint);
+	$ssize = $ln > 50 ? 26 : 32;
     $texter->startFrom(5, 70)->width(400)->on($image)->align('left')->fontSize(18)->color('333333');
 	$texter->text('# '.$text)->write();
 
     $texter->startFrom(215, 55)->width(400)->on($image)->align('left')->fontSize(25)->color('000000');
 	$texter->text($price)->write();
 
-    $texter->startFrom(1, 110)->width(350)->on($image)->align('center')->fontSize(32)->color('000000');
+    $texter->startFrom(1, 110)->width(350)->on($image)->align('center')->fontSize($ssize)->color('000000');
     $texter->text($hint)->write();
 
 

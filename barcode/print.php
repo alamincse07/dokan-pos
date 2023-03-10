@@ -24,7 +24,7 @@ $COLOR='red';
             body {
                 width: 21cm;
                 height: 29.7cm;
-                margin: 0mm 1mm 0mm 5mm;
+                margin: 0mm 1mm 0mm 3mm;
                 /* margin-left:auto; margin-right:auto;  */
                 /* change the margins as you want them to be. */
 
@@ -42,9 +42,8 @@ $COLOR='red';
             tr {  page-break-inside: avoid;}
 
               td {
-                    padding: .7mm 0mm;
+                    padding: .1mm 0mm;
                     border-left:0.5px dashed black;
-                    border-right:0.5px dashed black;
                     border-bottom:1px dashed black;
                 }
             td {
