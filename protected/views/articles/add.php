@@ -340,6 +340,7 @@ function checkSubmit(e){
                 <select id="hintList" class="input_label select" name="hint" >
                         <option value=""></option>
                         <option value="জেঃ ২ পার্ট">জেঃ ২ পার্ট</option>
+                        <option value="জেঃ ২ পার্ট বেল">জেঃ ২ পার্ট বেল</option>
                         <option value="জেঃ ২ ফিতা">জেঃ ২ ফিতা</option>
                         <option value="জেঃ আং">জেঃ আং</option>
                         <option value="জেঃ একট">জেঃ একট</option>
@@ -352,10 +353,17 @@ function checkSubmit(e){
                         <option value="জেঃ ফ্লাট ২ ফিতা">জেঃ ফ্লাট ২ ফিতা</option>
                         <option value="জেঃ ফ্লাট ২ পার্ট">জেঃ ফ্লাট ২ পার্ট</option>
                         <option value="জেঃ ফ্লাট আং">জেঃ ফ্লাট আং</option>
+                        <option value="জেঃ ফ্লাট আং বেল">জেঃ ফ্লাট আং বেল</option>
                         <option value="জেঃ ফ্লাট একট">জেঃ ফ্লাট একট</option>
                         <option value="জেঃ কলাপুরী ২ পার্ট">জেঃ কলাপুরী ২ পার্ট</option>
                         <option value="জেঃ কলাপুরী আং">জেঃ কলাপুরী আং</option>
                         <option value="জেঃ নাগিন আং ">জেঃ নাগিন আং </option>
+
+                        <option value="জেঃ ওভার ২ ফিতা">জেঃ ওভার ২ ফিতা</option>
+                        <option value="জেঃ ওভার আং">জেঃ ওভার আং</option>
+                        <option value="জেঃ ওভার আং বেল">জেঃ ওভার আং বেল</option>
+                        <option value="জেঃ ওভার বেল">জেঃ ওভার বেল</option>
+                        <option value="জেঃ ওভার একট">জেঃ ওভার একট</option>
 
                         <option value="জেঃ লোফার">জেঃ লোফার</option>
                         <option value="জেঃ সু">জেঃ সু</option>
@@ -408,6 +416,11 @@ function checkSubmit(e){
                         <option value="লে বুস্টন ২ ফিতা">লে বুস্টন ২ ফিতা</option>
                         <option value="লে বুস্টন ২ ফিতা চায়না">লে বুস্টন ২ ফিতা চায়না</option>
                         <option value="লে বুস্টন ২ ফিতা কাজকরা">লে বুস্টন ২ ফিতা কাজকরা</option>
+                        <option value="লে ওভার ২ ফিতা">লে ওভার ২ ফিতা</option>
+                        <option value="লে ওভার ২ ফিতা কাজকরা">লে ওভার ২ ফিতা কাজকরা</option>
+                        <option value="লে ওভার আং">লে ওভার আং</option>
+                        <option value="লে ওভার বেল">লে ওভার বেল</option>
+                        <option value="লে ওভার একট">লে ওভার একট</option>
                         <option value="লে ১/৪ ঢালাই বেল">লে ১/৪ ঢালাই বেল</option>
                         <option value="লে ১/৪ ২ ফিতা">লে ১/৪ ২ ফিতা</option>
                         <option value="লে ১/৪ ফ্লাট ২ ফিতা">লে ১/৪ ফ্লাট ২ ফিতা</option>
