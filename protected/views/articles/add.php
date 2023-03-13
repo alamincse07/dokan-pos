@@ -360,6 +360,7 @@ function checkSubmit(e){
                         <option value="জেঃ নাগিন আং ">জেঃ নাগিন আং </option>
 
                         <option value="জেঃ ওভার ২ ফিতা">জেঃ ওভার ২ ফিতা</option>
+                        <option value="জেঃ ওভার ২ পার্ট ">জেঃ ওভার ২ পার্ট </option>
                         <option value="জেঃ ওভার আং">জেঃ ওভার আং</option>
                         <option value="জেঃ ওভার আং বেল">জেঃ ওভার আং বেল</option>
                         <option value="জেঃ ওভার বেল">জেঃ ওভার বেল</option>
@@ -379,6 +380,7 @@ function checkSubmit(e){
                         <option value="জেঃ ১/৪ লোফার">জেঃ ১/৪ লোফার</option>
                         <option value="জেঃ ১/৪ সু">জেঃ ১/৪ সু</option>
                         <option value="জেঃ ১/৪ সাইকেল সু">জেঃ ১/৪ সাইকেল সু</option>
+                        <option value="জেঃ ৬/৯ হাফ সু বেল">জেঃ ৬/৯ হাফ সু বেল</option>
 
 
                         <option value="জেঃ ৬/৯ বেল">জেঃ ৬/৯ বেল</option>
@@ -391,23 +393,27 @@ function checkSubmit(e){
                         <option value="জেঃ ৬/৯ লোফার">জেঃ ৬/৯ লোফার</option>
                         <option value="জেঃ ৬/৯ সু">জেঃ ৬/৯ সু</option>
                         <option value="জেঃ ৬/৯ সাইকেল সু">জেঃ ৬/৯ সাইকেল সু</option>
+                        <option value="জেঃ ৬/৯ হাফ সু বেল">জেঃ ৬/৯ হাফ সু বেল</option>
 
 
                         <option value="জেঃ বেবি ২ ফিতা">জেঃ বেবি ২ ফিতা</option>
                         <option value="জেঃ বেবি আং">জেঃ বেবি আং</option>
                         <option value="জেঃ বেবি বেল">জেঃ বেবি বেল</option>
                         <option value="জেঃ বেবি সাইকেল সু">জেঃ বেবি সাইকেল সু</option>
+                        <option value="জেঃ বেবি সু">জেঃ বেবি সু</option>
 
                     
 
-                        <option value="লে ঢালাই ২ ফিতা কাজকরা">লে ঢালাই ২ ফিতা কাজকরা</option>
+                        <option value="লে ঢালাই ২ ফিতা কাজ">লে ঢালাই ২ ফিতা কাজ</option>
                         <option value="লে ঢালাই ২ ফিতা">লে ঢালাই ২ ফিতা</option>
                         <option value="লে ঢালাই আং">লে ঢালাই আং</option>
                         <option value="লে ঢালাই একট">লে ঢালাই একট</option>
+                        <option value="লে ঢালাই একট কাজ">লে ঢালাই একট কাজ</option>
                         <option value="লে ঢালাই বেল">লে ঢালাই বেল</option>
 
+                        <option value="লে ফ্লাট ২ পার্ট ">লে ফ্লাট ২ পার্ট </option>
                         <option value="লে ফ্লাট ২ ফিতা">লে ফ্লাট ২ ফিতা</option>
-                        <option value="লে ফ্লাট ২ ফিতা কাজকরা">লে ফ্লাট ২ ফিতা কাজকরা</option>
+                        <option value="লে ফ্লাট ২ ফিতা কাজ">লে ফ্লাট ২ ফিতা কাজ</option>
                         <option value="লে ফ্লাট আং">লে ফ্লাট আং</option>
                         <option value="লে ফ্লাট বেল">লে ফ্লাট বেল</option>
                         <option value="লে পাম্পি">লে পাম্পি</option>
@@ -420,29 +426,42 @@ function checkSubmit(e){
                         <option value="লে বয়স্ক  বেল">লে বয়স্ক  বেল</option>
                         <option value="লে বয়স্ক  একট">লে বয়স্ক  একট</option>
 
-                        <option value="লে বুস্টন একট কাজকরা">লে বুস্টন একট কাজকরা</option>
+                        <option value="লে বুস্টন একট কাজ">লে বুস্টন একট কাজ</option>
                         <option value="লে বুস্টন একট">লে বুস্টন একট</option>
                         <option value="লে বুস্টন একট চায়না">লে বুস্টন একট চায়না</option>
                         <option value="লে বুস্টন ২ ফিতা">লে বুস্টন ২ ফিতা </option>
                         <option value="লে বুস্টন ২ ফিতা চায়না">লে বুস্টন ২ ফিতা চায়না</option>
-                        <option value="লে বুস্টন ২ ফিতা কাজকরা">লে বুস্টন ২ ফিতা কাজকরা</option>
+                        <option value="লে বুস্টন ২ ফিতা কাজ">লে বুস্টন ২ ফিতা কাজ</option>
                         <option value="লে ওভার ২ ফিতা">লে ওভার ২ ফিতা</option>
-                        <option value="লে ওভার ২ ফিতা কাজকরা">লে ওভার ২ ফিতা কাজকরা</option>
+                        <option value="লে ওভার ২ ফিতা কাজ">লে ওভার ২ ফিতা কাজ</option>
                         <option value="লে ওভার আং">লে ওভার আং</option>
+                        <option value="লে ওভার ২ পার্ট">লে ওভার ২ পার্ট </option>
                         <option value="লে ওভার বেল">লে ওভার বেল</option>
                         <option value="লে ওভার একট">লে ওভার একট</option>
                         <option value="লে ১/৪ ঢালাই বেল">লে ১/৪ ঢালাই বেল</option>
+                        <option value="লে ১/৪ ২ পার্ট">লে ১/৪ ২ পার্ট</option>
                         <option value="লে ১/৪ ২ ফিতা">লে ১/৪ ২ ফিতা</option>
                         <option value="লে ১/৪ ফ্লাট ২ ফিতা">লে ১/৪ ফ্লাট ২ ফিতা</option>
                         <option value="লে ১/৪ ঢালাই আং">লে ১/৪ ঢালাই আং</option>
                         <option value="লে ১/৪ ফ্লাট আং">লে ১/৪ ফ্লাট আং</option>
                         <option value="লে ১/৪ পাম্পি">লে ১/৪ পাম্পি</option>
                         <option value="লে ১/৪ হাফ সু বেল">লে ১/৪ হাফ সু বেল</option>
+
+                        <option value="লে ছিট ঢালাই বেল">লে ছিট ঢালাই বেল</option>
+                        <option value="লে ছিট ২ পার্ট">লে ছিট ২ পার্ট</option>
+                        <option value="লে ছিট ২ ফিতা">লে ছিট ২ ফিতা</option>
+                        <option value="লে ছিট ফ্লাট ২ ফিতা">লে ছিট ফ্লাট ২ ফিতা</option>
+                        <option value="লে ছিট ঢালাই আং">লে ছিট ঢালাই আং</option>
+                        <option value="লে ছিট ফ্লাট আং">লে ছিট ফ্লাট আং</option>
+                        <option value="লে ছিট পাম্পি">লে ছিট পাম্পি</option>
+                        <option value="লে ছিট হাফ সু বেল">লে ছিট হাফ সু বেল</option>
+
                         <option value="লে বেবি ২ ফিতা">লে বেবি ২ ফিতা</option>
                         <option value="লে বেবি আং">লে বেবি আং</option>
                         <option value="লে বেবি একট">লে বেবি একট</option>
                         <option value="লে বেবি বেল">লে বেবি বেল</option>
                         <option value="লে বেবি বেল চায়না">লে বেবি বেল চায়না</option>
+                        <option value="লে বেবি পাম্পি">লে বেবি পাম্পি</option>
 
 
                 </select>
