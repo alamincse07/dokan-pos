@@ -773,8 +773,11 @@ if($resl){
                     <i class="fas fa-money-check"></i> ফেরত
                   </a>
                   <?php } ?>
+                  <a class="dropdown-item  py-2" data-toggle="modal" data-target="#oldViewModal" href="#oldViewModal">
+                    <i class="fas fa-money-check"></i> পুরানো দিনের তথ্য
+                  </a>
 
-                  <a class="dropdown-item py-2" href="<?=$base_url?>/site/logout"  data-target="#loadingModal1">
+                  <a class="dropdown-item py-2 bg-info" href="<?=$base_url?>/site/logout"  data-target="#loadingModal1">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     Logout
                   </a>
@@ -1755,6 +1758,61 @@ if($resl){
         </div>
       </div>
     </div>
+
+
+
+
+    <div
+      class="modal fade"
+      id="oldViewModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">পুরানো দিনের তথ্য </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form class="user common-sell" action="index">
+              
+
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">দিন</span>
+                </div>
+                <input
+                  type="date"
+                  name="date"
+                  class="form-control"
+                  value="1"
+                  aria-label="Default"
+                  aria-describedby="inputGroup-sizing-default"
+                />
+              </div>
+
+              <input type="submit" name="oldViewSubmit" class="btn btn-primary btn-user btn-block" value=" দেখুন  " />
+              <hr />
+              <div class="cuti-info text-success"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
 
     <div
       class="modal fade"
