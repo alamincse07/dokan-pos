@@ -71,25 +71,24 @@ class SimpleAjaxController extends Controller
         if($model){
 
             $old=$model->articles;
-            $model->amount= ($model->amount + $due_amount);
             $model->articles = $article.', '.$old  ;
             $model->manager=$manager;
             $model->date=$today;
         }else{
 
             $model= new CustomerDueInformation();
-            $model->amount=$due_amount;
+            $model->amount=0;
             $model->manager=$manager;
             $model->area_name=$area;
             $model->occupation=$occupation;
             $model->name=$c_name;
             $model->articles=$article;
             $model->date=$today;
+          
         }
+        $model->save();
 
-        // Generic::_setTrace($model);
-
-        if($model->save()){
+        if($model->id){
             $customer_id= $model->id;
 
             $cq="insert into customer_transaction set customer_id=$customer_id, date='$today', amount=$amount,transaction_type='$article'";
@@ -106,7 +105,7 @@ class SimpleAjaxController extends Controller
 
             die(json_encode(array('status'=>'success','c_name'=>$c_name,'due_amount'=>$due_amount, 'cq1'=>$cq,'cq2'=>$cq2,'submitted'=>$_POST)));
         }else{
-            die(json_encode(array('status'=>'failed','q'=>$model->errors)));//Generic::_setTrace($model->errors);
+            die(json_encode(array('status'=>'failed','q'=>'no customer found to add')));//Generic::_setTrace($model->errors);
         }
 
 

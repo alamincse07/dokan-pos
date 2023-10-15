@@ -33,12 +33,8 @@ class Generic {
        
         $today= date('Y-m-d');
         
-        $cq="insert into customer_transaction set customer_id=$cid, date='$today', amount=$amount,transaction_type='PAID'";
+        $cq="insert into customer_transaction set customer_id=$cid, date='$today', amount=$amount, transaction_type='PAID'";
         $re2s=Yii::app()->db->createCommand($cq)->execute();
-
-
-        $inq="update  customer_due_information   set amount=(amount-$amount),manager='$manager',date='$today'  where  id=$cid" ;
-        Yii::app()->db->createCommand($inq)->execute();
 
         
         if($showtojoma){

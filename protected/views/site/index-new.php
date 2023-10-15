@@ -558,9 +558,18 @@ if($resl){
                     <i class="fas fa-search fa-sm"></i>
                   </button>
                 </div>
+
+               
               </div>
             </form>
 
+            <div class="ml-auto d-sm-inline-block">
+                <?php 
+                  if(isset($_REQUEST['date'])){
+                    echo "<h4 class='red text-danger'>".$_REQUEST['date']."</h4>";
+                  }
+                  ?>
+            </div>
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
               <!-- Nav Item - Search Dropdown (Visible Only XS) -->

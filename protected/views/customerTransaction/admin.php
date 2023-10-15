@@ -36,6 +36,7 @@ $visible = ($found)?true:false;
 
 $this->widget('MGridView', array(
 	'id'=>'customer-transaction-grid',
+	
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
@@ -46,7 +47,9 @@ $this->widget('MGridView', array(
 		'total_due',
 		'customer_id',
 		array(
+			'template'=>'{view}{delete}',
 			'visible'=>$visible,
+			 'template'=>'{view}{delete}',
 			'class'=>'CButtonColumn',
 		),
 	),
