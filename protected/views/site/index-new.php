@@ -837,6 +837,7 @@ if($resl){
                             list="articles"
                             onselect="GetPrice(this)"
                             name="common_article"
+                            autocomplete="off"
                             id="common_article"
                             class="form-control common_article"
                             aria-label="Default"
