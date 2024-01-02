@@ -213,7 +213,7 @@ class ArticlesController extends Controller
                 $msg='মোট জোড়া দিন';
 
             }
-			elseif(strtoupper($_REQUEST['category_stock'])=='VRC'){
+			elseif(strtoupper($_REQUEST['category_stock'])=='VRC' || strtoupper($_REQUEST['category_stock'])=='STAR'){
 				 if(   (isset($_POST['article_total_taka']) && $_POST['article_total_taka']=='')  && (isset($_POST['article_actual_rate']) && $_POST['article_actual_rate']=='')   ){
 	                $msg='মোট কেনাদাম দিন';
 
@@ -224,7 +224,7 @@ class ArticlesController extends Controller
 				
 			 }
             
-            elseif(isset($_POST['article_body_rate']) && $_POST['article_body_rate']=='' && (strtoupper($_REQUEST['category_stock'])=='DSR' || strtoupper($_REQUEST['category_stock'])=='ESR' )){
+            elseif(isset($_POST['article_body_rate']) && $_POST['article_body_rate']=='' && (strtoupper($_REQUEST['category_stock'])=='DSR' || strtoupper($_REQUEST['category_stock'])=='ESR' || strtoupper($_REQUEST['category_stock'])=='CSS' )){
                 $msg='বডিরেট দিন';
             }
             elseif(isset($_POST['article_body_rate']) && $_POST['article_body_rate']=='' && strtoupper($_REQUEST['category_stock'])=='BATA'){
@@ -263,7 +263,7 @@ class ArticlesController extends Controller
 
 
                 }
-                elseif(strtoupper($category)=='DSR' || strtoupper($category)=='ESR' ){
+                elseif(strtoupper($category)=='DSR' || strtoupper($category)=='ESR' ||  strtoupper($category=='CSS') ){
                     $percentage=0.28;
 
                     $body_rate =  addslashes(trim(strtoupper($_REQUEST['article_body_rate'])));
@@ -277,9 +277,9 @@ class ArticlesController extends Controller
                         $msg='Please Give body rate';
                     }
                 }
-                elseif(strtoupper($category=='BATA') || strtoupper($category=='APEX')  || strtoupper($category=='PEGA') || strtoupper($category=='LOTTO')){
+                elseif(strtoupper($category=='BATA') || strtoupper($category=='APEX')  || strtoupper($category=='PEGA') || strtoupper($category=='LOTTO') ){
                     $percentage= (($_POST['percentage']*1) / 100);
-                    //Generic::_setTrace($_POST,false);
+                    Generic::_setTrace($_POST);
                    // Generic::_setTrace($percentage);
                     $body_rate =  addslashes(trim(strtoupper($_REQUEST['article_body_rate'])));
 
@@ -349,7 +349,7 @@ class ArticlesController extends Controller
                     //header("Location:http://localhost/dokan/options/article_add.php?category=".$category."&date=".$today);
                     $msg='added';
                     $_REQUEST['actual_rate'] = '';
-                    if($category=='VRC' || $category=='INDIAN'){
+                    if($category=='VRC' || $category=='STAR' || $category=='INDIAN'){
                         $_REQUEST['actual_rate'] = $actual_rate;
                     }
                     

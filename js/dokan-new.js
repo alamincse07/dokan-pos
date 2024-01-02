@@ -41,14 +41,28 @@ function get_cash_amount() {
       $(".final_dsr").html(dsr_sell);
       var esr_sell = parseInt($("#total_esr_taka").html());
       $(".final_esr").html(esr_sell);
+      var css_sell = parseInt($("#total_css_taka").html());
+      $(".final_css").html(css_sell);
+      var star_sell = parseInt($("#total_star_taka").html());
+      $(".final_star").html(star_sell);
       var indian_sell = parseInt($("#total_indian_taka").html());
       $(".final_indian").html(indian_sell);
       var vrc_sell = parseInt($("#total_vrc_taka").html());
       $(".final_vrc").html(vrc_sell);
 
-      console.log(bata_sell, apex_sell, pega_sell, lotto_sell, dsr_sell, esr_sell, indian_sell, vrc_sell);
+      console.table({ bata_sell, apex_sell, pega_sell, lotto_sell, dsr_sell, esr_sell, indian_sell, vrc_sell });
 
-      var final_sell = bata_sell + apex_sell + pega_sell + lotto_sell + dsr_sell + esr_sell + indian_sell + vrc_sell;
+      var final_sell =
+        bata_sell +
+        apex_sell +
+        pega_sell +
+        lotto_sell +
+        dsr_sell +
+        esr_sell +
+        css_sell +
+        star_sell +
+        indian_sell +
+        vrc_sell;
       $(".final_sell").html(final_sell);
 
       var total_due = parseInt($(".total_due").html());
@@ -223,6 +237,12 @@ function Common_add(e, obj, price, category) {
             }
             if (data.category.toLowerCase() == "esr") {
               var bn_text = "ঈগল  সম্রাটে  যোগ হয়েছে ";
+            }
+            if (data.category.toLowerCase() == "css") {
+              var bn_text = "চৌধুরী  সম্রাটে  যোগ হয়েছে ";
+            }
+            if (data.category.toLowerCase() == "star") {
+              var bn_text = "ষ্টার যোগ হয়েছে ";
             }
             if (data.category.toLowerCase() == "indian") {
               var bn_text = "INDIAN যোগ হয়েছে ";

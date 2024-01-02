@@ -81,7 +81,7 @@
 
      public static function GetAllArticles($force_write=false){
 	 
-	 RETURN $all_article_lists = self::Get_articles();
+	 return self::Get_articles();
          $blog_data_file='article_list.txt';
          if($force_write){
 

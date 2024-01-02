@@ -27,7 +27,7 @@ $dates=array();
 $tableData=array();
 $tableData2=array();
 $tableData3=array();
-$categories=['LOTTO','PEGA','APEX','DSR','ESR','BATA','VRC','INDIAN'];
+$categories=['LOTTO','PEGA','APEX','DSR','ESR','STAR','CSS','BATA','VRC','INDIAN'];
 //$con = new mysqli('localhost','root','','dokan');
 //$con= new PDO('pgsql:host=localhost;dbname=dokan', 'postgres', 'root');
 if (1){
@@ -40,6 +40,8 @@ if (1){
  SUM(CASE WHEN t.category = 'APEX' THEN 1 ELSE 0 END) AS APEX,
 SUM(CASE WHEN t.category = 'DSR' THEN 1 ELSE 0 END) AS DSR,
 SUM(CASE WHEN t.category = 'ESR' THEN 1 ELSE 0 END) AS ESR,
+SUM(CASE WHEN t.category = 'CSS' THEN 1 ELSE 0 END) AS CSS,
+SUM(CASE WHEN t.category = 'STAR' THEN 1 ELSE 0 END) AS STAR,
 SUM(CASE WHEN t.category = 'LOTTO' THEN 1 ELSE 0 END) AS LOTTO,
 SUM(CASE WHEN t.category = 'INDIAN' THEN 1 ELSE 0 END) AS INDIAN,
 SUM(CASE WHEN t.category = 'PEGA' THEN 1 ELSE 0 END) AS PEGA
@@ -58,6 +60,8 @@ limit 7";
  SUM(CASE WHEN t.category = 'APEX' THEN t.profit ELSE 0 END) AS APEX,
 SUM(CASE WHEN t.category = 'DSR' THEN t.profit ELSE 0 END) AS DSR,
 SUM(CASE WHEN t.category = 'ESR' THEN t.profit ELSE 0 END) AS ESR,
+SUM(CASE WHEN t.category = 'CSS' THEN t.profit ELSE 0 END) AS CSS,
+SUM(CASE WHEN t.category = 'STAR' THEN t.profit ELSE 0 END) AS STAR,
 SUM(CASE WHEN t.category = 'LOTTO' THEN t.profit ELSE 0 END) AS LOTTO,
 SUM(CASE WHEN t.category = 'INDIAN' THEN t.profit ELSE 0 END) AS INDIAN,
 
@@ -76,6 +80,8 @@ limit 7";
  SUM(CASE WHEN t.category = 'APEX' THEN t.price ELSE 0 END) AS APEX,
 SUM(CASE WHEN t.category = 'DSR' THEN t.price ELSE 0 END) AS DSR,
 SUM(CASE WHEN t.category = 'ESR' THEN t.price ELSE 0 END) AS ESR,
+SUM(CASE WHEN t.category = 'CSS' THEN t.price ELSE 0 END) AS CSS,
+SUM(CASE WHEN t.category = 'STAR' THEN t.price ELSE 0 END) AS STAR,
 SUM(CASE WHEN t.category = 'LOTTO' THEN t.price ELSE 0 END) AS LOTTO,
 SUM(CASE WHEN t.category = 'INDIAN' THEN t.price ELSE 0 END) AS INDIAN,
 SUM(CASE WHEN t.category = 'PEGA' THEN t.price ELSE 0 END) AS PEGA

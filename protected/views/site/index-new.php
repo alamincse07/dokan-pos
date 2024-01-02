@@ -48,7 +48,7 @@ $all_sells_man_name='<option>select</option>';
 
 
 $vrc_q=" select * from daily_sell_information where DATE(date) ='$today'  order by category desc , id asc " ;
-//die($vrc_q);
+// die($vrc_q);
 $vrc_res= Yii::app()->db->createCommand($vrc_q)->query();
 //$vrc_res_all=$vrc_res->fetch_all(MYSQLI_ASSOC);
 
@@ -63,6 +63,14 @@ $total_dsr_sold=0;
 $esr_list='';
 $total_esr_taka=0;
 $total_esr_sold=0;
+
+$css_list='';
+$total_css_taka=0;
+$total_css_sold=0;
+
+$star_list='';
+$total_star_taka=0;
+$total_star_sold=0;
 
 $bata_list='';
 $total_bata_taka=0;
@@ -87,7 +95,7 @@ $total_apex_sold=0;
 if($vrc_res){
     while($val=$vrc_res->read()){
 
-
+      
       $card = common_class::getCardDiv($val, $type='sell');
 
         if(strtoupper($val['category'])=='DSR'){
@@ -102,6 +110,21 @@ if($vrc_res){
 
             $esr_list .=$card;
         }
+
+        elseif(strtoupper($val['category'])=='CSS'){
+          $total_css_sold++;
+          $total_css_taka = ($total_css_taka+$val['price']);
+
+          $css_list .=$card;
+      }
+
+
+      elseif(strtoupper($val['category'])=='STAR'){
+        $total_star_sold++;
+        $total_star_taka = ($total_star_taka+$val['price']);
+
+        $star_list .=$card;
+    }
 
         elseif(strtoupper($val['category'])=='INDIAN'){
 
@@ -144,16 +167,19 @@ if($vrc_res){
 
 }
 
+#Generic::_setTrace($star_list);
 $total_vrc_taka= ceil($total_vrc_taka);
 $total_dsr_taka= ceil($total_dsr_taka);
 $total_esr_taka= ceil($total_esr_taka);
+$total_css_taka= ceil($total_css_taka);
+$total_star_taka= ceil($total_star_taka);
 $total_indian_taka= ceil($total_indian_taka);
 $total_pega_taka= ceil($total_pega_taka);
 $total_lotto_taka= ceil($total_lotto_taka);
 $total_bata_taka= ceil($total_bata_taka);
 $total_apex_taka= ceil($total_apex_taka);
 
-$total_all_sold = $total_vrc_sold+$total_dsr_sold+$total_esr_sold+$total_pega_sold+$total_lotto_sold+$total_indian_sold+$total_bata_sold+$total_apex_sold;
+$total_all_sold = $total_vrc_sold+$total_dsr_sold+$total_esr_sold+$total_css_sold+$total_star_sold+$total_pega_sold+$total_lotto_sold+$total_indian_sold+$total_bata_sold+$total_apex_sold;
 
 //die($all_sells_man_name);
 
@@ -445,6 +471,8 @@ if($resl){
               <a class="collapse-item" href="#vrcSale">অন্যান্য বিক্রী </a>
 
               <a class="collapse-item" href="#esrSale">ঈগল সম্রাট বিক্রী</a>
+              <a class="collapse-item" href="#cssSale">চৌধুরী সম্রাট বিক্রী</a>
+              <a class="collapse-item" href="#starSale">ষ্টার  বিক্রী</a>
               <a class="collapse-item" href="#indianSale">ইন্ডিয়ান বিক্রী</a>
 
               <a class="collapse-item" href="#bataSale">বাটা বিক্রী </a>
@@ -666,6 +694,18 @@ if($resl){
                       <div class="icon-circle badge-primary total_sold_esr_counter"><?=$total_esr_sold;?></div>
                     </div>
                     <div>ঈগল</div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="mr-3">
+                      <div class="icon-circle badge-primary total_sold_star_counter"><?=$total_star_sold;?></div>
+                    </div>
+                    <div>ষ্টার </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="mr-3">
+                      <div class="icon-circle badge-primary total_sold_css_counter"><?=$total_css_sold;?></div>
+                    </div>
+                    <div>চৌধুরী </div>
                   </a>
 
                   <a class="dropdown-item d-flex align-items-center" href="#">
@@ -1002,6 +1042,56 @@ if($resl){
               </div>
             </div>
           </div>
+
+        <!-- Begin Page Content -->
+        <div id="cssSale" class="container-fluid content-tab">
+            <!-- Page Heading -->
+
+            <!-- Content Row -->
+            <div class="row">
+              <!-- Bar Chart -->
+              <div class="card shadow mb-1 col-12">
+                <div class="card-header py-3">
+                  <div class="row">
+                    <div class="col-8 font-weight-bold text-primary">চৌধুরী  সম্রাট বিক্রয় তালিকা</div>
+                    <div class="col-4 font-weight-bold text-primary text-uppercase mb-1" id="total_css_taka"><?=$total_css_taka;?></div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="row chart-bar2 css_products_sold">
+                     <?=$css_list;?>
+                  </div>
+                  <hr />
+                </div>
+              </div>
+            </div>
+          </div>
+
+           <!-- Begin Page Content -->
+         <div id="starSale" class="container-fluid content-tab">
+            <!-- Page Heading -->
+
+            <!-- Content Row -->
+            <div class="row">
+              <!-- Bar Chart -->
+              <div class="card shadow mb-1 col-12">
+                <div class="card-header py-3">
+                  <div class="row">
+                    <div class="col-8 font-weight-bold text-primary">ষ্টার  বিক্রয় তালিকা</div>
+                    <div class="col-4 font-weight-bold text-primary text-uppercase mb-1" id="total_star_taka"><?=$total_star_taka;?></div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="row chart-bar2 star_products_sold">
+                     <?=$star_list;?>
+                  </div>
+                  <hr />
+                </div>
+              </div>
+            </div>
+          </div>
+
+
 
           <!-- Begin Page Content -->
           <div id="indianSale" class="container-fluid content-tab">
@@ -1604,6 +1694,16 @@ if($resl){
                     </li>
 
                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                    ষ্টার বিক্রী
+                      <span class="badge badge-light badge-pill mx-5 final_star">0</span>
+                    </li>
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                    চৌধুরী সম্রাট বিক্রী
+                      <span class="badge badge-light badge-pill mx-5 final_css">0</span>
+                    </li>
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
                       ইন্ডিয়ান বিক্রী
                       <span class="badge badge-light badge-pill mx-5 final_indian">0</span>
                     </li>
@@ -1698,7 +1798,7 @@ if($resl){
         </div>
         <!-- End of Main Content -->
 
-        <!-- Footer -->
+               <!-- Footer -->
         <footer class="sticky-footer bg-white">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">

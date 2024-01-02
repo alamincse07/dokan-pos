@@ -87,6 +87,8 @@ $base_url= Yii::app()->request->baseUrl;
                             <option value="VRC">VRC</option>
                             <option value="INDIAN">INDIAN</option>
                             <option value="ESR">ESR</option>
+                            <option value="CSS">CSS</option>
+                            <option value="STAR">STAR</option>
                             <option value="DSR">DSR</option>
 
                         </select>
