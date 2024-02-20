@@ -126,7 +126,7 @@ window.price_list=[];
 
             var cat = $(obj).val();
 
-            if (cat == 'DSR' || cat == 'ESR' || cat =='CSS' ){
+            if (cat == 'DSR' || cat == 'ESR'){
 
                 $('.single_pair_rate').hide();
                 $('.commision').hide();

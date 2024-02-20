@@ -213,7 +213,7 @@ class ArticlesController extends Controller
                 $msg='মোট জোড়া দিন';
 
             }
-			elseif(strtoupper($_REQUEST['category_stock'])=='VRC' || strtoupper($_REQUEST['category_stock'])=='STAR'){
+			elseif(strtoupper($_REQUEST['category_stock'])=='VRC' || strtoupper($_REQUEST['category_stock'])=='STAR' ||   strtoupper($_REQUEST['category_stock'])=='CSS'){
 				 if(   (isset($_POST['article_total_taka']) && $_POST['article_total_taka']=='')  && (isset($_POST['article_actual_rate']) && $_POST['article_actual_rate']=='')   ){
 	                $msg='মোট কেনাদাম দিন';
 
@@ -263,7 +263,7 @@ class ArticlesController extends Controller
 
 
                 }
-                elseif(strtoupper($category)=='DSR' || strtoupper($category)=='ESR' ||  strtoupper($category=='CSS') ){
+                elseif(strtoupper($category)=='DSR' || strtoupper($category)=='ESR' ){
                     $percentage=0.28;
 
                     $body_rate =  addslashes(trim(strtoupper($_REQUEST['article_body_rate'])));
@@ -349,7 +349,7 @@ class ArticlesController extends Controller
                     //header("Location:http://localhost/dokan/options/article_add.php?category=".$category."&date=".$today);
                     $msg='added';
                     $_REQUEST['actual_rate'] = '';
-                    if($category=='VRC' || $category=='STAR' || $category=='INDIAN'){
+                    if($category=='VRC' || $category=='STAR' || $category=='CSS' || $category=='INDIAN'){
                         $_REQUEST['actual_rate'] = $actual_rate;
                     }
                     

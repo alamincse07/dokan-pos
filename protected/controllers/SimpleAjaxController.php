@@ -159,7 +159,7 @@ class SimpleAjaxController extends Controller
 
 
         }
-        $up_q="update articles set total_pair=total_pair+1 , total_taka= total_taka+actual_price,added_date='$today'  where  upper(article)='$article' ";
+        $up_q="update articles set total_pair=total_pair+1 , total_taka= total_taka+actual_price  where  upper(article)='$article' ";
 //die($up_q);
         $res=Yii::app()->db->createCommand($up_q)->execute();
 
