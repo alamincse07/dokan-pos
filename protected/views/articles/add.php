@@ -1,5 +1,125 @@
 ﻿<?php
 
+$names= [
+    "জেঃ ২ পার্ট" =>2,
+    "জেঃ ২ পার্ট বেল" =>2,
+    "জেঃ ২ ফিতা" =>2,
+    "জেঃ আং" =>2,
+    "জেঃ একট" =>2,
+    "জেঃ বেল" =>2,
+    "জেঃ নাগিন বেল" =>2,
+    "জেঃ সাচ্চি বেল" =>2,
+    "জেঃ আং বেল" =>2,
+    "জেঃ চায়না বেল" =>2,
+    "জেঃ ফ্লাট বেল" =>2,
+    "জেঃ ফ্লাট ২ ফিতা" =>2,
+    "জেঃ ফ্লাট ২ পার্ট" =>2,
+    "জেঃ ফ্লাট আং" =>2,
+    "জেঃ ফ্লাট আং বেল" =>2,
+    "জেঃ ফ্লাট একট" =>2,
+    "জেঃ কলাপুরী ২ পার্ট" =>2,
+    "জেঃ কলাপুরী আং" =>2,
+    "জেঃ নাগিন আং" =>2,
+    "জেঃ ওভার ২ ফিতা" =>3,
+    "জেঃ ওভার ২ পার্ট" =>3,
+    "জেঃ ওভার আং" =>3,
+    "জেঃ ওভার আং বেল" =>3,
+    "জেঃ ওভার বেল" =>3,
+    "জেঃ ওভার একট" =>3,
+    "জেঃ লোফার" =>1,
+    "জেঃ সু" =>0,
+    "জেঃ সাইকেল সু" =>2,
+    "জেঃ হাফ সু" =>2,
+    "জেঃ ১/৪ বেল" =>8,
+    "জেঃ ১/৪ নাগিন বেল" =>8,
+    "জেঃ ১/৪ মোটা বেল" =>8,
+    "জেঃ ১/৪ ২ ফিতা" =>8,
+    "জেঃ ১/৪  আং" =>8,
+    "জেঃ ১/৪ ২ পার্ট" =>8,
+    "জেঃ ১/৪ লোফার" =>8,
+    "জেঃ ১/৪ সু" =>8,
+    "জেঃ ১/৪ সাইকেল সু" =>8,
+    "জেঃ ৬/৯ হাফ সু বেল" =>8,
+    "জেঃ ৬/৯ বেল" =>8,
+    "জেঃ ৬/৯ মোটা বেল" =>8,
+    "জেঃ ৬/৯ নাগিন বেল" =>8,
+    "জেঃ ৬/৯ ২ ফিতা" =>8,
+    "জেঃ ৬/৯  আং" =>8,
+    "জেঃ ৬/৯ ২ পার্ট" =>8,
+    "জেঃ ৬/৯ লোফার" =>8,
+    "জেঃ ৬/৯ সু" =>8,
+    "জেঃ ৬/৯ সাইকেল সু" =>8,
+    "জেঃ ৬/৯ হাফ সু বেল" =>8,
+    "জেঃ বেবি ২ ফিতা" =>8,
+    "জেঃ বেবি আং" =>8,
+    "জেঃ বেবি বেল" =>8,
+    "জেঃ বেবি সাইকেল সু" =>8,
+    "জেঃ বেবি সু" =>8,
+    
+    
+    "লে ঢালাই ২ ফিতা কাজ" =>4,
+    "লে ঢালাই ২ ফিতা" =>4,
+    "লে ঢালাই আং" =>4,
+    "লে ঢালাই একট" =>4,
+    "লে ঢালাই একট কাজ" =>4,
+    "লে ঢালাই বেল" =>4,
+    "লে ফ্লাট ২ পার্ট" =>4,
+    "লে ফ্লাট ২ ফিতা" =>4,
+    "লে ফ্লাট ২ ফিতা কাজ" =>4,
+    "লে ফ্লাট আং" =>4,
+    "লে ফ্লাট বেল" =>4,
+    "লে পাম্পি" =>4,
+    "লে পাম্পি লোফার" =>4,
+    "লে হাফ সু" =>4,
+    "লে হাফ বেল" =>4,
+    "লে বয়স্ক  ২ ফিতা" =>4,
+    "লে বয়স্ক  আং" =>4,
+    "লে বয়স্ক  বেল" =>4,
+    "লে বয়স্ক  একট" =>4,
+    "লে বুস্টন একট কাজ" =>4,
+    "লে বুস্টন একট" =>4,
+    "লে বুস্টন একট চায়না" =>4,
+    "লে বুস্টন ২ ফিতা" =>4,
+    "লে বুস্টন ২ ফিতা কাজ" =>4,
+    "লে বুস্টন ২ ফিতা চায়না" =>4,
+    "লে বুস্টন ২ ফিতা কাজ" =>4,
+    
+    
+    "লে ওভার ২ ফিতা" =>3,
+    "লে ওভার ২ ফিতা কাজ" =>3,
+    "লে ওভার আং" =>3,
+    "লে ওভার বেল" =>3,
+    "লে ওভার ২ পার্ট" =>3,
+    "লে ওভার বেল" =>3,
+    "লে ওভার একট" =>3,
+    "লে ১/৪ ঢালাই বেল" =>9,
+    "লে ১/৪ ২ পার্ট" =>9,
+    "লে ১/৪ ২ ফিতা" =>9,
+    "লে ১/৪ ফ্লাট ২ ফিতা" =>9,
+    "লে ১/৪ ঢালাই আং" =>9,
+    "লে ১/৪ ফ্লাট আং" =>9,
+    "লে ১/৪ পাম্পি" =>9,
+    "লে ১/৪ হাফ সু বেল" =>9,
+    "লে ছিট ঢালাই বেল" =>9,
+    "লে ছিট ২ পার্ট" =>9,
+    "লে ছিট ২ ফিতা" =>9,
+    "লে ছিট ফ্লাট ২ ফিতা" =>9,
+    "লে ছিট ঢালাই আং" =>9,
+    "লে ছিট ফ্লাট আং" =>9,
+    "লে ছিট পাম্পি" =>9,
+    "লে ছিট হাফ সু বেল" =>9,
+    "লে বেবি ২ ফিতা" =>9,
+    "লে বেবি আং" =>9,
+    "লে বেবি একট" =>9,
+    "লে বেবি বেল" =>9,
+    "লে বেবি বেল চায়না" =>9,
+    "লে বেবি পাম্পি" =>9
+];
+
+$namesList='';
+foreach($names as $k=>$v){
+$namesList.='<option value="'.$k.'">'.$k.'</option>';
+}
 
 $all_articles='';
 $menus='';
@@ -20,6 +140,9 @@ $base_url= Yii::app()->request->baseUrl;
 
 <script src="<?=$base_url?>/js/themes/jquery-ui.custom.min.js" type="text/javascript"></script>
 <script>
+
+var nameList = <?=json_encode($names)?>;
+
 window.price_list=[];
     $(document).ready(function(){
     
@@ -68,16 +191,16 @@ window.price_list=[];
         var art = $(obj).val();
      
     
-    if(art !='' && art!='undefined'&& window.price_list[art]!='undefined' && window.price_list[art] > 1)
-       {
-           
-        $('input[name="article_body_rate"]').val(window.price_list[art]);
+        if(art !='' && art!='undefined'&& window.price_list[art]!='undefined' && window.price_list[art] > 1)
+        {
+            
+            $('input[name="article_body_rate"]').val(window.price_list[art]);
 
-       }else{
+        }else{
 
-        $('input[name="article_body_rate"]').val('');
-       }
-}
+            $('input[name="article_body_rate"]').val('');
+        }
+    }
     function calculateSum() {
 
 		var sum = 0;
@@ -200,7 +323,12 @@ window.price_list=[];
                     if(data.status=='added')
                     {
 
+
                         $('#hintList').val('');
+                        if(data.info.last_insert_id){
+                            $('#last_insert_id').val(data.info.last_insert_id);
+                        }
+                       
                         $('[name="hint__sexyCombo"]').val('');
                         $('[name="hint__sexyComboHidden"]').val('');
                         addRow(print_data);
@@ -268,7 +396,36 @@ function checkSubmit(e){
     
  
 }
-        
+       
+
+function setArticle(){
+    if(event.currentTarget.checked){
+        $('#art_list').hide();
+        $('#autoArticle').val('1');
+        GenerateArticle();
+    }else{
+        $('#art_list').show();
+        $('#autoArticle').val('0');
+    }
+}
+
+function GenerateArticle(){
+    var art= '';
+    var hint = $('#hintList').val();
+    var code = nameList[hint];
+    var lastid = Number($('#last_insert_id').val());
+    var autoArticle = Number($('#autoArticle').val());
+    var category= $('#cat').val()[0];
+    if(lastid && code && category && autoArticle){
+        var new_id= lastid + 1;
+        art = "" + category + '-' + code + new_id;
+        $("input[name=stock_article__sexyCombo]").val(art);
+        $('#common_article').val(art);
+    }
+    
+
+
+}
 
 </script>
 
@@ -323,8 +480,18 @@ function checkSubmit(e){
             <div class="single-search " >
 
                 <span  class="input_label">আর্টিকেল  </span>
-                 
-                <span id="art_list"> </span>
+
+        <?php
+            $style = '';
+            $auto=0;
+            if(in_array($selected, ['DSR','ESR','STAR','CSS'])){
+                $style='hidden';
+                $auto=1;
+              echo '  <span  class="input_label js_auto_article btn btn-info">Auto <input onChange="setArticle()" type="checkbox" class="largerCheckbox" checked /> </span>';
+            }
+        ?>
+                   
+                <span class="art <?=$style?>" id="art_list"> </span>
 
 
             </div>
@@ -338,139 +505,17 @@ function checkSubmit(e){
 
             <div class="single-search" >
 
+                <input type='hidden' id='last_insert_id' value='<?=$lastId?>' />
+                <input type='hidden' name="autoArticle" id='autoArticle' value='<?=$auto?>' />
+                
                 <span  class="input_label"> বক্সের উপর লেখ  </span>
-                <select id="hintList" class="input_label select" name="hint" >
+                <select id="hintList" onchange="GenerateArticle()" class="input_label select" name="hint" >
                         <option value=""></option>
-                        <option value="জেঃ ২ পার্ট">জেঃ ২ পার্ট</option>
-                        <option value="জেঃ ২ পার্ট বেল">জেঃ ২ পার্ট বেল</option>
-                        <option value="জেঃ ২ ফিতা">জেঃ ২ ফিতা</option>
-                        <option value="জেঃ আং">জেঃ আং</option>
-                        <option value="জেঃ একট">জেঃ একট</option>
-                        <option value="জেঃ বেল">জেঃ বেল</option>
-                        <option value="জেঃ নাগিন বেল">জেঃ নাগিন বেল</option>
-                        <option value="জেঃ সাচ্চি বেল">জেঃ সাচ্চি বেল</option>
-                        <option value="জেঃ আং বেল">জেঃ আং বেল</option>
-                        <option value="জেঃ চায়না বেল">জেঃ চায়না বেল</option>
-                        <option value="জেঃ ফ্লাট বেল ">জেঃ ফ্লাট বেল </option>
-                        <option value="জেঃ ফ্লাট ২ ফিতা">জেঃ ফ্লাট ২ ফিতা</option>
-                        <option value="জেঃ ফ্লাট ২ পার্ট">জেঃ ফ্লাট ২ পার্ট</option>
-                        <option value="জেঃ ফ্লাট আং">জেঃ ফ্লাট আং</option>
-                        <option value="জেঃ ফ্লাট আং বেল">জেঃ ফ্লাট আং বেল</option>
-                        <option value="জেঃ ফ্লাট একট">জেঃ ফ্লাট একট</option>
-                        <option value="জেঃ কলাপুরী ২ পার্ট">জেঃ কলাপুরী ২ পার্ট</option>
-                        <option value="জেঃ কলাপুরী আং">জেঃ কলাপুরী আং</option>
-                        <option value="জেঃ নাগিন আং ">জেঃ নাগিন আং </option>
-
-                        <option value="জেঃ ওভার ২ ফিতা">জেঃ ওভার ২ ফিতা</option>
-                        <option value="জেঃ ওভার ২ পার্ট ">জেঃ ওভার ২ পার্ট </option>
-                        <option value="জেঃ ওভার আং">জেঃ ওভার আং</option>
-                        <option value="জেঃ ওভার আং বেল">জেঃ ওভার আং বেল</option>
-                        <option value="জেঃ ওভার বেল">জেঃ ওভার বেল</option>
-                        <option value="জেঃ ওভার একট">জেঃ ওভার একট</option>
-
-                        <option value="জেঃ লোফার">জেঃ লোফার</option>
-                        <option value="জেঃ সু">জেঃ সু</option>
-                        <option value="জেঃ সাইকেল সু">জেঃ সাইকেল সু</option>
-                        <option value="জেঃ হাফ সু">জেঃ হাফ সু</option>
-                        <option value="জেঃ ১/৪ বেল ">জেঃ ১/৪ বেল </option>
-                        <option value="জেঃ ১/৪ নাগিন বেল">জেঃ ১/৪ নাগিন বেল</option>
-                        <option value="জেঃ ১/৪ মোটা বেল">জেঃ ১/৪ মোটা বেল</option>
-                        <option value="জেঃ ১/৪ ২ ফিতা">জেঃ ১/৪ ২ ফিতা</option>
-
-                        <option value="জেঃ ১/৪  আং">জেঃ ১/৪  আং</option>
-                        <option value="জেঃ ১/৪ ২ পার্ট">জেঃ ১/৪ ২ পার্ট</option>
-                        <option value="জেঃ ১/৪ লোফার">জেঃ ১/৪ লোফার</option>
-                        <option value="জেঃ ১/৪ সু">জেঃ ১/৪ সু</option>
-                        <option value="জেঃ ১/৪ সাইকেল সু">জেঃ ১/৪ সাইকেল সু</option>
-                        <option value="জেঃ ৬/৯ হাফ সু বেল">জেঃ ৬/৯ হাফ সু বেল</option>
-
-
-                        <option value="জেঃ ৬/৯ বেল">জেঃ ৬/৯ বেল</option>
-                        <option value="জেঃ ৬/৯ মোটা বেল">জেঃ ৬/৯ মোটা বেল</option>
-                        <option value="জেঃ ৬/৯ নাগিন বেল">জেঃ ৬/৯ নাগিন বেল</option>
-                        <option value="জেঃ ৬/৯ ২ ফিতা">জেঃ ৬/৯ ২ ফিতা</option>
-
-                        <option value="জেঃ ৬/৯  আং">জেঃ ৬/৯  আং</option>
-                        <option value="জেঃ ৬/৯ ২ পার্ট">জেঃ ৬/৯ ২ পার্ট</option>
-                        <option value="জেঃ ৬/৯ লোফার">জেঃ ৬/৯ লোফার</option>
-                        <option value="জেঃ ৬/৯ সু">জেঃ ৬/৯ সু</option>
-                        <option value="জেঃ ৬/৯ সাইকেল সু">জেঃ ৬/৯ সাইকেল সু</option>
-                        <option value="জেঃ ৬/৯ হাফ সু বেল">জেঃ ৬/৯ হাফ সু বেল</option>
-
-
-                        <option value="জেঃ বেবি ২ ফিতা">জেঃ বেবি ২ ফিতা</option>
-                        <option value="জেঃ বেবি আং">জেঃ বেবি আং</option>
-                        <option value="জেঃ বেবি বেল">জেঃ বেবি বেল</option>
-                        <option value="জেঃ বেবি সাইকেল সু">জেঃ বেবি সাইকেল সু</option>
-                        <option value="জেঃ বেবি সু">জেঃ বেবি সু</option>
-
-                    
-
-                        <option value="লে ঢালাই ২ ফিতা কাজ">লে ঢালাই ২ ফিতা কাজ</option>
-                        <option value="লে ঢালাই ২ ফিতা">লে ঢালাই ২ ফিতা</option>
-                        <option value="লে ঢালাই আং">লে ঢালাই আং</option>
-                        <option value="লে ঢালাই একট">লে ঢালাই একট</option>
-                        <option value="লে ঢালাই একট কাজ">লে ঢালাই একট কাজ</option>
-                        <option value="লে ঢালাই বেল">লে ঢালাই বেল</option>
-
-                        <option value="লে ফ্লাট ২ পার্ট ">লে ফ্লাট ২ পার্ট </option>
-                        <option value="লে ফ্লাট ২ ফিতা">লে ফ্লাট ২ ফিতা</option>
-                        <option value="লে ফ্লাট ২ ফিতা কাজ">লে ফ্লাট ২ ফিতা কাজ</option>
-                        <option value="লে ফ্লাট আং">লে ফ্লাট আং</option>
-                        <option value="লে ফ্লাট বেল">লে ফ্লাট বেল</option>
-                        <option value="লে পাম্পি">লে পাম্পি</option>
-                        <option value="লে পাম্পি লোফার ">লে পাম্পি লোফার </option>
-                        <option value="লে হাফ সু">লে হাফ সু</option>
-                        <option value="লে হাফ বেল">লে হাফ বেল</option>
-                        <option value="লে বয়স্ক ২ ফিতা">লে বয়স্ক  ২ ফিতা</option>
-                 
-                        <option value="লে বয়স্ক  আং">লে বয়স্ক  আং</option>
-                        <option value="লে বয়স্ক  বেল">লে বয়স্ক  বেল</option>
-                        <option value="লে বয়স্ক  একট">লে বয়স্ক  একট</option>
-
-                        <option value="লে বুস্টন একট কাজ">লে বুস্টন একট কাজ</option>
-                        <option value="লে বুস্টন একট">লে বুস্টন একট</option>
-                        <option value="লে বুস্টন একট চায়না">লে বুস্টন একট চায়না</option>
-                        <option value="লে বুস্টন ২ ফিতা">লে বুস্টন ২ ফিতা </option>
-                        <option value="লে বুস্টন ২ ফিতা চায়না">লে বুস্টন ২ ফিতা চায়না</option>
-                        <option value="লে বুস্টন ২ ফিতা কাজ">লে বুস্টন ২ ফিতা কাজ</option>
-                        <option value="লে ওভার ২ ফিতা">লে ওভার ২ ফিতা</option>
-                        <option value="লে ওভার ২ ফিতা কাজ">লে ওভার ২ ফিতা কাজ</option>
-                        <option value="লে ওভার আং">লে ওভার আং</option>
-                        <option value="লে ওভার ২ পার্ট">লে ওভার ২ পার্ট </option>
-                        <option value="লে ওভার বেল">লে ওভার বেল</option>
-                        <option value="লে ওভার একট">লে ওভার একট</option>
-                        <option value="লে ১/৪ ঢালাই বেল">লে ১/৪ ঢালাই বেল</option>
-                        <option value="লে ১/৪ ২ পার্ট">লে ১/৪ ২ পার্ট</option>
-                        <option value="লে ১/৪ ২ ফিতা">লে ১/৪ ২ ফিতা</option>
-                        <option value="লে ১/৪ ফ্লাট ২ ফিতা">লে ১/৪ ফ্লাট ২ ফিতা</option>
-                        <option value="লে ১/৪ ঢালাই আং">লে ১/৪ ঢালাই আং</option>
-                        <option value="লে ১/৪ ফ্লাট আং">লে ১/৪ ফ্লাট আং</option>
-                        <option value="লে ১/৪ পাম্পি">লে ১/৪ পাম্পি</option>
-                        <option value="লে ১/৪ হাফ সু বেল">লে ১/৪ হাফ সু বেল</option>
-
-                        <option value="লে ছিট ঢালাই বেল">লে ছিট ঢালাই বেল</option>
-                        <option value="লে ছিট ২ পার্ট">লে ছিট ২ পার্ট</option>
-                        <option value="লে ছিট ২ ফিতা">লে ছিট ২ ফিতা</option>
-                        <option value="লে ছিট ফ্লাট ২ ফিতা">লে ছিট ফ্লাট ২ ফিতা</option>
-                        <option value="লে ছিট ঢালাই আং">লে ছিট ঢালাই আং</option>
-                        <option value="লে ছিট ফ্লাট আং">লে ছিট ফ্লাট আং</option>
-                        <option value="লে ছিট পাম্পি">লে ছিট পাম্পি</option>
-                        <option value="লে ছিট হাফ সু বেল">লে ছিট হাফ সু বেল</option>
-
-                        <option value="লে বেবি ২ ফিতা">লে বেবি ২ ফিতা</option>
-                        <option value="লে বেবি আং">লে বেবি আং</option>
-                        <option value="লে বেবি একট">লে বেবি একট</option>
-                        <option value="লে বেবি বেল">লে বেবি বেল</option>
-                        <option value="লে বেবি বেল চায়না">লে বেবি বেল চায়না</option>
-                        <option value="লে বেবি পাম্পি">লে বেবি পাম্পি</option>
-
+                        <?=$namesList ?>
 
                 </select>
 
-                <!-- <input class="text_sinput  fors_article" id="hintxList"  list="hints" type="text"   name="hint"> -->
-
-
+               
             </div>
             <div class="single-search" >
 
@@ -491,20 +536,14 @@ function checkSubmit(e){
                     <option value="LOTTO">LOTTO</option>
                     <option value="APEX">APEX</option>
 
-
-
-
                 </select>
 
             </div>
             <div class="single-search" >
 
-
                 <span  class="input_label"> জোড়া</span>
 
                 <input required="true"  class="text_input  for_article"   VALUE="1" type="text"   name="article_pair">
-
-
 
             </div>
 
@@ -653,6 +692,10 @@ span#art_list {
         width:98% !important;
     }
     
+    input.largerCheckbox {
+            width: 25px;
+            height: 25px;
+        }
 
 /* input#hintList {
     width: 150px;

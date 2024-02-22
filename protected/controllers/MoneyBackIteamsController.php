@@ -137,6 +137,17 @@ class MoneyBackIteamsController extends Controller
 		));
 	}
 
+	public function actionAdd(){
+        $list = ["12135","12135","2443","10128","10128","10128","12179","18128","11905","2453","2453","39176","39176","3274","12172","1003","3630","4335","4335","4335","39126","39181","39181","4958","10342","10342","10356","4955","0987","4809","4809","4809","4829","8401","5295","6658","50138","95171","95140","8725"];
+        foreach ($list as $article) {
+            $up_q="update articles set total_pair=total_pair+1 , total_taka= total_taka+actual_price  where  upper(article)='$article' ";
+            print($up_q);
+            $res=Yii::app()->db->createCommand($up_q)->execute();
+            
+        }
+
+ }
+
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
