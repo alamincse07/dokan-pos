@@ -373,8 +373,7 @@ class ArticlesController extends Controller
                
 
                 // $sql=" Insert into articles set article='$article', category='$category', total_pair=$pair, total_taka=$total_taka,actual_price='$actual_rate',body_rate='$body_rate',added_date=NOW(),last_added_pair=$pair,last_added_taka=$total_taka, orginal_article='$orginal_article' on duplicate key update body_rate=$body_rate , total_pair=(total_pair+$pair), total_taka=(total_taka+$total_taka),added_date=NOW(),last_added_pair=$pair,last_added_taka=$total_taka".$upacp.";";
-                $sql2 = " Insert into last_added_items set article='$article', category='$category', total_pair=$pair, total_taka=$total_taka,actual_price='$actual_rate',body_rate='$body_rate',added_date=NOW(),last_added_pair=$pair,last_added_taka=$total_taka, orginal_article='$orginal_article' on duplicate key update  total_pair=(total_pair+$pair), total_taka=(total_taka+$total_taka),added_date=NOW(),last_added_pair=$pair,last_added_taka=$total_taka;";
-
+                
                 $res = 0;
                 if ($msg == "ok") {
                     $is_new_record = false;
@@ -382,6 +381,8 @@ class ArticlesController extends Controller
                         "article" => $article,
                     ]);
                     $body_rate = intval($body_rate) * 1;
+                    $sql2 = " Insert into last_added_items set article='$article', category='$category', total_pair=$pair, total_taka=$total_taka,actual_price='$actual_rate',body_rate='$body_rate',added_date=NOW(),last_added_pair=$pair,last_added_taka=$total_taka, orginal_article='$orginal_article' on duplicate key update  total_pair=(total_pair+$pair), total_taka=(total_taka+$total_taka),added_date=NOW(),last_added_pair=$pair,last_added_taka=$total_taka;";
+
                     if ($model) {
                         if($_REQUEST['autoArticle'] ==1){
                             die(json_encode(["status" => "Article can't be auto", "info" => $_REQUEST]));
