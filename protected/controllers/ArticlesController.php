@@ -226,8 +226,11 @@ class ArticlesController extends Controller
             ) {
                 $msg = "মোট জোড়া দিন";
             } 
+            elseif($_REQUEST['autoArticle'] ==1 && $_REQUEST['hint__sexyCombo']==''){
+                $msg = "বক্সের উপর লেখ";
+               }
+
             
-            hint__sexyCombo
             elseif (
                 strtoupper($_REQUEST["category_stock"]) == "VRC" ||
                 strtoupper($_REQUEST["category_stock"]) == "STAR" ||
