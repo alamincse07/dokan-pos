@@ -125,7 +125,7 @@
 
      public static  function Get_articles(){
         global $db;
-         $ar_q= "SELECT article,body_rate FROM articles group by  article ";
+         $ar_q= "SELECT article,body_rate FROM articles where total_pair > 0 group by  article ORDER BY article";
          $res_ar_q= Yii::app()->db->createCommand($ar_q)->query();
 
          $all_articles='';

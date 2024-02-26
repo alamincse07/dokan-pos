@@ -484,7 +484,7 @@ function GenerateArticle(){
         <?php
             $style = '';
             $auto=0;
-            if(in_array($selected, ['DSR','ESR','STAR','CSS'])){
+            if(in_array($selected, ['DSR','ESR','STAR','CSS', 'VRC'])){
                 $style='hidden';
                 $auto=1;
               echo '  <span  class="input_label js_auto_article btn btn-info">Auto <input onChange="setArticle()" type="checkbox" class="largerCheckbox" checked /> </span>';

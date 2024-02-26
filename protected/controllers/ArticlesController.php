@@ -449,7 +449,7 @@ class ArticlesController extends Controller
         }
 
         $lastId = 0;
-        if(isset($_REQUEST['cat']) && in_array($_REQUEST['cat'], ['DSR','ESR', 'STAR', 'CSS'])){
+        if(isset($_REQUEST['cat']) && in_array($_REQUEST['cat'], ['DSR','ESR', 'VRC', 'STAR', 'CSS'])){
 
              $lastId =  $lastId = Yii::app()->db->createCommand('SELECT id FROM articles ORDER BY id DESC LIMIT 1')->queryScalar();
         }

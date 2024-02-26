@@ -113,8 +113,8 @@ class SimpleAjaxController extends Controller
     }
     public function  actionArticleInfo(){
         if(isset($_REQUEST['all'])){
-            $common_obj= new common_class();
-            $all_articles=$common_obj->GetAllArticles();
+           //  $common_obj= new common_class();
+            $all_articles=common_class::Get_articles();
             die(json_encode(array('status'=>'success','all_articles'=>$all_articles['dropdown_option'],'price_list'=>$all_articles['price_list'])));
         }else{
 
