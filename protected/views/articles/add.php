@@ -1,9 +1,9 @@
 ﻿<?php
 
 $names= [
-    "জেঃ ২ পার্ট" =>2,
-    "জেঃ ২ পার্ট বেল" =>2,
-    "জেঃ ২ ফিতা" =>2,
+    "জেঃ ২পার্ট" =>2,
+    "জেঃ ২পার্ট বেল" =>2,
+    "জেঃ ২ফিতা" =>2,
     "জেঃ আং" =>2,
     "জেঃ একট" =>2,
     "জেঃ বেল" =>2,
@@ -12,30 +12,30 @@ $names= [
     "জেঃ আং বেল" =>2,
     "জেঃ চায়না বেল" =>2,
     "জেঃ ফ্লাট বেল" =>2,
-    "জেঃ ফ্লাট ২ ফিতা" =>2,
-    "জেঃ ফ্লাট ২ পার্ট" =>2,
+    "জেঃ ফ্লাট ২ফিতা" =>2,
+    "জেঃ ফ্লাট ২পার্ট" =>2,
     "জেঃ ফ্লাট আং" =>2,
     "জেঃ ফ্লাট আং বেল" =>2,
     "জেঃ ফ্লাট একট" =>2,
-    "জেঃ কলাপুরী ২ পার্ট" =>2,
+    "জেঃ কলাপুরী ২পার্ট" =>2,
     "জেঃ কলাপুরী আং" =>2,
     "জেঃ নাগিন আং" =>2,
-    "জেঃ ওভার ২ ফিতা" =>3,
-    "জেঃ ওভার ২ পার্ট" =>3,
+    "জেঃ ওভার ২ফিতা" =>3,
+    "জেঃ ওভার ২পার্ট" =>3,
     "জেঃ ওভার আং" =>3,
     "জেঃ ওভার আং বেল" =>3,
     "জেঃ ওভার বেল" =>3,
     "জেঃ ওভার একট" =>3,
     "জেঃ লোফার" =>1,
-    "জেঃ সু" =>0,
+    "জেঃ সু" =>1,
     "জেঃ সাইকেল সু" =>2,
     "জেঃ হাফ সু" =>2,
     "জেঃ ১/৪ বেল" =>8,
     "জেঃ ১/৪ নাগিন বেল" =>8,
     "জেঃ ১/৪ মোটা বেল" =>8,
-    "জেঃ ১/৪ ২ ফিতা" =>8,
+    "জেঃ ১/৪ ২ফিতা" =>8,
     "জেঃ ১/৪  আং" =>8,
-    "জেঃ ১/৪ ২ পার্ট" =>8,
+    "জেঃ ১/৪ ২পার্ট" =>8,
     "জেঃ ১/৪ লোফার" =>8,
     "জেঃ ১/৪ সু" =>8,
     "জেঃ ১/৪ সাইকেল সু" =>8,
@@ -43,72 +43,72 @@ $names= [
     "জেঃ ৬/৯ বেল" =>8,
     "জেঃ ৬/৯ মোটা বেল" =>8,
     "জেঃ ৬/৯ নাগিন বেল" =>8,
-    "জেঃ ৬/৯ ২ ফিতা" =>8,
+    "জেঃ ৬/৯ ২ফিতা" =>8,
     "জেঃ ৬/৯  আং" =>8,
-    "জেঃ ৬/৯ ২ পার্ট" =>8,
+    "জেঃ ৬/৯ ২পার্ট" =>8,
     "জেঃ ৬/৯ লোফার" =>8,
     "জেঃ ৬/৯ সু" =>8,
     "জেঃ ৬/৯ সাইকেল সু" =>8,
     "জেঃ ৬/৯ হাফ সু বেল" =>8,
-    "জেঃ বেবি ২ ফিতা" =>8,
+    "জেঃ বেবি ২ফিতা" =>8,
     "জেঃ বেবি আং" =>8,
     "জেঃ বেবি বেল" =>8,
     "জেঃ বেবি সাইকেল সু" =>8,
     "জেঃ বেবি সু" =>8,
     
     
-    "লে ঢালাই ২ ফিতা কাজ" =>4,
-    "লে ঢালাই ২ ফিতা" =>4,
+    "লে ঢালাই ২ফিতা কাজ" =>4,
+    "লে ঢালাই ২ফিতা" =>4,
     "লে ঢালাই আং" =>4,
     "লে ঢালাই একট" =>4,
     "লে ঢালাই একট কাজ" =>4,
     "লে ঢালাই বেল" =>4,
-    "লে ফ্লাট ২ পার্ট" =>4,
-    "লে ফ্লাট ২ ফিতা" =>4,
-    "লে ফ্লাট ২ ফিতা কাজ" =>4,
+    "লে ফ্লাট ২পার্ট" =>4,
+    "লে ফ্লাট ২ফিতা" =>4,
+    "লে ফ্লাট ২ফিতা কাজ" =>4,
     "লে ফ্লাট আং" =>4,
     "লে ফ্লাট বেল" =>4,
     "লে পাম্পি" =>4,
     "লে পাম্পি লোফার" =>4,
     "লে হাফ সু" =>4,
     "লে হাফ বেল" =>4,
-    "লে বয়স্ক  ২ ফিতা" =>4,
+    "লে বয়স্ক  ২ফিতা" =>4,
     "লে বয়স্ক  আং" =>4,
     "লে বয়স্ক  বেল" =>4,
     "লে বয়স্ক  একট" =>4,
     "লে বুস্টন একট কাজ" =>4,
     "লে বুস্টন একট" =>4,
     "লে বুস্টন একট চায়না" =>4,
-    "লে বুস্টন ২ ফিতা" =>4,
-    "লে বুস্টন ২ ফিতা কাজ" =>4,
-    "লে বুস্টন ২ ফিতা চায়না" =>4,
-    "লে বুস্টন ২ ফিতা কাজ" =>4,
+    "লে বুস্টন ২ফিতা" =>4,
+    "লে বুস্টন ২ফিতা কাজ" =>4,
+    "লে বুস্টন ২ফিতা চায়না" =>4,
+    "লে বুস্টন ২ফিতা কাজ" =>4,
     
     
-    "লে ওভার ২ ফিতা" =>3,
-    "লে ওভার ২ ফিতা কাজ" =>3,
+    "লে ওভার ২ফিতা" =>3,
+    "লে ওভার ২ফিতা কাজ" =>3,
     "লে ওভার আং" =>3,
     "লে ওভার বেল" =>3,
-    "লে ওভার ২ পার্ট" =>3,
+    "লে ওভার ২পার্ট" =>3,
     "লে ওভার বেল" =>3,
     "লে ওভার একট" =>3,
     "লে ১/৪ ঢালাই বেল" =>9,
-    "লে ১/৪ ২ পার্ট" =>9,
-    "লে ১/৪ ২ ফিতা" =>9,
-    "লে ১/৪ ফ্লাট ২ ফিতা" =>9,
+    "লে ১/৪ ২পার্ট" =>9,
+    "লে ১/৪ ২ফিতা" =>9,
+    "লে ১/৪ ফ্লাট ২ফিতা" =>9,
     "লে ১/৪ ঢালাই আং" =>9,
     "লে ১/৪ ফ্লাট আং" =>9,
     "লে ১/৪ পাম্পি" =>9,
     "লে ১/৪ হাফ সু বেল" =>9,
     "লে ছিট ঢালাই বেল" =>9,
-    "লে ছিট ২ পার্ট" =>9,
-    "লে ছিট ২ ফিতা" =>9,
-    "লে ছিট ফ্লাট ২ ফিতা" =>9,
+    "লে ছিট ২পার্ট" =>9,
+    "লে ছিট ২ফিতা" =>9,
+    "লে ছিট ফ্লাট ২ফিতা" =>9,
     "লে ছিট ঢালাই আং" =>9,
     "লে ছিট ফ্লাট আং" =>9,
     "লে ছিট পাম্পি" =>9,
     "লে ছিট হাফ সু বেল" =>9,
-    "লে বেবি ২ ফিতা" =>9,
+    "লে বেবি ২ফিতা" =>9,
     "লে বেবি আং" =>9,
     "লে বেবি একট" =>9,
     "লে বেবি বেল" =>9,
@@ -116,11 +116,23 @@ $names= [
     "লে বেবি পাম্পি" =>9
 ];
 
+$wordList = [];
+
 $namesList='';
 foreach($names as $k=>$v){
+    $wordsArray = explode(' ', $k);
+    array_push($wordList,($wordsArray));
 $namesList.='<option value="'.$k.'">'.$k.'</option>';
 }
 
+$wordList= array_merge(...$wordList);
+
+$wordList = array_filter($wordList);
+
+// Create a unique list of words
+$uniqueWords = array_unique($wordList);
+array_push($uniqueWords,'কাপড়ি', 'কেডস','দামী', 'দড়ি', 'হাই', 'বেনি ');
+#print_r($uniqueWords);
 $all_articles='';
 $menus='';
 $today=date('Y-m-d');
@@ -286,9 +298,12 @@ window.price_list=[];
             }
         });
 
-            
 
     }
+
+
+
+
     $(document).ready(function(){
 
         $('#cat').val('<?=$selected;?>');
@@ -342,7 +357,9 @@ window.price_list=[];
 			
 		});
     });
-
+    function showbox(){
+        $(".box_generator").toggle();
+    }
 
             function addRow(data={'article':'','count':6,'price':'','kenadam':'','hint':''}) {
                 var i = $('tr').length;
@@ -434,7 +451,7 @@ function GenerateArticle(){
 
 <div>
 
-    <div id="mainmenu" class="inner-wrapper12">
+    <div id="mainmenu" class="inner-wrapper12 add-article">
 
         <ul>
 
@@ -456,8 +473,9 @@ function GenerateArticle(){
         <div style="font-size: 15px; height: auto;line-height: 23px;" class="single-page-header black">
         <div class="new_generate_article1">
         বক্সের মাল আলাদা তুলুন 
+        <a herf="#" class="text-primary" onclick="showbox()"> বক্সের লেখা বানাও </a>
 
-            <span id="print_count"><span>
+         <span id="print_count"><span>
 
         </div>
   
@@ -470,6 +488,7 @@ function GenerateArticle(){
 <div class="single-page-content1">
 
 
+<?php echo $this->renderPartial('generator', array('wordList'=>$uniqueWords)); ?>
 
 
 <!-- <div style="color: red;text-align: center;font-weight: bolder;" class="MSG"> <?/*=$msg;*/?></div>-->
@@ -487,7 +506,7 @@ function GenerateArticle(){
             if(in_array($selected, ['DSR','ESR','STAR','CSS', 'VRC'])){
                 $style='hidden';
                 $auto=1;
-              echo '  <span  class="input_label js_auto_article btn btn-info">Auto <input onChange="setArticle()" type="checkbox" class="largerCheckbox" checked /> </span>';
+              echo '<label js_auto_article btn btn-info" for="largerCheckbox">Auto</label> <input onChange="setArticle()" type="checkbox" id="largerCheckbox" class="largerCheckbox" checked /> </span>';
             }
         ?>
                    
@@ -660,9 +679,9 @@ function GenerateArticle(){
     font-size: 16px;
 }
 
-span#art_list {
-    float: right;
-}
+    span#art_list {
+        float: right;
+    }
     div.sexy {
         border: 0 none;
         height: 21px;
@@ -688,19 +707,21 @@ span#art_list {
         padding:3px;
         color:#FFF;
     }
-    .container{
-        width:98% !important;
+   
+   
+    .word{
+        color: #ffffff;
+        background-color: transparent;
+        font-size: 14px;
+        font-weight: bold;
+        cursor:pointer;
+        border: 1px solid green;
+        padding: 5px 8px;
+        margin: 5px;
+        background-color: #7c6d3b;
     }
-    
-    input.largerCheckbox {
-            width: 25px;
-            height: 25px;
-        }
-
-/* input#hintList {
-    width: 150px;
-    margin: 3px;
-    padding: 5px;
-    float: right;
-} */
+    .box_generator{
+        background-color:#35b39b;
+    }
+}
 </style>

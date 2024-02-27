@@ -40,7 +40,7 @@ $base_url= Yii::app()->request->baseUrl;
 <script src="<?=$base_url?>/js/themes/jquery-ui.custom.min.js" type="text/javascript"></script>
 
 <!--Start index-body-container -->
-<div class="inner-wrapper">
+<div class="inner-wrappear">
     <div class="main-container single-page-container">
         <!--<div class="single-page-left"></div>-->
         <div class="single-page-content1" style="display:flex">

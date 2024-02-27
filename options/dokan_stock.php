@@ -206,7 +206,7 @@ if(isset($_POST['profit_article'],$_POST['baring_cost_start_day'],$_POST['baring
 
 <!--Start header-->
 <header>
-    <div class="inner-wrapper">
+    <div class="inner-wrappser">
         <div class="single-page-header">
            Search Information
         </div>
@@ -218,7 +218,7 @@ if(isset($_POST['profit_article'],$_POST['baring_cost_start_day'],$_POST['baring
 
 <section>
     <!--Start index-body-container -->
-    <div class="inner-wrapper">
+    <div class="inner-wra4pper">
         <div class="main-container single-page-container">
             <div class="single-page-left">
                 <ul>

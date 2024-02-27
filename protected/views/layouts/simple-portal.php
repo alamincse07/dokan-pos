@@ -13,6 +13,7 @@
     <![endif]-->
 
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/sb-admin-2.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
    <script  type="text/javascript" src="<?=Yii::app()->request->baseUrl?>/js/jQuery/jquery-1.7.2.min.js"></script>
     <!--Jquery Library-->
@@ -35,8 +36,8 @@
 
 <body>
 
-<div class="content container" id="page1">
-    <div class="row">
+<div class="content container-fluid" id="page1">
+    <div class="row-fluid">
         <div class="widget">
 
             <div id="header">
@@ -65,7 +66,7 @@
 
 
 
-            <div id="mainmenu">
+            <div id="container">
                 <?php
 
                 if($visible){
@@ -93,5 +94,10 @@
     </div>
 </div>
 
+<style>
+    #header{
+        margin-bottom:150px;
+    }
+</style>
 </body>
 </html>
