@@ -2060,16 +2060,16 @@ if($resl){
 
 
     <script>
- var SITE_URL='<?=Yii::app()->request->baseUrl?>/';
+    var SITE_URL='<?=Yii::app()->request->baseUrl?>/';
     
     window.price_list=[];
     $(document).ready(function(){
 
-
+        var time= new Date().valueOf();
         $.ajax({
             dataType:"json"
 
-            ,url:SITE_URL+"SimpleAjax/ArticleInfo?all=truesdddddddddd"
+            ,url:SITE_URL+"SimpleAjax/ArticleInfo?all="+ time;
 
             ,success: function(data) {
                 if(data.status == 'success')
