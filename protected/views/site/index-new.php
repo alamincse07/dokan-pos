@@ -2069,7 +2069,7 @@ if($resl){
         $.ajax({
             dataType:"json"
 
-            ,url:SITE_URL+"SimpleAjax/ArticleInfo?all="+ time;
+            ,url:SITE_URL+"SimpleAjax/ArticleInfo?all="+ time,
 
             ,success: function(data) {
                 if(data.status == 'success')
