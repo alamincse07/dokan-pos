@@ -254,7 +254,7 @@ class S3
 	* @param string $region
 	* @return void
 	*/
-	public function setRegion($region)
+	public static function setRegion($region)
 	{
 		self::$region = $region;
 	}

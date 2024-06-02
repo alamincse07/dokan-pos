@@ -43,16 +43,27 @@ $this->menu=array(
 
 
 
-<?php $this->widget('MGridView', array(
+<?php
+if(@Yii::app()->session['user_type']==1){
+    $template='{view}{update}{delete}';
+}else{
+    $template ='{view}';
+}
+$this->widget('MGridView', array(
 	'id'=>'money-back-iteams-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-	//	'id',
+		'id',
 		'article',
 		'amount',
 		'manager',
-		'date'
-
+		'date',
+        array(
+			'class'=>'CButtonColumn',
+            'template' =>$template,
 	),
-)); ?>
+)
+)
+);
+?>

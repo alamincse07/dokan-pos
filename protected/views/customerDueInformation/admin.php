@@ -36,7 +36,7 @@ $visible = ($found)?true:false;
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-	//	'id',
+		'id',
 		'area_name',
 		'occupation',
 		'name',

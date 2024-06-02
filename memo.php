@@ -6,7 +6,7 @@ $date = date("dM/y g:ha", strtotime($originalDate));
 $price = (isset($_REQUEST['price']))? $_REQUEST['price'] :'';
 $category = (isset($_REQUEST['category']))? $_REQUEST['category'] :'';
 $id = (isset($_REQUEST['id']))? $_REQUEST['id'] :'';
-$terms= in_array($category, ['DSR','ESR'])? '*3 Month Free Service' : ''; 
+$terms= in_array($category, ['DSR','ESR','CSS'])? '*3 Month Free Service' : ''; 
 ?>
 
 <!DOCTYPE html>
@@ -223,7 +223,7 @@ $terms= in_array($category, ['DSR','ESR'])? '*3 Month Free Service' : '';
       <b class="small-l">***** পরিবর্তনের ক্ষেত্রে অবশ্যই ***** ********* মেমো আনতে হবে  *********<b>
       <p class="small-m">বিদেশী জুতা,পাথর-পুতির ওয়ারেন্টি নেই</p>
       <p class="small-m">যেকোনো বিষয়ে কর্তৃপক্ষের সিদ্ধান্তই চূড়ান্ত</p>
-      <p class="small-xm" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; printed by:&nbsp; Hasib </p>
+      <p class="small-xm" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; printed by:&nbsp; <?=$manager?> </p>
           
       
     </footer>

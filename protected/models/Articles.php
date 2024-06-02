@@ -83,7 +83,7 @@ class Articles extends CActiveRecord
 			'body_rate' => 'বডিরেট',
 			'last_added_pair' => 'শেষে তোলা জোড়া ',
 			'last_added_taka' => 'শেষে তোলা টাকা',
-			'orginal_article' => 'খতিয়ানে লেখা',
+			'orginal_article' => 'মালের নাম ',
 			'increment' => 'বৃদ্ধি',
 		);
 	}
@@ -102,6 +102,10 @@ class Articles extends CActiveRecord
         if(isset($_REQUEST['search'])){
             $this->article=$_REQUEST['search'];
         }
+		if(isset($_REQUEST['orginal_article'])){
+            $this->orginal_article=$_REQUEST['orginal_article'];
+        }
+		
 		$criteria->compare('id',$this->id);
 		$criteria->compare('article',$this->article,true);
 		$criteria->compare('category',$this->category,true);
@@ -120,4 +124,19 @@ class Articles extends CActiveRecord
 		));
 	}
 	
+
+	public function getTotal($records, $column)
+    {
+		if(!isset($_REQUEST['showCount'])){
+
+			return '';
+		}
+        $records->pagination=false;
+        $data=$records->getData();
+        $total = 0;
+        foreach ($data as $record) {
+            $total += $record->$column;
+        }
+        return $total;
+    }
 }

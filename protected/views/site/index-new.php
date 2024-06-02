@@ -570,6 +570,8 @@ if($resl){
                 <select class="form-control bg-light border-1 small" name="searchOption" id="searchOption">
                   <option value="stock">Stock</option>
                   <option value="memo">Memo</option>
+                  <option value="type">Type</option>
+                 
                 </select>
 
                 <input

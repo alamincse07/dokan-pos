@@ -37,7 +37,7 @@ class SiteController extends Controller
 
         if(!Yii::app()->user->isGuest){
             $type=User::model()->findByPk(Yii::app()->user->id );
-//            Generic::_setTrace($type->type);
+          Generic::_setTrace($type->type);
             /*if($type->type!='Client')){
 
             }*/

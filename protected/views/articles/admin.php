@@ -51,14 +51,18 @@ $('.search-form form').submit(function(){
 		'category',
 
 		'total_pair',
-		'total_taka',
+		//'total_taka',
 
 		'actual_price',
 		'body_rate',
 		'last_added_pair',
-		'last_added_taka',
+		//'last_added_taka',
         'added_date',
-		//'orginal_article',
+		array(
+            'name'=>'orginal_article',
+            'footer'=>$model->getTotal($model->search(), 'total_pair'),
+
+        ),
 		'increment',
 
 		array(

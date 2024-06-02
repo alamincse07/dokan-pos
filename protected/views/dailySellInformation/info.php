@@ -195,3 +195,16 @@ $base_url= Yii::app()->request->baseUrl;
     </div>
 </div>
 <!--End index-body-container -->
+
+<script>
+jQuery.browser = {};
+(function () {
+    jQuery.browser.msie = false;
+    jQuery.browser.version = 0;
+    if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+        jQuery.browser.msie = true;
+        jQuery.browser.version = RegExp.$1;
+    }
+})();
+$('.date_picker').datepicker({ dateFormat: 'yy-mm-dd' });
+    </script>

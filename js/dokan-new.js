@@ -358,6 +358,9 @@ function DoSearch(e, obj) {
   if (option === "memo") {
     window.open(SITE_URL + "dailySellInformation/admin?memo=" + item);
   }
+  if (option === "type") {
+    window.open(SITE_URL + "articles/admin?orginal_article=" + item + "&showCount");
+  }
   $(obj).closest("form").find("input[type=text],input[type=number], select").val("");
 }
 

@@ -9,7 +9,8 @@ class Config {
     public $profile_image_path = "uploaded/profile-images/";
     public $file_uploaded_path = "uploaded/documents/";
 
-    public $timeZone = "Asia/Dhaka";
+    // public $timeZone = "Asia/Dhaka";
+    public $timeZone = "Asia/Kolkata";
 
     public $projectName = "Modern Shoe Store ";
 
@@ -35,8 +36,18 @@ class Config {
 
     public function getDBConfig()
     {
-        return array(
+
+        /*
+        // prod
+        // mysqldump -u skalamin_dokan -p skalamin_dokan skalamin_dokan > database_backup.sql
             'connectionString' => 'mysql:host=localhost;dbname=skalamin_dokan',
+            'emulatePrepare' => true,
+            'username' => 'skalamin_dokan',
+            'password' => 'skalamin_dokan',
+
+        */
+        return array(
+            'connectionString' => 'mysql:host=localhost;dbname=local',
             'emulatePrepare' => true,
             'username' => 'root',
             'password' => '',

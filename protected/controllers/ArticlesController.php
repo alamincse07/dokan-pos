@@ -287,8 +287,8 @@ class ArticlesController extends Controller
                     trim(strtoupper($_REQUEST["category_stock"]))
                 );
                 $pair = addslashes(trim(strtoupper($_REQUEST["article_pair"])));
-                // $orginal_article =  addslashes(trim(strtoupper($_REQUEST['orginal_article'])));
-                $orginal_article = "n/a";
+                 $orginal_article =  addslashes(trim(strtoupper($_REQUEST['hint__sexyCombo'])));
+                // $orginal_article = "n/a";
 
                 if (strtoupper($category == "JSR")) {
                     $percentage = 0.18;
