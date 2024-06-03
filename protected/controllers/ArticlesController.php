@@ -408,6 +408,7 @@ class ArticlesController extends Controller
                         $model->article = $article;
                         $model->total_pair = $pair;
                         $model->total_taka = $total_taka;
+                        $model->orginal_article = $orginal_article;
                         $model->actual_price = $actual_rate;
                         $model->added_date = date('Y-m-d');
                         $model->last_added_pair = $pair;
