@@ -72,7 +72,7 @@ foreach( $_POST['item'] as $single  ){
     $filepath= "barcodes/".$filename;
 
  
-   if(file_exists($filepath) && isset($single['count']) ){
+   if(file_exists("../".$filepath) && isset($single['count']) ){
 
 	   $total['images'][$filepath]= isset($total['images'][$filepath])?($total['images'][$filepath] + $single['count']) :  $single['count'];
 
