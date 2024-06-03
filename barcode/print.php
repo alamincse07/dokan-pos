@@ -75,6 +75,7 @@ $COLOR='red';
 			<?php
 
             $images = $_REQUEST['images'];
+           // print_r($_REQUEST);die;
 			$print_cp=[];
 			// $img= '<IMG class="displayed" src="/barcodes/'.createSlug($text).'.png" alt="...">';
             echo " <script> var printable=0;</script>";
@@ -109,7 +110,8 @@ $COLOR='red';
                 foreach (array_chunk($print_cp, $per_row) as $row) { ?>
 					<tr>
 					<?php foreach ($row as $img) { ?>
-						<td><?php echo '<IMG class="displayed" src="'.$img.'" >'; ?></td>
+                        <!--  ../ used to indicate the barcodes path as the url does not have it -->
+						<td><?php echo '<IMG class="displayed" src="../'.$img.'" >'; ?></td>
 					<?php } ?>
 					</tr>
 				<?php } ?>

@@ -69,7 +69,7 @@ foreach( $_POST['item'] as $single  ){
 
  
   // $text = (isset($single["article"])?$single["article"]:"");
-    $filepath= "../barcodes/".$filename;
+    $filepath= "barcodes/".$filename;
 
  
    if(file_exists($filepath) && isset($single['count']) ){
@@ -88,7 +88,7 @@ $printable='/barcode/print.php?per_row='.@$_REQUEST['per_row'].'&'.http_build_qu
 file_put_contents('barcode_requests.txt',date('Y-m-d-H-i'."  ------------").$printable.PHP_EOL,FILE_APPEND);
 
 if(count($total)<1){ die('No image barcode generated');}
- header("Location:".$printable);
+ header("Location:".urldecode($printable));
 die($printable);
 
 $printable='';
