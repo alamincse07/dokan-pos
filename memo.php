@@ -1,12 +1,22 @@
 <?php
+$rowList=[];
+if(isset($_REQUEST['items'])){
+array_push($rowList,json_decode($_REQUEST['items'], true));
+}else{
+  if(isset($_REQUEST['article'],$_REQUEST['price'])){
+    array_push($rowList,[$_REQUEST]);
+  }
+}
 $article = (isset($_REQUEST['article']))? $_REQUEST['article'] :'';
+#print_r($rowList);
 $manager = (isset($_REQUEST['manager']))? $_REQUEST['manager'] :'';
 $originalDate = (isset($_REQUEST['date']))? $_REQUEST['date'] : date(DATE_RSS);
 $date = date("dM/y g:ha", strtotime($originalDate));
 $price = (isset($_REQUEST['price']))? $_REQUEST['price'] :'';
+$total = (isset($_REQUEST['total']))? $_REQUEST['total'] :$price;
 $category = (isset($_REQUEST['category']))? $_REQUEST['category'] :'';
 $id = (isset($_REQUEST['id']))? $_REQUEST['id'] :'';
-$terms= in_array($category, ['DSR','ESR','CSS'])? '*3 Month Free Service' : ''; 
+
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +38,7 @@ $terms= in_array($category, ['DSR','ESR','CSS'])? '*3 Month Free Service' : '';
 
   table {
     width: 100%;
+    border-collapse: collapse;
   }
 
   tr {
@@ -61,6 +72,10 @@ $terms= in_array($category, ['DSR','ESR','CSS'])? '*3 Month Free Service' : '';
     text-align: center;
   }
 
+  tbody .row-end{
+     padding:5px;
+  border-bottom: 1px dashed black !important;
+ }
   .center-align {
     text-align: center;
   }
@@ -82,30 +97,39 @@ $terms= in_array($category, ['DSR','ESR','CSS'])? '*3 Month Free Service' : '';
     vertical-align: middle;
   }
 
-  .items thead tr th:first-child,
-  .items tbody tr td:first-child {
-    width: 47%;
-    min-width: 47%;
-    max-width: 47%;
+  
+
+  .col1{
+    width: 25%;
+
     word-break: break-all;
     text-align: left;
   }
+  .col2{
+    width: 50%;
 
-  .items thead tr th:last-child,
-  .items tbody tr td:last-child {
-    text-align: center;
+    word-break: break-all;
+    text-align: left;
   }
+  .col3{
+    width: 25%;
+
+    word-break: break-all;
+    text-align: right;
+  }
+
+
 
   .items td {
     font-size: 11px;
-    text-align: center;
+
     vertical-align: bottom;
   }
 
   .price::before {
     content: " ";
     font-family: Arial;
-    text-align: center;
+    text-align: right;
   }
 
   .sum-up {
@@ -113,29 +137,18 @@ $terms= in_array($category, ['DSR','ESR','CSS'])? '*3 Month Free Service' : '';
   }
   .total {
     font-size: 11px;
-    border-top: 1px dashed black !important;
-    border-bottom: 1px dashed black !important;
+    border-top: 1px solid black !important;
+    border-bottom: 1px solid black !important;
   }
-  .total.text,
-  .total.price {
-    text-align: center;
-  }
-  .total.price::before {
-    content: " ";
-    text-align: center;
-  }
+
+
+
+
+
   .line {
     border-top: 1px solid black !important;
   }
-  .heading.rate {
-    width: 20%;
-  }
-  .heading.amount {
-    width: 25%;
-  }
-  .heading.qty {
-    width: 5%;
-  }
+ 
   p {
     padding: 1px;
     margin: 0;
@@ -175,42 +188,50 @@ $terms= in_array($category, ['DSR','ESR','CSS'])? '*3 Month Free Service' : '';
     <p>&nbsp;</p>
 
     <div class="sales small">
-      <div style="float: left">Invoice #<?=$id?></div>
+      <div style="float: left">User: <?=$manager?></div>
       <div style="float: right;margin-right:15px;"><?=$date?></div>
     </div>
 
     <table class="items">
       <thead>
         <tr>
-          <th class="heading name">Item</th>
+          <th class="heading name col1">Invoice#</th>
+          <th class="heading name col2">Item</th>
           <!-- <th class="heading qty"></th> -->
-          <th class="heading amount">Amount</th>
+          <th class="heading amount col3 text-center">Amount</th>
         </tr>
       </thead>
 
       <tbody>
+
+      <?php
+      foreach($rowList as $k=>$val){
+        foreach($val as $v){
+       // print_r($v);
+        $invoice= isset($v['token'])? $v['token']: $id;
+        $article= isset($v['article'])? $v['article']: '';
+        $price= isset($v['price'])? $v['price']: '';
+        $category= isset($v['category'])? $v['category']: '';
+        $terms= in_array(strtoupper($category), ['DSR','ESR','CSS'])? '*90 days free service' : ''; 
+        ?>
+          <tr>
+            <td class="col1 name"><?=$invoice?></td>
+            <td class="col2 name"><?=$article?></td>
+
+            <td class=" amount col3"><?=$price?></td>
+          </tr>
+          <tr class="row-end">
+            <td class="col1 name small" colspan="2"><?=strtoupper($category)?> &nbsp; <?=$terms?></td>
+            
+          </tr>
+      
+      <?php }} ?>
+
+        
+
         <tr>
-          <td><?=$article?></td>
-          <!-- <td></td> -->
-
-          <td class="price1"><?=number_format($price)?></td>
-        </tr>
-
-        <tr>
-          <td><?=$category?></td>
-          <!-- <td></td> -->
-          <td class="price1"></td>
-        </tr>
-
-        <tr style="height: 2rem">
-          <td><?=$terms?></td>
-          <!-- <td></td> -->
-          <td class="price1"></td>
-        </tr>
-
-        <tr>
-          <td colspan="1" class="total text">Total</td>
-          <td class="total price"><?=number_format($price)?></td>
+          <td colspan="2" class="total text">Total</td>
+          <td class="total price col3"><?=number_format($total)?></td>
         </tr>
       </tbody>
     </table>
@@ -220,10 +241,10 @@ $terms= in_array($category, ['DSR','ESR','CSS'])? '*3 Month Free Service' : '';
     </div>
     <footer style="text-align: left;margin-top: 10px">
 
-      <b class="small-l">***** পরিবর্তনের ক্ষেত্রে অবশ্যই ***** ********* মেমো আনতে হবে  *********<b>
+      <b class="small-l">***** পরিবর্তনের ক্ষেত্রে অবশ্যই<b>
+      <b class="small-l">***** মেমো আনতে হবে  *********<b>
       <p class="small-m">বিদেশী জুতা,পাথর-পুতির ওয়ারেন্টি নেই</p>
       <p class="small-m">যেকোনো বিষয়ে কর্তৃপক্ষের সিদ্ধান্তই চূড়ান্ত</p>
-      <p class="small-xm" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; printed by:&nbsp; <?=$manager?> </p>
           
       
     </footer>

@@ -701,13 +701,18 @@ class SimpleAjaxController extends Controller
             $category_size = '';//strtoupper($_POST[$category.'_size']);
             $category_price = strtoupper($_POST[$category.'_price']);
 
-            #print_r($_REQUEST);die;
+            //print_r($_REQUEST);die;
             if($_REQUEST['category'] == 'common'){
                 $category = $_REQUEST['category'];
                 //require_once 'common_class.php';
-                //Generic::_setTrace($_POST[$category.'_article__sexyCombo']);
+               // Generic::_setTrace($_POST[$category.'_article__sexyCombo']);
                 $common_obj= new common_class();
                 $article_info= $common_obj->Get_Article_Details($_POST[$category.'_article__sexyCombo']);
+                
+                if(!isset($article_info['category'])){
+                    die(json_encode(array('msg'=>'No article found', 'status'=>'failed','category'=>$category,'article'=>$category_article,'sells_man'=>'','size'=>'','price'=>'','color'=>'2')));
+  
+                }
                 $category = strtoupper($article_info['category']);
                 $actual_rate= strtolower($article_info['actual_price']);
                 $profit= $category_price-$actual_rate;
@@ -744,7 +749,8 @@ class SimpleAjaxController extends Controller
 
                 $url = Yii::app()->request->baseUrl."/memo.php?".http_build_query($model->attributes);
                 Yii::app()->session['last_article_sold']=$category_article;
-                die(json_encode(array('status'=>'success','memo'=>$url,'token'=>$token,'category'=>strtolower($category),'article'=>$category_article,'sells_man'=>$category_sells_man,'size'=>$category_size,'profit'=>$profit,'price'=>number_format($category_price),'color'=>'2')));
+                $info = array('token'=>$token,'manager'=>$manager,'category'=>strtolower($category),'article'=>$category_article,'price'=>number_format($category_price));
+                die(json_encode(array('status'=>'success','memo'=>$url,'token'=>$token,'category'=>strtolower($category),'article'=>$category_article,'sells_man'=>$category_sells_man,'size'=>$category_size,'profit'=>$profit,'price'=>number_format($category_price),'color'=>'2', 'row'=>$info)));
 
 
 
