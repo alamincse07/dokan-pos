@@ -453,8 +453,7 @@ function SellItem(form_data) {
             var l = window.innerWidth - width;
             if (memoList.length > 0) {
               var url =
-                SITE_URL +
-                "/memo.php?items=" +
+                "https://dokan.skalamin.com/memo.php?items=" +
                 JSON.stringify(memoList) +
                 "&total=" +
                 total_taka +

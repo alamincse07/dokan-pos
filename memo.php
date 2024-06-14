@@ -212,7 +212,7 @@ $id = (isset($_REQUEST['id']))? $_REQUEST['id'] :'';
         $article= isset($v['article'])? $v['article']: '';
         $price= isset($v['price'])? $v['price']: '';
         $category= isset($v['category'])? $v['category']: '';
-        $terms= in_array(strtoupper($category), ['DSR','ESR','CSS'])? '*90 days free service' : ''; 
+        $terms= in_array(strtoupper($category), ['DSR','ESR','CSS'])? '*90 days service' : ''; 
         ?>
           <tr>
             <td class="col1 name"><?=$invoice?></td>
