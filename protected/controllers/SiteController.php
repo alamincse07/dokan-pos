@@ -44,9 +44,9 @@ class SiteController extends Controller
             $this->layout="empty-layout";
             if(isset($_REQUEST['old'])){
                
-                $this->render('index');
+                $this->render('index-new');
             }else{
-                 $this->render('index-new');
+                 $this->render('index-new-v2');
             }
            
         }else{

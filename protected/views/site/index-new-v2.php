@@ -870,8 +870,8 @@ if($resl){
                           </div>
                         </div>
                         <div class="new-pos">
-                        <form id="dynamic-form" action="http://localhost/dokan/memo.php">
-        <div class="col-auto d-flex justify-content-between mb-2">
+                        <form id="dynamic-form" >
+        <div class="col-auto1 d-flex justify-content-between mb-2">
           <button type="button" class="btn btn-success mr-4" id="add-row">+</button>
           <button type="button" class="btn btn-warning mr-4 mx-auto" id="hold-form">Hold</button>
           <button type="button" class="btn btn-info" id="show-hold-list">Show Hold List</button>
@@ -901,48 +901,10 @@ if($resl){
             </div>
           </div>
         </div>
-        <div id="total-rows">
-          <div class="form-row align-items-center mb-2">
-            <div class="col">Total:</div>
-            <div class="col">
-              <input type="number" id="totalItemPrice" class="form-control" required name="total" readonly />
-            </div>
-          </div>
-        </div>
+        
        
                         </div>
 
-                        <!-- <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">‍‌‍আর্টিকেল</span>
-                          </div>
-                          <input
-                            type="text"
-                            list="articles"
-                            onselect="GetPrice(this)"
-                            name="common_article"
-                            autocomplete="off"
-                            id="common_article"
-                            class="form-control common_article"
-                            aria-label="Default"
-                            aria-describedby="inputGroup-sizing-default"
-                          />
-                        </div>
-
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">মুল্য</span>
-                          </div>
-                          <input
-                            name="common_price"
-                            id="common_price"
-                            type="number"
-                            class="form-control common_price"
-                            aria-label="Default"
-                            aria-describedby="inputGroup-sizing-default"
-                          />
-                        </div> -->
-                        
 
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
@@ -957,6 +919,14 @@ if($resl){
                           >
                           <?=$dokan_stuff;?>
                           </select>
+                        </div>
+                        <div id="total-rows">
+                          <div class="form-row align-items-center mb-2">
+                            <div class="col b1g-secondary text-right">Total:</div>
+                            <div class="col ">
+                              <input type="number" id="totalItemPrice" class="form-control" required name="total" readonly />
+                            </div>
+                          </div>
                         </div>
 
                         <input type="submit" name="sold" class="btn btn-primary btn-user btn-block" value=" যোগ করুন" />
