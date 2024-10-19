@@ -303,11 +303,48 @@ class DailySellInformationController extends Controller
                     </div>';
 
         }
-        if(isset($_POST['profit_article'],$_POST['baring_cost_start_day'],$_POST['baring_cost_end_day'])){
+        if(isset($_POST['tags'],$_POST['all_tag_stock'])){
 
-            $which_result_div=' Sell info of   '.$_POST['profit_article']." from ".$_POST['baring_cost_start_day'].' to '.$_POST['baring_cost_end_day'];
+            $tags = $_POST['tags'];
+            $tags = array_filter($tags);
+            $json = json_encode($tags, JSON_UNESCAPED_UNICODE);
+            $tags_sql = "SELECT
+                            count(total_pair)  as total
+                        FROM
+                            articles 
+                        WHERE
+                            JSON_CONTAINS( tags, '$json' )";
+
+            $which_result_div=' Stock info of   '.implode(',',$_POST['tags']);
+            
+            $res= Yii::app()->db->createCommand($tags_sql);
+            $data = $res->queryRow();
+            $result_div='
+                    <div class="single_result">
+
+                        Total Pair : '.$data['total'].'
+                    
+                    </div>';
+        }
+
+         
+        
+
+        if(isset($_POST['tags'],$_POST['baring_cost_start_day'],$_POST['baring_cost_end_day'])){
+
+            $tags = $_POST['tags'];
+            $tags = array_filter($tags);
+            $json = json_encode($tags, JSON_UNESCAPED_UNICODE);
+            $tags_sql = "SELECT
+                            article 
+                        FROM
+                            articles 
+                        WHERE
+                            JSON_CONTAINS( tags, '$json' )";
+            $which_result_div=' Sell info of   '.implode(',',$_POST['tags'])." from ".$_POST['baring_cost_start_day'].' to '.$_POST['baring_cost_end_day'];
             //$q= "SELECT  SUM(amount) as taka   FROM `daily_cost_items` WHERE cost_type like ' Bearing Cost' AND date(date) between '".addslashes($_POST['baring_cost_start_day'])."'  AND '".addslashes($_POST['baring_cost_end_day'])."'  ";
-            $q= "SELECT COUNT(id) as pair, SUM(price) as taka, SUM(profit)as profit  FROM `daily_sell_information` WHERE article like '".addslashes($_POST['profit_article'])."' AND date(date) between '".addslashes($_POST['baring_cost_start_day'])."'  AND '".addslashes($_POST['baring_cost_end_day'])."'  ";
+            $q= "SELECT COUNT(id) as pair, SUM(price) as taka, SUM(profit)as profit  FROM `daily_sell_information` WHERE article IN ($tags_sql) AND date(date) between '".addslashes($_POST['baring_cost_start_day'])."'  AND '".addslashes($_POST['baring_cost_end_day'])."'  ";
+            // die($q);
             $res= Yii::app()->db->createCommand($q);
             $data = $res->queryRow();
             $result_div='
@@ -323,15 +360,40 @@ class DailySellInformationController extends Controller
 
                     Total Profit : '.$data['profit'].'
                     </div>';
+        }
 
+        if(isset($_POST['profit_start_day'],$_POST['profit_start_day'])){
+
+            $which_result_div=' Date Information of '.$_POST['profit_start_day'].' to '.$_POST['profit_end_day'];
+            $q= "SELECT COUNT(id) as pair, SUM(price) as taka, SUM(profit)as profit  FROM `daily_sell_information` WHERE date(date) between '".addslashes($_POST['profit_start_day'])."'  AND '".addslashes($_POST['profit_end_day'])."'  ";
+            $res= Yii::app()->db->createCommand($q);
+            $data = $res->queryRow();
+            //$all_sells_man_name='';
+            $result_div='
+                    <div class="single_result">
+
+                        Total Pair : '.$data['pair'].'
+                    </div>
+                    <div class="single_result">
+
+                        Total Taka : '.$data['taka'].'
+                    </div>
+                    <div class="single_result">
+
+                    Total Profit : '.$data['profit'].'
+                    </div>';
 
         }
 
-
-
-        $this->render('info',array(
+        $data = array(
             'which_result_div'=>$which_result_div,
             'result_div'=>$result_div,
-        ));
+        );
+
+        if (Yii::app()->request->isPostRequest) {
+            die(json_encode( $data )  );
+        }
+
+        $this->render('info', $data);
     }
 }

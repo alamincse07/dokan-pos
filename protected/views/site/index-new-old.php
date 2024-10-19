@@ -3,7 +3,7 @@
 $this->pageTitle=Yii::app()->name;
 
 $base_url= Yii::app()->request->baseUrl;
-$mob=new  MobileDetect();
+$mob= new MobileDetect();
 $is_mobile = false;
 if($mob->isMobile()){
   $is_mobile = true;
@@ -92,12 +92,14 @@ $total_lotto_sold=0;
 $apex_list='';
 $total_apex_taka=0;
 $total_apex_sold=0;
+$sells = [];
 if($vrc_res){
     while($val=$vrc_res->read()){
 
       
       $card = common_class::getCardDiv($val, $type='sell');
 
+      $sells[$val['category']]['total_pair'] = $val;
         if(strtoupper($val['category'])=='DSR'){
             $total_dsr_sold++;
             $total_dsr_taka = ($total_dsr_taka+$val['price']);
@@ -259,7 +261,14 @@ foreach($vrc_res_all as $k=>$val){
         }
     }else{
         if($val['transaction_type'] !== 'PAID'){
-            $cus_articles_due[$val['id']] = ['name'=> $val['name'], 'amount'=>$val['amount']];
+          
+          if(isset($cus_articles_due[$val['id']]['amount'])){
+            $amount = $cus_articles_due[$val['id']]['amount'] + $val['amount'];
+          }else{
+            $amount =  $val['amount'];
+          }
+          
+            $cus_articles_due[$val['id']] = ['name'=> $val['name'], 'amount'=>$amount];
 
         }
        
@@ -826,6 +835,13 @@ if($resl){
                   <?php } ?>
                   <a class="dropdown-item  py-2" data-toggle="modal" data-target="#oldViewModal" href="#oldViewModal">
                     <i class="fas fa-money-check"></i> পুরানো দিনের তথ্য
+                  </a>
+                  
+                  <a
+                    class="dropdown-item bg-info py-2"
+                    target="_blank"
+                    href="<?=$base_url?>/articles/SearchByTags"
+                    ><i class="fas fa-info-circle"></i> মাল গণনা 
                   </a>
 
                   <a class="dropdown-item py-2 bg-info" href="<?=$base_url?>/site/logout"  data-target="#loadingModal1">

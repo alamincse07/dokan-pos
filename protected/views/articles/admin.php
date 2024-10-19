@@ -7,25 +7,6 @@ $this->breadcrumbs=array(
 	'Manage',
 );
 
-$this->menu=array(
-	array('label'=>'List Articles', 'url'=>array('index')),
-	array('label'=>'Create Articles', 'url'=>array('create')),
-);
-
-Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-	$('.search-form').toggle();
-	return false;
-});
-
-
-$('.search-form form').submit(function(){
-	$.fn.yiiGridView.update('articles-grid', {
-		data: $(this).serialize()
-	});
-	return false;
-});
-");
 
 
 ?>

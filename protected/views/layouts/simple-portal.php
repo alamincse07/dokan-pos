@@ -51,8 +51,8 @@
                 <?php $this->widget('zii.widgets.CMenu',array(
                     'items'=>array(
                         array('label'=>'Home', 'url'=>array('/site/index')),
-                        array('label'=>'সঞ্চয়', 'url'=>array('/savings/admin'), 'visible'=>$visible),
-                        array('label'=>'তোলার পরিমান', 'url'=>array('/savings/CheckBYDate'), 'visible'=>$visible),
+                        array('label'=>'বক্সের লেখা বানাও', 'url'=>array('/labels/create'), 'visible'=>$visible),
+                        array('label'=>'ষ্টক যোগ করো', 'url'=>array('/articles/add'), 'visible'=>$visible),
                         array('label'=>'Graph', 'url'=>array('/dailySellInformation/ChartView'), 'visible'=>$visible),
                         array('label'=>'Monthly Graph', 'url'=>array('/dailySellInformation/ChartViewWeekly'), 'visible'=>$visible),
                         array('label'=>'Users', 'url'=>array('/member/admin'), 'visible'=>$visible),
@@ -96,7 +96,7 @@
 
 <style>
     #header{
-        margin-bottom:150px;
+        margin-bottom:100px;
     }
 </style>
 </body>

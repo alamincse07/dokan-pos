@@ -224,31 +224,10 @@ function getArrayData(label_name,labels_date_wise_data){
 }
 
 
-
-// console.log(build_data);
-var data=[{
-    name: 'Vrc',
-    data: [5, 3, 4, 7, 2,8,9]
-}, {
-    name: 'B',
-    data: [2, 2, 8, 2, 1,8,9]
-}, {
-    name: 'A',
-    data: [3, 4, 4, 2, 5,10,5]
-}, {
-    name: 'P',
-    data: [2, 2, 3, 2, 6,4,9]
-}, {
-    name: 'D',
-    data: [2, 2, 3, 2,2,7,8]
-}, {
-    name: 'J',
-    data: [2, 2, 3, 2, 1,4,3]
-}];
 $(function () {
 
     $('.date_picker').datepicker({ dateFormat: 'yy-mm-dd' });
-    alert('hhh');
+
     initialize();
     //console.log(db_data);
     $('#container_sell').highcharts({

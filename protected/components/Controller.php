@@ -39,9 +39,9 @@ class Controller extends CController
     public function getActions(){
 
         if(Yii::app()->session['user_type'] ==1){
-            return array('ChartView','view','admin','create','update','delete','add','dokanStock','get','index');
+            return array('ChartView','view','SearchByTags','admin','create','update','delete','add','dokanStock','get','index');
         }
-        return array('view','admin', 'index','get');
+        return array('view','admin', 'index','get','SearchByTags');
     }
     public function getAccess($controller='',$action='')
     {

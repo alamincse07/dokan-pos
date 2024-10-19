@@ -1303,6 +1303,60 @@ class Generic {
         return $result;
     }
 
+    public static function  getCategoryDropdown($asArray=false){
+        $ar_q= "SELECT name FROM categories order by name asc";
+        $res_all= Yii::app()->db->createCommand($ar_q)->queryAll();
+       
+        $cats='';
+        $list= [];
+        foreach($res_all as $k=>$val){
+            if($asArray){
+                $list[$val['name']]= $val['name'];
+
+            }else{
+                $cats.='<option value="'.$val['name'].'">'.$val['name'].'</option>';
+            }
+        }
+        return ($asArray)?  $list : $cats;
+    }
+
+    public static function  getLabels($asArray=false){
+        $ar_q= "SELECT label,article_start FROM labels order by label asc";
+        $res_all= Yii::app()->db->createCommand($ar_q)->queryAll();
+        //$res_all = $res_ar_q->fetch_all(MYSQLI_ASSOC);
+        $cats='';
+        $list= [];
+        foreach($res_all as $k=>$val){
+            if($asArray){
+                $list[$val['label']]= $val['label'];
+
+            }else{
+                $cats.='<option value="'.$val['label'].'_'.$val['article_start'].'">'.$val['label'].'</option>';
+
+            }
+        }
+        return ($asArray)?  $list : $cats;
+
+    }
+
+    public static function getTags($asArray=false){
+        $ar_q= "SELECT distinct tag FROM tags order by tag asc";
+        $res_all= Yii::app()->db->createCommand($ar_q)->queryAll();
+        $cats='<div id="available-tags" class="col-8 tagslist">';
+        $list= [];
+        foreach($res_all as $k=>$val){
+            if($asArray){
+                $list[$val['tag']]= $val['tag'];
+
+            }else{
+                $cats.=' <div class="tag">'.$val['tag'].'</div>';
+            }
+        }
+        $cats.='</div>';
+        return ($asArray)?  $list : $cats;
+
+
+    }
 
     
 } 

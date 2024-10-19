@@ -179,35 +179,35 @@ class SiteController extends Controller
 	public function Backup(){
 	
 		
-		//ENTER THE RELEVANT INFO BELOW
-$mysqlDatabaseName ='dokan';
+                    //ENTER THE RELEVANT INFO BELOW
+            $mysqlDatabaseName ='dokan';
 
 
-$mysqlExportPath ='E:/DOKAN-BD-BACKUP/'.date("Y-m-d").".sql";
+            $mysqlExportPath ='E:/DOKAN-BD-BACKUP/'.date("Y-m-d").".sql";
 
-//DO NOT EDIT BELOW THIS LINE
-$mysqlHostName ='localhost';
+            //DO NOT EDIT BELOW THIS LINE
+            $mysqlHostName ='localhost';
 
 
-$correct_command="mysqldump -u root  $mysqlDatabaseName > $mysqlExportPath";
+            $correct_command="mysqldump -u root  $mysqlDatabaseName > $mysqlExportPath";
 
-echo "check path variable of mysql and php is set or not";
-//echo 'http://localhost/phpmyadmin/db_export.php?db=dokan&server=1&token=324c3c00aa9ee69e13e5ac66056b7777';
+            echo "check path variable of mysql and php is set or not";
+            //echo 'http://localhost/phpmyadmin/db_export.php?db=dokan&server=1&token=324c3c00aa9ee69e13e5ac66056b7777';
 
-$worked=exec($correct_command);
+            $worked=exec($correct_command);
 
-//$worked=exec($command);
-switch($worked){
-    case 0:
-        echo 'Database <b>' .$mysqlDatabaseName .'</b> successfully exported to <b>~/' .$mysqlExportPath .'</b>';
-        break;
-    case 1:
-        echo 'There was a warning during the export of <b>' .$mysqlDatabaseName .'</b> to <b>~/' .$mysqlExportPath .'</b>';
-        break;
-    case 2:
-        echo 'There was an error during export. Please check your values:<br/><br/><table><tr><td>MySQL Database Name:</td><td><b>' .$mysqlDatabaseName .'</b></td></tr><tr><td>MySQL User Name:</td><td><b>' .$mysqlUserName .'</b></td></tr><tr><td>MySQL Password:</td><td><b>NOTSHOWN</b></td></tr><tr><td>MySQL Host Name:</td><td><b>' .$mysqlHostName .'</b></td></tr></table>';
-        break;
-}
+            //$worked=exec($command);
+            switch($worked){
+                case 0:
+                    echo 'Database <b>' .$mysqlDatabaseName .'</b> successfully exported to <b>~/' .$mysqlExportPath .'</b>';
+                    break;
+                case 1:
+                    echo 'There was a warning during the export of <b>' .$mysqlDatabaseName .'</b> to <b>~/' .$mysqlExportPath .'</b>';
+                    break;
+                case 2:
+                    echo 'There was an error during export. Please check your values:<br/><br/><table><tr><td>MySQL Database Name:</td><td><b>' .$mysqlDatabaseName .'</b></td></tr><tr><td>MySQL User Name:</td><td><b>' .$mysqlUserName .'</b></td></tr><tr><td>MySQL Password:</td><td><b>NOTSHOWN</b></td></tr><tr><td>MySQL Host Name:</td><td><b>' .$mysqlHostName .'</b></td></tr></table>';
+                    break;
+            }
 
 
 	}

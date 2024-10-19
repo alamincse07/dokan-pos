@@ -16,8 +16,9 @@
  * @property integer $last_added_taka
  * @property string $orginal_article
  * @property string $increment
+ * @property string $tags
  */
-class Articles extends CActiveRecord
+ class Articles extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
@@ -48,11 +49,11 @@ class Articles extends CActiveRecord
 			array('article, category, added_date', 'required'),
 			array('total_pair, total_taka, body_rate, last_added_pair, last_added_taka', 'numerical', 'integerOnly'=>true),
 			array('article, orginal_article', 'length', 'max'=>255),
-			array('category', 'length', 'max'=>144),
+			array('category, tags', 'length', 'max'=>144),
 			array('actual_price, increment', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, article, category, added_date, total_pair, total_taka, actual_price, body_rate, last_added_pair, last_added_taka, orginal_article, increment', 'safe', 'on'=>'search'),
+			array('id, article, category, added_date, total_pair, total_taka, actual_price, body_rate, last_added_pair, last_added_taka, orginal_article, increment, tags', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -124,6 +125,17 @@ class Articles extends CActiveRecord
 		));
 	}
 	
+	public static function getTotalByTags($records, $column)
+    {
+		
+        $records->pagination=false;
+        $data=$records->getData();
+        $total = 0;
+        foreach ($data as $record) {
+            $total += $record[$column];
+        }
+        return $total;
+    }
 
 	public function getTotal($records, $column)
     {
@@ -139,4 +151,12 @@ class Articles extends CActiveRecord
         }
         return $total;
     }
+
+	public function beforeSave() {
+
+		$tags = explode(' ',$this->orginal_article);
+		$this->tags = json_encode($tags, JSON_UNESCAPED_UNICODE);
+
+		return parent::beforeSave();
+	}
 }

@@ -749,8 +749,8 @@ class SimpleAjaxController extends Controller
 
                 $url = Yii::app()->request->baseUrl."/memo.php?".http_build_query($model->attributes);
                 Yii::app()->session['last_article_sold']=$category_article;
-                $info = array('token'=>$token,'manager'=>$manager,'category'=>strtolower($category),'article'=>$category_article,'price'=>number_format($category_price));
-                die(json_encode(array('status'=>'success','memo'=>$url,'token'=>$token,'category'=>strtolower($category),'article'=>$category_article,'sells_man'=>$category_sells_man,'size'=>$category_size,'profit'=>$profit,'price'=>number_format($category_price),'color'=>'2', 'row'=>$info)));
+                $info = array('token'=>$token,'manager'=>$manager,'category'=>($category),'article'=>$category_article,'price'=>number_format($category_price));
+                die(json_encode(array('status'=>'success','memo'=>$url,'token'=>$token,'category'=>($category),'article'=>$category_article,'sells_man'=>$category_sells_man,'size'=>$category_size,'profit'=>$profit,'price'=>number_format($category_price),'color'=>'2', 'row'=>$info)));
 
 
 
@@ -766,6 +766,11 @@ class SimpleAjaxController extends Controller
             die(json_encode(array('status'=>'failed','category'=>$category,'article'=>'','sells_man'=>'','size'=>'','price'=>'','color'=>'2')));
         }
 
+    }
+    public function actionGetLabels(){
+
+        $options = Generic::getLabels();
+        die(json_encode(['status'=>'success', 'option'=>$options]));
     }
 
 

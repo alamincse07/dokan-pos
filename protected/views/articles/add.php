@@ -1,138 +1,8 @@
-﻿<?php
+<?php
 
-$names= [
-    "জেঃ ২পার্ট" =>2,
-    "জেঃ ২পার্ট বেল" =>2,
-    "জেঃ ২ফিতা" =>2,
-    "জেঃ আং" =>2,
-    "জেঃ একট" =>2,
-    "জেঃ বেল" =>2,
-    "জেঃ নাগিন বেল" =>2,
-    "জেঃ সাচ্চি বেল" =>2,
-    "জেঃ আং বেল" =>2,
-    "জেঃ চায়না বেল" =>2,
-    "জেঃ ফ্লাট বেল" =>2,
-    "জেঃ ফ্লাট ২ফিতা" =>2,
-    "জেঃ ফ্লাট ২পার্ট" =>2,
-    "জেঃ ফ্লাট আং" =>2,
-    "জেঃ ফ্লাট আং বেল" =>2,
-    "জেঃ ফ্লাট একট" =>2,
-    "জেঃ কলাপুরী ২পার্ট" =>2,
-    "জেঃ কলাপুরী আং" =>2,
-    "জেঃ নাগিন আং" =>2,
-    "জেঃ ওভার ২ফিতা" =>3,
-    "জেঃ ওভার ২পার্ট" =>3,
-    "জেঃ ওভার আং" =>3,
-    "জেঃ ওভার আং বেল" =>3,
-    "জেঃ ওভার বেল" =>3,
-    "জেঃ ওভার একট" =>3,
-    "জেঃ লোফার" =>1,
-    "জেঃ সু" =>1,
-    "জেঃ সাইকেল সু" =>2,
-    "জেঃ হাফ সু" =>2,
-    "জেঃ ১/৪ বেল" =>8,
-    "জেঃ ১/৪ নাগিন বেল" =>8,
-    "জেঃ ১/৪ মোটা বেল" =>8,
-    "জেঃ ১/৪ ২ফিতা" =>8,
-    "জেঃ ১/৪  আং" =>8,
-    "জেঃ ১/৪ ২পার্ট" =>8,
-    "জেঃ ১/৪ লোফার" =>8,
-    "জেঃ ১/৪ সু" =>8,
-    "জেঃ ১/৪ সাইকেল সু" =>8,
-    "জেঃ ৬/৯ হাফ সু বেল" =>8,
-    "জেঃ ৬/৯ বেল" =>8,
-    "জেঃ ৬/৯ মোটা বেল" =>8,
-    "জেঃ ৬/৯ নাগিন বেল" =>8,
-    "জেঃ ৬/৯ ২ফিতা" =>8,
-    "জেঃ ৬/৯  আং" =>8,
-    "জেঃ ৬/৯ ২পার্ট" =>8,
-    "জেঃ ৬/৯ লোফার" =>8,
-    "জেঃ ৬/৯ সু" =>8,
-    "জেঃ ৬/৯ সাইকেল সু" =>8,
-    "জেঃ ৬/৯ হাফ সু বেল" =>8,
-    "জেঃ বেবি ২ফিতা" =>8,
-    "জেঃ বেবি আং" =>8,
-    "জেঃ বেবি বেল" =>8,
-    "জেঃ বেবি সাইকেল সু" =>8,
-    "জেঃ বেবি সু" =>8,
-    
-    
-    "লে ঢালাই ২ফিতা কাজ" =>4,
-    "লে ঢালাই ২ফিতা" =>4,
-    "লে ঢালাই আং" =>4,
-    "লে ঢালাই একট" =>4,
-    "লে ঢালাই একট কাজ" =>4,
-    "লে ঢালাই বেল" =>4,
-    "লে ফ্লাট ২পার্ট" =>4,
-    "লে ফ্লাট ২ফিতা" =>4,
-    "লে ফ্লাট ২ফিতা কাজ" =>4,
-    "লে ফ্লাট আং" =>4,
-    "লে ফ্লাট বেল" =>4,
-    "লে পাম্পি" =>4,
-    "লে পাম্পি লোফার" =>4,
-    "লে হাফ সু" =>4,
-    "লে হাফ বেল" =>4,
-    "লে বয়স্ক  ২ফিতা" =>4,
-    "লে বয়স্ক  আং" =>4,
-    "লে বয়স্ক  বেল" =>4,
-    "লে বয়স্ক  একট" =>4,
-    "লে বুস্টন একট কাজ" =>4,
-    "লে বুস্টন একট" =>4,
-    "লে বুস্টন একট চায়না" =>4,
-    "লে বুস্টন ২ফিতা" =>4,
-    "লে বুস্টন ২ফিতা কাজ" =>4,
-    "লে বুস্টন ২ফিতা চায়না" =>4,
-    "লে বুস্টন ২ফিতা কাজ" =>4,
-    
-    
-    "লে ওভার ২ফিতা" =>5,
-    "লে ওভার ২ফিতা কাজ" =>5,
-    "লে ওভার আং" =>5,
-    "লে ওভার বেল" =>5,
-    "লে ওভার ২পার্ট" =>5,
-    "লে ওভার বেল" =>5,
-    "লে ওভার একট" =>5,
-    "লে ১/৪ ঢালাই বেল" =>9,
-    "লে ১/৪ ২পার্ট" =>9,
-    "লে ১/৪ ২ফিতা" =>9,
-    "লে ১/৪ ফ্লাট ২ফিতা" =>9,
-    "লে ১/৪ ঢালাই আং" =>9,
-    "লে ১/৪ ফ্লাট আং" =>9,
-    "লে ১/৪ পাম্পি" =>9,
-    "লে ১/৪ হাফ সু বেল" =>9,
-    "লে ছিট ঢালাই বেল" =>9,
-    "লে ছিট ২পার্ট" =>9,
-    "লে ছিট ২ফিতা" =>9,
-    "লে ছিট ফ্লাট ২ফিতা" =>9,
-    "লে ছিট ঢালাই আং" =>9,
-    "লে ছিট ফ্লাট আং" =>9,
-    "লে ছিট পাম্পি" =>9,
-    "লে ছিট হাফ সু বেল" =>9,
-    "লে বেবি ২ফিতা" =>9,
-    "লে বেবি আং" =>9,
-    "লে বেবি একট" =>9,
-    "লে বেবি বেল" =>9,
-    "লে বেবি বেল চায়না" =>9,
-    "লে বেবি পাম্পি" =>9
-];
+$autoArticlesCategories = ['DSR','ESR','STAR','CSS', 'VRC'];
 
-$wordList = [];
-
-$namesList='';
-foreach($names as $k=>$v){
-    $wordsArray = explode(' ', $k);
-    array_push($wordList,($wordsArray));
-$namesList.='<option value="'.$k.'">'.$k.'</option>';
-}
-
-$wordList= array_merge(...$wordList);
-
-$wordList = array_filter($wordList);
-
-// Create a unique list of words
-$uniqueWords = array_unique($wordList);
-array_push($uniqueWords,'কাপড়ি', 'কেডস','দামী', 'দড়ি', 'হাই', 'বেনি ');
-#print_r($uniqueWords);
+$namesList = Generic::getLabels();
 $all_articles='';
 $menus='';
 $today=date('Y-m-d');
@@ -149,13 +19,69 @@ $base_url= Yii::app()->request->baseUrl;
 <script type="text/javascript" src="<?=$base_url?>/js/jquery.sexy-combo.js"></script>
 <link rel="stylesheet"  href="<?=$base_url?>/js/themes/dot-luv/jquery-ui.custom.css"/>
 
+<script>
+    var percentCategoryList = <?=json_encode($percentCategoryList)?>;
+</script>
+<style>
 
-<script src="<?=$base_url?>/js/themes/jquery-ui.custom.min.js" type="text/javascript"></script>
+    .flex {
+        display: flex;
+        justify-content: space-between;
+    }
+    .reload{
+        cursor:pointer;
+        color:blue;
+        padding: 2px;
+    }
+
+    #hintList{
+        width: 50%;
+    }
+
+    .btn.btn-info {
+        background: coral;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    span#art_list {
+        float: right;
+    }
+
+    div.sexy {
+        border: 0 none;
+        height: 21px;
+        margin: 0;
+        padding: 0;
+        white-space: nowrap;
+        width: 220px;
+        float: right;
+    }
+
+    .new_generate_article {
+        color: #ffff00;
+    }
+
+    .big{
+        background-color: #ff5bd1 !important;
+    }
+	.single-or{
+	
+        text-align:center;
+        color:yellow;
+	}
+
+    span#print_count{
+        background:Black;
+        padding:3px;
+        color:#FFF;
+    }
+</style>
+
 <script>
 
-var nameList = <?=json_encode($names)?>;
 
-window.price_list=[];
+    window.price_list=[];
     $(document).ready(function(){
     
         // $('#common_article').on('change', function(event, params) {
@@ -182,22 +108,7 @@ window.price_list=[];
             }
         });
     });
-    function restore_article(){
-        $.ajax({
-            dataType:"json"
-            ,type:"POST"
-            ,url:"http://localhost/dokan/ajax_restore_article.php?force=true"
-            ,success: function(data) {
-                if(data.status == 'success')
-                {
-                    window.location="http://localhost/dokan";
-                }else{
-                    // show_text_input('.lenders_div');
-
-                }
-            }
-        });
-    }
+   
 
     function GetPrice(obj){
         var art = $(obj).val();
@@ -229,11 +140,6 @@ window.price_list=[];
         $('#print_count').html('Total Print Copy = '+sum);
 
 
-          
-
-        
-
-      
     }
 
 
@@ -261,16 +167,13 @@ window.price_list=[];
 
             var cat = $(obj).val();
 
-            if (cat == 'DSR' || cat == 'ESR'){
+            if (percentCategoryList.includes(cat)){
 
                 $('.single_pair_rate').hide();
+                // get percent from settings
                 $('.commision').hide();
-            }
-            else if (cat == 'BATA' || cat == 'APEX' || cat == 'PEGA' || cat == 'LOTTO'){
-                $('.single_pair_rate').hide();
-                $('.commision').show();
-            }
-            
+                $('#commision').val('0');
+            }            
             else{
                 $('.single_pair_rate').show();
                 $('.commision').hide();
@@ -307,10 +210,7 @@ window.price_list=[];
     $(document).ready(function(){
 
         $('#cat').val('<?=$selected;?>');
-        $(".select").sexyCombo({
-            autoFill: true
-            //triggerSelected: true            //skin: "custom"
-        });
+        
 
         showoptions($('#cat'));
 		
@@ -332,7 +232,7 @@ window.price_list=[];
                         "price":data.info.article_body_rate,
                         "kenadam":data.info.actual_rate || '',
                         "count":data.info.article_pair,
-                        "hint":data.info.hint__sexyCombo || ''
+                        "hint":data.info.hint || ''
                     }
 
                     if(data.status=='added')
@@ -344,8 +244,8 @@ window.price_list=[];
                             $('#last_insert_id').val(data.info.last_insert_id);
                         }
                        
-                        $('[name="hint__sexyCombo"]').val('');
-                        $('[name="hint__sexyComboHidden"]').val('');
+                    
+                       
                         addRow(print_data);
                         calculateSum();
                         setPerRow();
@@ -429,7 +329,11 @@ function setArticle(){
 function GenerateArticle(){
     var art= '';
     var hint = $('#hintList').val();
-    var code = nameList[hint];
+    var [name,code] = hint.split('_');
+
+    if(name){
+        $('#hint').val(name);
+    }
     var lastid = Number($('#last_insert_id').val());
     var autoArticle = Number($('#autoArticle').val());
     var category= $('#cat').val()[0];
@@ -438,6 +342,7 @@ function GenerateArticle(){
         art = "" + category + '-' + code + new_id;
         $("input[name=stock_article__sexyCombo]").val(art);
         $('#common_article').val(art);
+       $('#hint').val(name);
     }
     
 
@@ -468,30 +373,27 @@ function GenerateArticle(){
 
         </ul>
 
-
+      
 
         <div style="font-size: 15px; height: auto;line-height: 23px;" class="single-page-header black">
-        <div class="new_generate_article1">
-        বক্সের মাল আলাদা তুলুন 
-        <a herf="#" class="text-primary" onclick="showbox()"> বক্সের লেখা বানাও </a>
+            <div class="new_generate_article1">
+            বক্সের মাল আলাদা তুলুন 
+            <a href="<?=$base_url?>/labels/create" class="text-primary" target="_blank"> বক্সের লেখা বানাও </a>
 
-         <span id="print_count"><span>
+            <span id="print_count"><span>
 
-        </div>
+            </div>
   
 
         </div>
+        
+       
 
     </div>
 </div>
 
 <div class="single-page-content1">
 
-
-<?php echo $this->renderPartial('generator', array('wordList'=>$uniqueWords)); ?>
-
-
-<!-- <div style="color: red;text-align: center;font-weight: bolder;" class="MSG"> <?/*=$msg;*/?></div>-->
     <div  class="search_admin_all article_add"  style="border: 1px solid; margin-left: 5px;">
         <form method="post" action="" id="article_add">
 
@@ -503,7 +405,7 @@ function GenerateArticle(){
         <?php
             $style = '';
             $auto=0;
-            if(in_array($selected, ['DSR','ESR','STAR','CSS', 'VRC'])){
+            if(in_array($selected, $autoArticlesCategories)){
                 $style='hidden';
                 $auto=1;
               echo '<label js_auto_article btn btn-info" for="largerCheckbox">Auto</label> <input onChange="setArticle()" type="checkbox" id="largerCheckbox" class="largerCheckbox" checked /> </span>';
@@ -526,15 +428,19 @@ function GenerateArticle(){
 
                 <input type='hidden' id='last_insert_id' value='<?=$lastId?>' />
                 <input type='hidden' name="autoArticle" id='autoArticle' value='<?=$auto?>' />
-                
-                <span  class="input_label"> বক্সের উপর লেখ  </span>
-                <select id="hintList" onchange="GenerateArticle()" class="input_label select" name="hint" >
-                        <option value=""></option>
-                        <?=$namesList ?>
-
-                </select>
-
+                <input type='hidden' name="hint" id='hint' value='' />
                
+               <div class="flex">
+                    <div  class="input_label"> 
+                        বক্সের উপর লেখ 
+                        <span class="reload" onClick="regenerateLabels()"> ⟳  </span>
+                    </div> 
+                    <select id="hintList" onchange="GenerateArticle()" class="input_label select" name="hintList" >
+                            <?=$namesList ?>
+                    </select>
+               </div>
+                
+                             
             </div>
             <div class="single-search" >
 
@@ -542,19 +448,7 @@ function GenerateArticle(){
                 <!--<input class="text_input  for_article" type="text" name="stock">-->
                 <select onchange="showoptions(this)"  id="cat" style="float: right;" name="category_stock">
 
-                    <option value="DSR">DSR</option>
-                    <option value="ESR">ESR</option>
-                    <option value="CSS">CSS</option>
-                    <option value="STAR">STAR</option>
-                    <option value="VRC">VRC</option>
-
-                    <option value="INDIAN">INDIAN</option>
-
-                    <option value="BATA">BATA</option>
-                    <option value="PEGA">PEGA</option>
-                    <option value="LOTTO">LOTTO</option>
-                    <option value="APEX">APEX</option>
-
+                <?= Generic::getCategoryDropdown() ?>
                 </select>
 
             </div>
@@ -576,7 +470,7 @@ function GenerateArticle(){
 
                     <span  class="input_label"> কমিশন % </span>
 
-                    <input class="text_input for_article" type="text"  value="18"  name="percentage">
+                    <input class="text_input for_article" type="text"  value="18" id="commision"  name="percentage">
 
 
                 </div>
@@ -670,58 +564,22 @@ function GenerateArticle(){
 </div>
 
 
-<style>
+<script>
 
+function regenerateLabels(){
+    $.ajax({
+            dataType:"json"
 
-.btn.btn-info {
-    background: coral;
-    padding: 10px;
-    font-size: 16px;
+            ,url:"<?=$base_url?>/SimpleAjax/getLabels?all=0"
+
+            ,success: function(data) {
+                if(data.status == 'success')
+                {
+                    $('#hintList').empty().html(data.option);
+
+                   alert('ok');
+                }
+            }
+        });
 }
-
-    span#art_list {
-        float: right;
-    }
-    div.sexy {
-        border: 0 none;
-        height: 21px;
-        margin: 0;
-        padding: 0;
-        white-space: nowrap;
-        width: 220px;
-        float: right;
-    }
-    .new_generate_article{
-        color: #ffff00;
-    }
-    .big{
-        background-color: #ff5bd1 !important;
-    }
-	.single-or{
-	
-	text-align:center;
-	color:yellow;
-	}
-    span#print_count{
-        background:Black;
-        padding:3px;
-        color:#FFF;
-    }
-   
-   
-    .word{
-        color: #ffffff;
-        background-color: transparent;
-        font-size: 14px;
-        font-weight: bold;
-        cursor:pointer;
-        border: 1px solid green;
-        padding: 5px 8px;
-        margin: 5px;
-        background-color: #7c6d3b;
-    }
-    .box_generator{
-        background-color:#35b39b;
-    }
-}
-</style>
+</script>

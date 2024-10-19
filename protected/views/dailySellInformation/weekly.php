@@ -144,8 +144,6 @@ $base_url= Yii::app()->request->baseUrl;
 $(function () {
 
     $('.date_picker').datepicker({ dateFormat: 'yy-mm-dd' });
-    alert('ready??');
-
  
 
 

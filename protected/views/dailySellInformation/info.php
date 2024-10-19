@@ -11,6 +11,7 @@ foreach($res_all as $k=>$val){
 $menus='';
 $today=date('Y-m-d');
 
+$categories = Generic::getCategoryDropdown();
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
@@ -35,9 +36,10 @@ $base_url= Yii::app()->request->baseUrl;
 <link href="<?=$base_url?>/css/sexy-combo.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<?=$base_url?>/js/jquery.sexy-combo.js"></script>
 <link rel="stylesheet"  href="<?=$base_url?>/js/themes/dot-luv/jquery-ui.custom.css"/>
-
+<link rel="stylesheet" href="<?=$base_url?>/css/multi-select/css/multi-select.css"/>
 
 <script src="<?=$base_url?>/js/themes/jquery-ui.custom.min.js" type="text/javascript"></script>
+<script src="<?=$base_url?>/css/multi-select/js/jquery.multi-select.js" type="text/javascript"></script>
 
 <!--Start index-body-container -->
 <div class="inner-wrappear">
@@ -80,17 +82,7 @@ $base_url= Yii::app()->request->baseUrl;
                         <span  class="input_label">  ষ্টক তথ্য </span>
                         <!--<input class="text_input" type="text" name="stock">-->
                         <select  name="category_stock">
-                            <option value="BATA">BATA</option>
-                            <option value="PEGA">PEGA</option>
-                            <option value="APEX">APEX</option>
-                            <option value="LOTTO">LOTTO</option>
-                            <option value="VRC">VRC</option>
-                            <option value="INDIAN">INDIAN</option>
-                            <option value="ESR">ESR</option>
-                            <option value="CSS">CSS</option>
-                            <option value="STAR">STAR</option>
-                            <option value="DSR">DSR</option>
-
+                            <?= $categories?>
                         </select>
                         <input type="submit" name="all_stock" class="button" value="দেখুন ">
                     </form>
@@ -120,19 +112,13 @@ $base_url= Yii::app()->request->baseUrl;
                         <input type="submit" name="all_stock"  class="button" value="দেখুন ">
                     </form>
                 </div>
-                <div class="single-search2" >
+
+                <div class="single-search2 p-4" >
 
                     <form method="post" action="">
 
                         <select style="width: 75px;" name="profit_with_category">
-                            <option value="BATA">BATA</option>
-                            <option value="PEGA">PEGA</option>
-                            <option value="LOTTO">LOTTO</option>
-                            <option value="APEX">APEX</option>
-                            <option value="VRC">VRC</option>
-                            <option value="INDIAN">INDIAN</option>
-                            <option value="ESR">ESR</option>
-                            <option value="DSR">DSR</option>
+                        <?= $categories?>
 
                         </select>
 
@@ -147,17 +133,39 @@ $base_url= Yii::app()->request->baseUrl;
                         <input type="submit" name="all_stock" class="button" value="দেখুন ">
                     </form>
                 </div>
+
+
+                <div class="single-search2 p-4" >
+
+                    <form method="post" action="" class="flex">
+                            <?php 
+                            echo CHtml::dropDownList(
+                                    'tags',
+                                    20,
+                                    Generic::getTags(true),
+                                    ['multiple'=>'multiple', 'size'=>5, 'id'=>'multiSelect2']
+                                );
+                            ?>
+                        
+                        <div class="btn">
+
+                         <input type="submit" name="all_tag_stock" class="button" value="ষ্টক দেখুন ">
+                        </div>
+                    </form>
+                </div>
+
+
+
                 <div class="single-search2" >
-
-                    <form method="post" action="">
-
-                        <select class="all_articles" id="profit_article" name="profit_article"  size="1">
-
-                            <?=$all_articles;?>
-
-                        </select>
-
-                        <span  class="input_label">আর্টিকেলের</span>
+                    <form method="post" action="" class="flex">
+                            <?php 
+                            echo CHtml::dropDownList(
+                                    'tags',
+                                    20,
+                                    Generic::getTags(true),
+                                    ['multiple'=>'multiple', 'size'=>5, 'id'=>'multiSelect1']
+                                );
+                             ?>
 
                         <input class="text_input date_picker" type="text" value="<?=$today;?>" name="baring_cost_start_day">
 
@@ -165,7 +173,9 @@ $base_url= Yii::app()->request->baseUrl;
 
                         <input class="text_input date_picker" type="text" value="<?=$today;?>"  name="baring_cost_end_day">
                         <span  class="input_label">বিক্রী</span>
-                        <input type="submit" name="all_stock" class="button" value="দেখুন ">
+                        <div class="btn">
+                            <input type="submit" name="all_stock" class="button" value="দেখুন ">
+                        </div>
                     </form>
                 </div>
 
@@ -177,11 +187,16 @@ $base_url= Yii::app()->request->baseUrl;
                 <div class="result_text">
                     Result
                 </div>
+
                 <div class="which_result">
-                    <?=$which_result_div;?>
+                        <?=$which_result_div;?>
                 </div>
 
-                <?=$result_div;?>
+                <div id="result_info">
+                    
+                    <?=$result_div;?>
+                </div>
+                
 
             </div>
 
@@ -205,6 +220,56 @@ jQuery.browser = {};
         jQuery.browser.msie = true;
         jQuery.browser.version = RegExp.$1;
     }
+
+
+    $('#multiSelect1').multiSelect({
+        selectableHeader: "<div class='custom-header'>Selectable items</div>",
+        selectionHeader: "<div class='custom-header'>এই মাল গুলার </div>",
+
+    });
+
+    $('#multiSelect2').multiSelect({
+        selectableHeader: "<div class='custom-header'>Selectable items</div>",
+        selectionHeader: "<div class='custom-header'>এই মাল গুলার </div>",
+
+    });
+    // Function to handle form submission
+    function handleFormSubmit(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Get the form element
+    const form = event.target;
+
+    // Get the action URL from the form's 'action' attribute
+    const url = form.action;
+
+    // Prepare form data to send as a JSON object
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+
+    // Use fetch to send the form data
+    fetch(url, {
+        method: form.method, // Use the form's method attribute (POST, GET, etc.)
+        body: formData
+    })
+    .then(response => response.json())
+    .then(result => {
+    
+        $('.which_result').html(result.which_result_div);
+        $('#result_info').html(result.result_div);
+        // Handle success, update UI, etc.
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Handle error
+    });
+    }
+
+    // Attach event listeners to all forms on the page
+    document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', handleFormSubmit);
+    });
+
 })();
 $('.date_picker').datepicker({ dateFormat: 'yy-mm-dd' });
     </script>

@@ -28,9 +28,11 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'added_date'); ?>
-		<?php echo $form->textField($model,'added_date'); ?>
-		<?php echo $form->error($model,'added_date'); ?>
+		<?php echo $form->labelEx($model,'orginal_article'); ?>
+
+		<?php echo $form->dropDownList($model,'orginal_article', Generic::getLabels(true), array('size'=>1,'maxlength'=>255)); ?>
+		
+		<?php echo $form->error($model,'orginal_article'); ?>
 	</div>
 
 	<div class="row">
@@ -69,11 +71,7 @@
 		<?php echo $form->error($model,'last_added_taka'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'orginal_article'); ?>
-		<?php echo $form->textField($model,'orginal_article',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'orginal_article'); ?>
-	</div>
+
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'increment'); ?>

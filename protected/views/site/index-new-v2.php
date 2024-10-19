@@ -52,136 +52,30 @@ $vrc_q=" select * from daily_sell_information where DATE(date) ='$today'  order 
 $vrc_res= Yii::app()->db->createCommand($vrc_q)->query();
 //$vrc_res_all=$vrc_res->fetch_all(MYSQLI_ASSOC);
 
-$vrc_list='';
-$total_vrc_taka=0;
-$total_vrc_sold=0;
-
-$dsr_list='';
-$total_dsr_taka=0;
-$total_dsr_sold=0;
-
-$esr_list='';
-$total_esr_taka=0;
-$total_esr_sold=0;
-
-$css_list='';
-$total_css_taka=0;
-$total_css_sold=0;
-
-$star_list='';
-$total_star_taka=0;
-$total_star_sold=0;
-
-$bata_list='';
-$total_bata_taka=0;
-$total_bata_sold=0;
-
-$indian_list='';
-$total_indian_taka=0;
-$total_indian_sold=0;
+$categories = Generic::getCategoryDropdown(true);
+$sells = [];
+foreach($categories as $k=>$val){
+  $sells[$val] = ['total_pair' =>0,'total_taka' =>0, 'list'=>[]];
+}
 
 
-$pega_list='';
-$total_pega_taka=0;
-$total_pega_sold=0;
-
-$lotto_list='';
-$total_lotto_taka=0;
-$total_lotto_sold=0;
-
-$apex_list='';
-$total_apex_taka=0;
-$total_apex_sold=0;
 if($vrc_res){
     while($val=$vrc_res->read()){
 
       
       $card = common_class::getCardDiv($val, $type='sell');
 
-        if(strtoupper($val['category'])=='DSR'){
-            $total_dsr_sold++;
-            $total_dsr_taka = ($total_dsr_taka+$val['price']);
-
-            $dsr_list .=$card;
-        }
-        elseif(strtoupper($val['category'])=='ESR'){
-            $total_esr_sold++;
-            $total_esr_taka = ($total_esr_taka+$val['price']);
-
-            $esr_list .=$card;
-        }
-
-        elseif(strtoupper($val['category'])=='CSS'){
-          $total_css_sold++;
-          $total_css_taka = ($total_css_taka+$val['price']);
-
-          $css_list .=$card;
-      }
-
-
-      elseif(strtoupper($val['category'])=='STAR'){
-        $total_star_sold++;
-        $total_star_taka = ($total_star_taka+$val['price']);
-
-        $star_list .=$card;
-    }
-
-        elseif(strtoupper($val['category'])=='INDIAN'){
-
-            $total_indian_sold++;
-            $total_indian_taka = ($total_indian_taka+$val['price']);
-            $indian_list .=$card;
-        }
-        elseif(strtoupper($val['category'])=='VRC'){
-
-            $total_vrc_sold++;
-            $total_vrc_taka = ($total_vrc_taka+$val['price']);
-            $vrc_list .=common_class::getCardDiv($val, $type='sell');
-        }
-        elseif(strtoupper($val['category'])=='BATA'){
-
-            $total_bata_sold++;
-            $total_bata_taka = ($total_bata_taka+$val['price']);
-            $bata_list .=common_class::getCardDiv($val, $type='sell');
-        }
-        elseif(strtoupper($val['category'])=='PEGA'){
-
-            $total_pega_sold++;
-            $total_pega_taka = ($total_pega_taka+$val['price']);
-            $pega_list .=common_class::getCardDiv($val, $type='sell');
-        }
-        elseif(strtoupper($val['category'])=='LOTTO'){
-
-            $total_lotto_sold++;
-            $total_lotto_taka = ($total_lotto_taka+$val['price']);
-            $lotto_list .=common_class::getCardDiv($val, $type='sell');
-        }
-        elseif(strtoupper($val['category'])=='APEX'){
-
-
-            $total_apex_sold++;
-            $total_apex_taka = ($total_apex_taka+$val['price']);
-            $apex_list .=common_class::getCardDiv($val, $type='sell');
-        }
-    }
+      $sells[$val['category']]['total_pair'] = $sells[$val['category']]['total_pair'] + 1;
+      $sells[$val['category']]['total_taka'] = $sells[$val['category']]['total_taka'] + $val['price'];
+      $sells[$val['category']]['list'][] = $card;
 
 }
+}
 
-#Generic::_setTrace($star_list);
-$total_vrc_taka= ceil($total_vrc_taka);
-$total_dsr_taka= ceil($total_dsr_taka);
-$total_esr_taka= ceil($total_esr_taka);
-$total_css_taka= ceil($total_css_taka);
-$total_star_taka= ceil($total_star_taka);
-$total_indian_taka= ceil($total_indian_taka);
-$total_pega_taka= ceil($total_pega_taka);
-$total_lotto_taka= ceil($total_lotto_taka);
-$total_bata_taka= ceil($total_bata_taka);
-$total_apex_taka= ceil($total_apex_taka);
 
-$total_all_sold = $total_vrc_sold+$total_dsr_sold+$total_esr_sold+$total_css_sold+$total_star_sold+$total_pega_sold+$total_lotto_sold+$total_indian_sold+$total_bata_sold+$total_apex_sold;
+// sum of the $sells of total_pair key value
+$total_all_sold =  array_reduce($sells, function($carry, $item) { return $carry + $item['total_pair']; }, 0); //($sells
 
-//die($all_sells_man_name);
 
 
 
@@ -353,16 +247,16 @@ foreach($cost_items as $k=>$val){
 
 
 $lender_list='';
-$qc=" select name from lenders where amount>0  order by name " ;
-//die($q);
-$resl=Yii::app()->db->createCommand($qc)->query();
-if($resl){
-    while( $row= $resl->read()){
-        $lender_list.='<option value="'.$row['name'].'">'.ucwords($row['name']).'</option>';
-    }
+// $qc=" select * from lenders where amount > 0  order by name " ;
+// //die($q);
+// $resl=Yii::app()->db->createCommand($qc)->query();
+// if($resl){
+//     while( $row= $resl->read()){
+//         $lender_list.='<option value="'.$row['name'].'">'.ucwords($row['name']).'</option>';
+//     }
 
 
-}
+// }
 ///////////////////////////////////////////////////////////////////
 
 
@@ -468,20 +362,10 @@ if($resl){
           </a>
           <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="#vrcSale">অন্যান্য বিক্রী </a>
-
-              <a class="collapse-item" href="#esrSale">ঈগল সম্রাট বিক্রী</a>
-              <a class="collapse-item" href="#cssSale">চৌধুরী সম্রাট বিক্রী</a>
-              <a class="collapse-item" href="#starSale">ষ্টার  বিক্রী</a>
-              <a class="collapse-item" href="#indianSale">ইন্ডিয়ান বিক্রী</a>
-
-              <a class="collapse-item" href="#bataSale">বাটা বিক্রী </a>
-              <a class="collapse-item" href="#apexSale">এপেক্স বিক্রী</a>
-              <a class="collapse-item" href="#pegaSale">পেগাসাস বিক্রী</a>
-
-              <a class="collapse-item" href="#lottoSale">লোটো বিক্রী</a>
-
-              <a class="collapse-item" href="#dsrSale">ঢাকা সম্রাট বিক্রী</a>
+              <?php foreach( $categories as $k => $val){?>
+              <a class="collapse-item" href="#<?=$val?>Sale"><?=$val?> বিক্রী</a>
+              <?php } ?>
+              
             </div>
           </div>
         </li>
@@ -682,81 +566,18 @@ if($resl){
                   class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in print"
                   aria-labelledby="alertsDropdown" id="js_sell_count"
                 >
-                  <h6 class="dropdown-header">Pairs</h6>
+                  <h6 class="dropdown-header font-weight-bold text-primary">মোটজোড়া - <?=$total_all_sold;?> </h6>
 
-                  <a class="dropdown-item d-flex align-items-center" href="#">
+                  <?php foreach($sells as $category=>$val){?>
+                  
+                    <a class="dropdown-item d-flex align-items-center" href="#">
                     <div class="mr-3">
-                      <div class="icon-circle badge-primary total_sold_counter"><?=$total_all_sold;?></div>
+                      <div class="icon-circle badge-primary total_sold_<?= $category?>_counter"><?=$val['total_pair'];?></div>
                     </div>
-                    <div>মোটজোড়া</div>
+                    <div><?= $category?></div>
                   </a>
+                  <?php } ?>
 
-                  <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="mr-3">
-                      <div class="icon-circle badge-primary total_sold_esr_counter"><?=$total_esr_sold;?></div>
-                    </div>
-                    <div>ঈগল</div>
-                  </a>
-                  <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="mr-3">
-                      <div class="icon-circle badge-primary total_sold_star_counter"><?=$total_star_sold;?></div>
-                    </div>
-                    <div>ষ্টার </div>
-                  </a>
-                  <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="mr-3">
-                      <div class="icon-circle badge-primary total_sold_css_counter"><?=$total_css_sold;?></div>
-                    </div>
-                    <div>চৌধুরী </div>
-                  </a>
-
-                  <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="mr-3">
-                      <div class="icon-circle badge-primary total_sold_vrc_counter"><?=$total_vrc_sold;?></div>
-                    </div>
-                    <div>অন্যান্য</div>
-                  </a>
-
-                  <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="mr-3">
-                      <div class="icon-circle badge-primary total_sold_dsr_counter"><?=$total_dsr_sold;?></div>
-                    </div>
-                    <div>ঢাকা</div>
-                  </a>
-
-                  <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="mr-3">
-                      <div class="icon-circle badge-primary total_sold_bata_counter"><?=$total_bata_sold;?></div>
-                    </div>
-                    <div>বাটা</div>
-                  </a>
-
-                  <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="mr-3">
-                      <div class="icon-circle badge-primary total_sold_pega_counter"><?=$total_pega_sold;?></div>
-                    </div>
-                    <div>পেগাসাস</div>
-                  </a>
-
-                  <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="mr-3">
-                      <div class="icon-circle badge-primary total_sold_lotto_counter"><?=$total_lotto_sold;?></div>
-                    </div>
-                    <div>LOTTO</div>
-                  </a>
-
-                  <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="mr-3">
-                      <div class="icon-circle badge-primary total_sold_apex_counter"><?=$total_apex_sold;?></div>
-                    </div>
-                    <div>এপেক্স</div>
-                  </a>
-                  <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="mr-3">
-                      <div class="icon-circle badge-primary total_sold_indian_counter"><?=$total_indian_sold;?></div>
-                    </div>
-                    <div>INDIAN</div>
-                  </a>
                 </div>
               </li>
 
@@ -828,7 +649,15 @@ if($resl){
                     <i class="fas fa-money-check"></i> পুরানো দিনের তথ্য
                   </a>
 
-                  <a class="dropdown-item py-2 bg-info" href="<?=$base_url?>/site/logout"  data-target="#loadingModal1">
+                  <a
+                    class="dropdown-item py-2 bg-info"
+                    target="_blank"
+                    href="<?=$base_url?>/articles/SearchByTags"
+                    ><i class="fas fa-info-circle"></i> মাল গণনা 
+                  </a>
+
+
+                  <a class="dropdown-item py-2" href="<?=$base_url?>/site/logout"  data-target="#loadingModal1">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     Logout
                   </a>
@@ -871,69 +700,69 @@ if($resl){
                         </div>
                         <div class="new-pos">
                         <form id="dynamic-form" >
-        <div class="col-auto1 d-flex justify-content-between mb-2">
-          <button type="button" class="btn btn-success mr-4" id="add-row">+</button>
-          <button type="button" class="btn btn-warning mr-4 mx-auto" id="hold-form">Hold</button>
-          <button type="button" class="btn btn-info" id="show-hold-list">Show Hold List</button>
-        </div>
-        <div id="form-rows">
-          <div class="form-row align-items-center mb-2">
-            <div class="col">
-              <input
-                type="text"
-                list="articles"
-                onblur="setRowPrice(this)"
-                class="form-control"
-                required
-                name="article[]"
-                placeholder="Article"
-              />
-            </div>
-            <div class="col">
-              <input
-                type="number"
-                onblur="ShowTotal(this)"
-                class="form-control"
-                required
-                name="price[]"
-                placeholder="Price"
-              />
-            </div>
-          </div>
-        </div>
-        
-       
-                        </div>
-
-
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">সেলসম্যান </span>
+                          <div class="col-auto1 d-flex justify-content-between mb-2">
+                            <button type="button" class="btn btn-success mr-4" id="add-row">+</button>
+                            <button type="button" class="btn btn-warning mr-4 mx-auto" id="hold-form">Hold</button>
+                            <button type="button" class="btn btn-info" id="show-hold-list">Show Hold List</button>
                           </div>
-                          <select
-                            name="salesman"
-                            id="salesman"
-                            class="form-control"
-                            aria-label="Default"
-                            aria-describedby="inputGroup-sizing-default"
-                          >
-                          <?=$dokan_stuff;?>
-                          </select>
-                        </div>
-                        <div id="total-rows">
-                          <div class="form-row align-items-center mb-2">
-                            <div class="col b1g-secondary text-right">Total:</div>
-                            <div class="col ">
-                              <input type="number" id="totalItemPrice" class="form-control" required name="total" readonly />
+                          <div id="form-rows">
+                            <div class="form-row align-items-center mb-2">
+                              <div class="col">
+                                <input
+                                  type="text"
+                                  list="articles"
+                                  onblur="setRowPrice(this)"
+                                  class="form-control"
+                                  required
+                                  name="article[]"
+                                  placeholder="Article"
+                                />
+                              </div>
+                              <div class="col">
+                                <input
+                                  type="number"
+                                  onblur="ShowTotal(this)"
+                                  class="form-control"
+                                  required
+                                  name="price[]"
+                                  placeholder="Price"
+                                />
+                              </div>
                             </div>
                           </div>
-                        </div>
+        
+       
+                          </div>
 
-                        <input type="submit" name="sold" class="btn btn-primary btn-user btn-block" value=" যোগ করুন" />
-                        <hr />
 
-                        <div class="alert alert-danger text-center added_item">যোগের পূর্বে সঠিক তথ্য দিন</div>
-                        <div class="alert alert-success text-center last_addedc" role="alert"></div>
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="inputGroup-sizing-default">সেলসম্যান </span>
+                            </div>
+                            <select
+                              name="salesman"
+                              id="salesman"
+                              class="form-control"
+                              aria-label="Default"
+                              aria-describedby="inputGroup-sizing-default"
+                            >
+                            <?=$dokan_stuff;?>
+                            </select>
+                          </div>
+                          <div id="total-rows">
+                            <div class="form-row align-items-center mb-2">
+                              <div class="col b1g-secondary text-right">Total:</div>
+                              <div class="col ">
+                                <input type="number" id="totalItemPrice" class="form-control" required name="total" readonly />
+                              </div>
+                            </div>
+                          </div>
+
+                          <input type="submit" name="sold" class="btn btn-primary btn-user btn-block" value=" যোগ করুন" />
+                          <hr />
+
+                          <div class="alert alert-danger text-center added_item">যোগের পূর্বে সঠিক তথ্য দিন</div>
+                          <div class="alert alert-success text-center last_addedc" role="alert"></div>
                       </form>
                     </div>
                     <hr />
@@ -962,9 +791,13 @@ if($resl){
             </div>
           </div>
 
-          <!-- Begin Page Content -->
-          <div id="bataSale" class="container-fluid content-tab">
-            <!-- Page Heading -->
+        
+          <!-- Sell List Details -->
+          <?php  foreach($sells as $category=>$val){ ?>
+                  
+            <!-- Begin Page Content -->
+          <div id="<?=$category?>Sale" class="container-fluid content-tab">
+            
 
             <!-- Content Row -->
             <div class="row">
@@ -972,237 +805,23 @@ if($resl){
               <div class="card shadow mb-1 col-12">
                 <div class="card-header py-3">
                   <div class="row">
-                    <div class="col-8 font-weight-bold text-primary">বাটা বিক্রয় তালিকা</div>
-                    <div class="col-4 font-weight-bold text-primary text-uppercase mb-1" id="total_bata_taka"><?=$total_bata_taka;?></div>
+                    <div class="col-8 font-weight-bold text-primary"><?=$category?> বিক্রয় তালিকা</div>
+                    <div class="col-4 font-weight-bold text-primary text-uppercase mb-1" id="total_<?=$category?>_taka"><?=$val['total_taka'];?> /= </div>
                   </div>
                 </div>
                 <div class="card-body">
-                  <div class="row chart-bar2 bata_products_sold">
-                      <?=$bata_list;?>
+                  <div class="row chart-bar2 <?=$category?>_products_sold">
+                      <?= implode('',$val['list']);?>
                   </div>
                   <hr />
                 </div>
               </div>
             </div>
           </div>
+          <?php  }  ?>
 
-          <!-- Begin Page Content -->
-          <div id="vrcSale" class="container-fluid content-tab">
-            <!-- Page Heading -->
-
-            <!-- Content Row -->
-            <div class="row">
-              <!-- Bar Chart -->
-              <div class="card shadow mb-1 col-12">
-                <div class="card-header py-3">
-                  <div class="row">
-                    <div class="col-8 font-weight-bold text-primary">অন্যান্য বিক্রয় তালিকা</div>
-                    <div class="col-4 font-weight-bold text-primary text-uppercase mb-1" id="total_vrc_taka"><?=$total_vrc_taka;?></div>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <div class="row chart-bar2 vrc_products_sold">
-                  <?=$vrc_list;?>
-                  </div>
-                  <hr />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Begin Page Content -->
-          <div id="dsrSale" class="container-fluid content-tab">
-            <!-- Page Heading -->
-
-            <!-- Content Row -->
-            <div class="row">
-              <!-- Bar Chart -->
-              <div class="card shadow mb-1 col-12">
-                <div class="card-header py-3">
-                  <div class="row">
-                    <div class="col-8 font-weight-bold text-primary">ঢাকা সম্রাট বিক্রয় তালিকা</div>
-                    <div class="col-4 font-weight-bold text-primary text-uppercase mb-1" id="total_dsr_taka"><?=$total_dsr_taka;?></div>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <div class="row chart-bar2 dsr_products_sold">
-                  <?=$dsr_list;?>
-                  </div>
-                  <hr />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Begin Page Content -->
-          <div id="esrSale" class="container-fluid content-tab">
-            <!-- Page Heading -->
-
-            <!-- Content Row -->
-            <div class="row">
-              <!-- Bar Chart -->
-              <div class="card shadow mb-1 col-12">
-                <div class="card-header py-3">
-                  <div class="row">
-                    <div class="col-8 font-weight-bold text-primary">ঈগল সম্রাট বিক্রয় তালিকা</div>
-                    <div class="col-4 font-weight-bold text-primary text-uppercase mb-1" id="total_esr_taka"><?=$total_esr_taka;?></div>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <div class="row chart-bar2 esr_products_sold">
-                     <?=$esr_list;?>
-                  </div>
-                  <hr />
-                </div>
-              </div>
-            </div>
-          </div>
-
-        <!-- Begin Page Content -->
-        <div id="cssSale" class="container-fluid content-tab">
-            <!-- Page Heading -->
-
-            <!-- Content Row -->
-            <div class="row">
-              <!-- Bar Chart -->
-              <div class="card shadow mb-1 col-12">
-                <div class="card-header py-3">
-                  <div class="row">
-                    <div class="col-8 font-weight-bold text-primary">চৌধুরী  সম্রাট বিক্রয় তালিকা</div>
-                    <div class="col-4 font-weight-bold text-primary text-uppercase mb-1" id="total_css_taka"><?=$total_css_taka;?></div>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <div class="row chart-bar2 css_products_sold">
-                     <?=$css_list;?>
-                  </div>
-                  <hr />
-                </div>
-              </div>
-            </div>
-          </div>
-
-           <!-- Begin Page Content -->
-         <div id="starSale" class="container-fluid content-tab">
-            <!-- Page Heading -->
-
-            <!-- Content Row -->
-            <div class="row">
-              <!-- Bar Chart -->
-              <div class="card shadow mb-1 col-12">
-                <div class="card-header py-3">
-                  <div class="row">
-                    <div class="col-8 font-weight-bold text-primary">ষ্টার  বিক্রয় তালিকা</div>
-                    <div class="col-4 font-weight-bold text-primary text-uppercase mb-1" id="total_star_taka"><?=$total_star_taka;?></div>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <div class="row chart-bar2 star_products_sold">
-                     <?=$star_list;?>
-                  </div>
-                  <hr />
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-
-          <!-- Begin Page Content -->
-          <div id="indianSale" class="container-fluid content-tab">
-            <!-- Page Heading -->
-
-            <!-- Content Row -->
-            <div class="row">
-              <!-- Bar Chart -->
-              <div class="card shadow mb-1 col-12">
-                <div class="card-header py-3">
-                  <div class="row">
-                    <div class="col-8 font-weight-bold text-primary">ইন্ডিয়ান বিক্রয় তালিকা</div>
-                    <div class="col-4 font-weight-bold text-primary text-uppercase mb-1" id="total_indian_taka"><?=$total_indian_taka;?></div>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <div class="row chart-bar2 indian_products_sold">
-                        <?=$indian_list;?>
-                  </div>
-                  <hr />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Begin Page Content -->
-          <div id="pegaSale" class="container-fluid content-tab">
-            <!-- Page Heading -->
-
-            <!-- Content Row -->
-            <div class="row">
-              <!-- Bar Chart -->
-              <div class="card shadow mb-1 col-12">
-                <div class="card-header py-3">
-                  <div class="row">
-                    <div class="col-8 font-weight-bold text-primary">পেগাসাস বিক্রয় তালিকা</div>
-                    <div class="col-4 font-weight-bold text-primary text-uppercase mb-1" id="total_pega_taka"><?=$total_pega_taka;?></div>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <div class="row chart-bar2 pega_products_sold">
-                        <?=$pega_list;?>
-                  </div>
-                  <hr />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Begin Page Content -->
-          <div id="apexSale" class="container-fluid content-tab">
-            <!-- Page Heading -->
-
-            <!-- Content Row -->
-            <div class="row">
-              <!-- Bar Chart -->
-              <div class="card shadow mb-1 col-12">
-                <div class="card-header py-3">
-                  <div class="row">
-                    <div class="col-8 font-weight-bold text-primary">এপেক্স বিক্রয় তালিকা</div>
-                    <div class="col-4 font-weight-bold text-primary text-uppercase mb-1" id="total_apex_taka"><?=$total_apex_taka;?></div>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <div class="row chart-bar2 apex_products_sold">
-                      <?=$apex_list;?>
-                  </div>
-                  <hr />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Begin Page Content -->
-          <div id="lottoSale" class="container-fluid content-tab">
-            <!-- Page Heading -->
-
-            <!-- Content Row -->
-            <div class="row">
-              <!-- Bar Chart -->
-              <div class="card shadow mb-1 col-12">
-                <div class="card-header py-3">
-                  <div class="row">
-                    <div class="col-8 font-weight-bold text-primary">লোটো বিক্রয় তালিকা</div>
-                    <div class="col-4 font-weight-bold text-primary text-uppercase mb-1" id="total_lotto_taka"><?=$total_lotto_taka;?></div>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <div class="row chart-bar2 lotto_products_sold">
-                        <?=$lotto_list;?>
-                  </div>
-                  <hr />
-                </div>
-              </div>
-            </div>
-          </div>
+       
+          
 
           <div id="joma" class="container-fluid content-tab">
             <div class="row mb-1">
@@ -1680,53 +1299,14 @@ if($resl){
                 <!-- Card Body -->
                 <div class="card-body mx-auto">
                   <ul class="list-group border-bottom border-danger category-sales">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                      বাটা বিক্রী
-                      <span class="badge badge-light badge-pill mx-5 final_bata">0</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                      এপেক্স বিক্রী
-                      <span class="badge badge-light badge-pill mx-5 final_apex">0</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                      পেগাসাস বিক্রী
-                      <span class="badge badge-light badge-pill mx-5 final_pega">0</span>
-                    </li>
+
+                  <?php foreach ( $categories as $val){ ?>
 
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                      লোটো বিক্রী
-                      <span class="badge badge-light badge-pill mx-5 final_lotto">0</span>
+                      <?=$val?> বিক্রী
+                      <span class="badge badge-light badge-pill mx-5 final_<?=$val?>">0</span>
                     </li>
-
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                      ঢাকা সম্রাট বিক্রী
-                      <span class="badge badge-light badge-pill mx-5 final_dsr">0</span>
-                    </li>
-
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                      ঈগল সম্রাট বিক্রী
-                      <span class="badge badge-light badge-pill mx-5 final_esr">0</span>
-                    </li>
-
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                    ষ্টার বিক্রী
-                      <span class="badge badge-light badge-pill mx-5 final_star">0</span>
-                    </li>
-
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                    চৌধুরী সম্রাট বিক্রী
-                      <span class="badge badge-light badge-pill mx-5 final_css">0</span>
-                    </li>
-
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                      ইন্ডিয়ান বিক্রী
-                      <span class="badge badge-light badge-pill mx-5 final_indian">0</span>
-                    </li>
-
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                      অন্যান্য বিক্রী
-                      <span class="badge badge-light badge-pill mx-5 final_vrc">0</span>
-                    </li>
+                  <?php } ?>
                   </ul>
 
                   <ul class="list-group border-bottom border-danger category-sales">
@@ -2119,7 +1699,7 @@ if($resl){
         $(".collapse-item").click((e) => {
         var div = e.target.getAttribute("href");
 
-        console.log(div);
+        
         if (div && div.indexOf("#") !== -1) {
           $(".content-tab").hide();
           $(div).show();
@@ -2156,11 +1736,12 @@ if($resl){
 
     });
 
+    var Categories = <?php echo json_encode($categories); ?>
 
     </script>
 
   <script src="../js/sb-admin-2.min.js">  </script>
-    <script src="../js/dokan-new-v2.js?v1"></script>
+    <script src="../js/dokan-new-v2.js?v3"></script>
     <script src="../js/pos-script.js"></script>
   </body>
 </html>

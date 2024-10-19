@@ -8,6 +8,70 @@ class ArticlesController extends Controller
      */
     public $layout = "//layouts/simple-portal";
 
+    // TODO: make it from DB or config later
+    public $categories = [
+        [
+            "id" => "1",
+            "calculation_type" => "PERCENT",
+            "name" => "DSR",
+            "profit" => "30"
+        ],
+        [
+            "id" => "2",
+            "calculation_type" => "PERCENT",
+            "name" => "ESR",
+            "profit" => "30"
+        ],
+        [
+            "id" => "3",
+            "calculation_type" => "PERCENT",
+            "name" => "BATA",
+            "profit" => "20"
+        ],
+        [
+            "id" => "4",
+            "calculation_type" => "FLAT",
+            "name" => "VRC",
+            "profit" => ""
+        ],
+        [
+            "id" => "5",
+            "calculation_type" => "FLAT",
+            "name" => "CSS",
+            "profit" => ""
+        ],
+        [
+            "id" => "6",
+            "calculation_type" => "PERCENT",
+            "name" => "APEX",
+            "profit" => "20"
+        ],
+        [
+            "id" => "7",
+            "calculation_type" => "FLAT",
+            "name" => "INDIAN",
+            "profit" => ""
+        ],
+        [
+            "id" => "8",
+            "calculation_type" => "FLAT",
+            "name" => "STAR",
+            "profit" => ""
+        ],
+        [
+            "id" => "9",
+            "calculation_type" => "PERCENT",
+            "name" => "PEGA",
+            "profit" => "20"
+        ],
+        [
+            "id" => "10",
+            "calculation_type" => "PERCENT",
+            "name" => "LOTTO",
+            "profit" => "20"
+        ]
+    ];
+
     /**
      * @return array action filters
      */
@@ -182,6 +246,64 @@ class ArticlesController extends Controller
         ]);
     }
 
+
+    /**
+     * Manages all tags models.
+     */
+    public function actionSearchByTags()
+    {
+        
+            $data = [];
+            if (isset($_GET["tags"])) {
+                $tags = $_GET["tags"];
+                $tags = explode(',',$tags);
+                $tags = array_filter($tags);
+                $json = json_encode($tags, JSON_UNESCAPED_UNICODE);
+               if(count($tags)>0){
+                $sql="SELECT
+                id,
+                article,
+                total_pair,
+                orginal_article 
+                FROM
+                    articles 
+                WHERE
+                JSON_CONTAINS(
+                tags,
+                '$json')
+                ";
+
+                $data = Yii::app()->db->createCommand($sql)->queryAll();
+               }
+            
+           
+    
+            }
+            // Generic::_setTrace($data);
+    
+            $arrayDataProvider = new CArrayDataProvider($data, array(
+                'id'=>'id',
+                /* 'sort'=>array(
+                    'attributes'=>array(
+                        'username', 'email',
+                    ),
+                ), */
+                'pagination'=>array(
+                    'pageSize'=>10,
+                ),
+            ));
+        
+
+
+            $this->render('tagsAdmin',array(
+                'data'=>$arrayDataProvider,
+             
+            ));
+        
+
+       
+    }
+
     /**
      * Returns the data model based on the primary key given in the GET variable.
      * If the data model is not found, an HTTP exception will be raised.
@@ -212,6 +334,12 @@ class ArticlesController extends Controller
     {
         $msg = "";
         $db = Yii::app()->db;
+        $percentCategories = array_filter($this->categories, function($category) {
+            return $category['calculation_type'] == 'PERCENT';
+        });
+
+        $percentCategoryList = array_column($percentCategories, 'name');
+
         if (isset($_POST["stock_article__sexyCombo"])) {
             // die(print_r($_POST));//
             if (
@@ -226,16 +354,12 @@ class ArticlesController extends Controller
             ) {
                 $msg = "মোট জোড়া দিন";
             } 
-            elseif($_REQUEST['autoArticle'] ==1 && $_REQUEST['hint__sexyCombo']==''){
+            elseif($_REQUEST['autoArticle'] ==1 && $_REQUEST['hint']==''){
                 $msg = "বক্সের উপর লেখ";
                }
 
             
-            elseif (
-                strtoupper($_REQUEST["category_stock"]) == "VRC" ||
-                strtoupper($_REQUEST["category_stock"]) == "STAR" ||
-                strtoupper($_REQUEST["category_stock"]) == "CSS"
-            ) {
+            elseif ( !in_array(strtoupper($_REQUEST["category_stock"]), $percentCategoryList) ) {         
                 if (
                     isset($_POST["article_total_taka"]) &&
                     $_POST["article_total_taka"] == "" &&
@@ -249,62 +373,43 @@ class ArticlesController extends Controller
             } elseif (
                 isset($_POST["article_body_rate"]) &&
                 $_POST["article_body_rate"] == "" &&
-                (strtoupper($_REQUEST["category_stock"]) == "DSR" ||
-                    strtoupper($_REQUEST["category_stock"]) == "ESR" ||
-                    strtoupper($_REQUEST["category_stock"]) == "CSS")
+                ( in_array(strtoupper($_REQUEST["category_stock"]), $percentCategoryList))
             ) {
                 $msg = "বডিরেট দিন";
-            } elseif (
-                isset($_POST["article_body_rate"]) &&
-                $_POST["article_body_rate"] == "" &&
-                strtoupper($_REQUEST["category_stock"]) == "BATA"
-            ) {
-                $msg = "বডিরেট দিন";
-            } elseif (
-                isset($_POST["article_body_rate"]) &&
-                $_POST["article_body_rate"] == "" &&
-                strtoupper($_REQUEST["category_stock"]) == "APEX"
-            ) {
-                $msg = "বডিরেট দিন";
-            } elseif (
-                isset($_POST["percentage"]) &&
-                $_POST["percentage"] == "" &&
-                (strtoupper($_REQUEST["category_stock"]) == "BATA" ||
-                    strtoupper($_REQUEST["category_stock"]) == "APEX")
-            ) {
-                $msg = "কমিশন %  দিন";
             } else {
                 $msg = "ok";
             }
 
             if ($msg == "ok") {
-                //insert
 
-                $article = addslashes(
-                    trim(strtoupper($_REQUEST["stock_article__sexyCombo"]))
-                );
                 $category = addslashes(
                     trim(strtoupper($_REQUEST["category_stock"]))
                 );
+                //insert
+                $categoryDetails = array_filter($this->categories, function($categoryDetail) use ($category) {
+                    return $categoryDetail['name'] == $category;
+                });
+                $categoryDetails = reset($categoryDetails);
+
+                // print_r($categoryDetails);die;
+                $article = addslashes(
+                    trim(strtoupper($_REQUEST["stock_article__sexyCombo"]))
+                );
+                
                 $pair = addslashes(trim(strtoupper($_REQUEST["article_pair"])));
-                 $orginal_article =  addslashes(trim(strtoupper($_REQUEST['hint__sexyCombo'])));
-                // $orginal_article = "n/a";
+                $orginal_article =  addslashes(trim(strtoupper($_REQUEST['hint'])));
 
-                if (strtoupper($category == "JSR")) {
-                    $percentage = 0.18;
-                    $body_rate = addslashes(
-                        trim(strtoupper($_REQUEST["article_body_rate"]))
-                    );
 
-                    $actual_rate =
-                        $body_rate - intval(ceil($body_rate * $percentage));
+                $percentage = isset($_REQUEST['percentage'])  ? $_REQUEST['percentage'] : 0 ;
 
-                    $total_taka = $actual_rate * $pair;
-                } elseif (
-                    strtoupper($category) == "DSR" ||
-                    strtoupper($category) == "ESR"
-                ) {
-                    $percentage = 0.28;
+                if($percentage > 0) {
+                    $percentage = $percentage * 1/ 100;
+                }
+                else{
+                    $percentage = $categoryDetails['profit'] *1 /100;
+                }
+                if (in_array(strtoupper($_REQUEST["category_stock"]), $percentCategoryList)) {
+
 
                     $body_rate = addslashes(
                         trim(strtoupper($_REQUEST["article_body_rate"]))
@@ -315,36 +420,6 @@ class ArticlesController extends Controller
 
                     $total_taka = $actual_rate * $pair;
 
-                    if (
-                        isset($_POST["article_body_rate"]) &&
-                        $_POST["article_body_rate"] == ""
-                    ) {
-                        $msg = "Please Give body rate";
-                    }
-                } elseif (
-                    strtoupper($category == "BATA") ||
-                    strtoupper($category == "APEX") ||
-                    strtoupper($category == "PEGA") ||
-                    strtoupper($category == "LOTTO")
-                ) {
-                    $percentage = ($_POST["percentage"] * 1) / 100;
-
-                    // Generic::_setTrace($percentage);
-                    $body_rate = addslashes(
-                        trim(strtoupper($_REQUEST["article_body_rate"]))
-                    );
-
-                    $actual_rate =
-                        $body_rate - intval(ceil($body_rate * $percentage));
-
-                    $total_taka = $actual_rate * $pair;
-
-                    if (
-                        isset($_POST["article_body_rate"]) &&
-                        $_POST["article_body_rate"] == ""
-                    ) {
-                        $msg = "Please Give body rate";
-                    }
                 } else {
                     $total_taka = addslashes(
                         trim(strtoupper(@$_REQUEST["article_total_taka"]))
@@ -367,13 +442,7 @@ class ArticlesController extends Controller
                         }
                     }
                 }
-
-                //$body_rate =  addslashes(trim(strtoupper($_REQUEST['article_body_rate'])));
-
-               
-
-                // $sql=" Insert into articles set article='$article', category='$category', total_pair=$pair, total_taka=$total_taka,actual_price='$actual_rate',body_rate='$body_rate',added_date=NOW(),last_added_pair=$pair,last_added_taka=$total_taka, orginal_article='$orginal_article' on duplicate key update body_rate=$body_rate , total_pair=(total_pair+$pair), total_taka=(total_taka+$total_taka),added_date=NOW(),last_added_pair=$pair,last_added_taka=$total_taka".$upacp.";";
-                
+        
                 $res = 0;
                 if ($msg == "ok") {
                     $is_new_record = false;
@@ -385,7 +454,7 @@ class ArticlesController extends Controller
 
                     if ($model) {
                         if($_REQUEST['autoArticle'] ==1){
-                            die(json_encode(["status" => "Article can't be auto", "info" => $_REQUEST]));
+                            die(json_encode(["status" => "Article exists/ বক্সের উপর লেখ", "info" => $_REQUEST]));
                         }
                         $model->body_rate = $body_rate;
                         $model->total_pair = $model->total_pair + $pair;
@@ -394,6 +463,7 @@ class ArticlesController extends Controller
                         $model->last_added_pair = $pair;
                         $model->last_added_taka = $total_taka;
                         $model->increment = $actual_rate - $model->actual_price;
+                        $model->orginal_article = $orginal_article;
                         $model->actual_price =
                             $model->actual_price < $actual_rate * 1
                                 ? $actual_rate
@@ -440,7 +510,7 @@ class ArticlesController extends Controller
                         $msg = trim("Error happens: " . json_encode(['error'=>$model->errors]));
                     }
                 } else {
-                    // show message
+                    // show message for error without insert
                 }
             }
 
@@ -450,13 +520,14 @@ class ArticlesController extends Controller
         }
 
         $lastId = 0;
-        if(isset($_REQUEST['cat']) && in_array($_REQUEST['cat'], ['DSR','ESR', 'VRC', 'STAR', 'CSS'])){
+        if(isset($_REQUEST['cat']) ){
 
-             $lastId =  $lastId = Yii::app()->db->createCommand('SELECT id FROM articles ORDER BY id DESC LIMIT 1')->queryScalar();
+         $lastId = Yii::app()->db->createCommand('SELECT id FROM articles ORDER BY id DESC LIMIT 1')->queryScalar();
         }
 
             $this->render("add", [
                 "msg" => $msg,
+                'percentCategoryList'=>$percentCategoryList,
                 'lastId'=>$lastId
             ]);
         }

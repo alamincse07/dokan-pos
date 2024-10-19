@@ -27,43 +27,30 @@ function get_cash_amount() {
   var cash = prompt(" পূর্বের ক্যাশ দিন ", "25000");
   if (cash != null && cash != "") {
     if (!isNaN(cash)) {
-      //console.log(cash);
+      var categories = window.Categories || {
+        APEX: "APEX",
+        BATA: "BATA",
+        CSS: "CSS",
+        DSR: "DSR",
+        ESR: "ESR",
+        INDIAN: "INDIAN",
+        LOTTO: "LOTTO",
+        PEGA: "PEGA",
+        STAR: "STAR",
+        VRC: "VRC",
+      };
+
+      var final_sell = 0;
+      // loop through categories
+      for (var category in categories) {
+        if (categories.hasOwnProperty(category)) {
+          var sell = parseInt($("#total_" + category + "_taka").html());
+          final_sell += sell;
+          $(".final_" + category).html(sell);
+        }
+      }
 
       cash = parseInt(cash);
-      var bata_sell = parseInt($("#total_bata_taka").html());
-      $(".final_bata").html(bata_sell);
-      var apex_sell = parseInt($("#total_apex_taka").html());
-      $(".final_apex").html(apex_sell);
-      var lotto_sell = parseInt($("#total_lotto_taka").html());
-      $(".final_lotto").html(lotto_sell);
-      var pega_sell = parseInt($("#total_pega_taka").html());
-      $(".final_pega").html(pega_sell);
-      var dsr_sell = parseInt($("#total_dsr_taka").html());
-      $(".final_dsr").html(dsr_sell);
-      var esr_sell = parseInt($("#total_esr_taka").html());
-      $(".final_esr").html(esr_sell);
-      var css_sell = parseInt($("#total_css_taka").html());
-      $(".final_css").html(css_sell);
-      var star_sell = parseInt($("#total_star_taka").html());
-      $(".final_star").html(star_sell);
-      var indian_sell = parseInt($("#total_indian_taka").html());
-      $(".final_indian").html(indian_sell);
-      var vrc_sell = parseInt($("#total_vrc_taka").html());
-      $(".final_vrc").html(vrc_sell);
-
-      console.table({ bata_sell, apex_sell, pega_sell, lotto_sell, dsr_sell, esr_sell, indian_sell, vrc_sell });
-
-      var final_sell =
-        bata_sell +
-        apex_sell +
-        pega_sell +
-        lotto_sell +
-        dsr_sell +
-        esr_sell +
-        css_sell +
-        star_sell +
-        indian_sell +
-        vrc_sell;
       $(".final_sell").html(final_sell);
 
       var total_due = parseInt($(".total_due").html());
@@ -195,7 +182,7 @@ function ClearMemo() {
   document.querySelector("#memolist").innerHTML = "";
   focusSell();
 }
-function Common_add(form_data, obj) {
+function Common_add_old(form_data, obj) {
   $(".last_addedc").html("");
   e.preventDefault();
 
@@ -219,41 +206,11 @@ function Common_add(form_data, obj) {
           var total = 0;
           total_in++;
           var prev = $("." + data.category + "_products_sold").children("div").length;
-          //alert(prev);
           total = prev + 1;
 
           if (data.status == "success") {
-            //console.log(data);
-            if (data.category.toLowerCase() == "vrc") {
-              var bn_text = "অন্যান্যতে যোগ হয়েছে ";
-            }
-            if (data.category.toLowerCase() == "dsr") {
-              var bn_text = "ঢাকা সম্রাটে  যোগ হয়েছে ";
-            }
-            if (data.category.toLowerCase() == "esr") {
-              var bn_text = "ঈগল  সম্রাটে  যোগ হয়েছে ";
-            }
-            if (data.category.toLowerCase() == "css") {
-              var bn_text = "চৌধুরী  সম্রাটে  যোগ হয়েছে ";
-            }
-            if (data.category.toLowerCase() == "star") {
-              var bn_text = "ষ্টার যোগ হয়েছে ";
-            }
-            if (data.category.toLowerCase() == "indian") {
-              var bn_text = "INDIAN যোগ হয়েছে ";
-            }
-            if (data.category.toLowerCase() == "pega") {
-              var bn_text = "পেগাসাসে  যোগ হয়েছে ";
-            }
-            if (data.category.toLowerCase() == "lotto") {
-              var bn_text = "LOTTO  যোগ হয়েছে ";
-            }
-            if (data.category.toLowerCase() == "bata") {
-              var bn_text = "বাটাতে  যোগ হয়েছে ";
-            }
-            if (data.category.toLowerCase() == "apex") {
-              var bn_text = "এপেক্সে  যোগ হয়েছে ";
-            }
+            var bn_text = data.category + " তে যোগ হয়েছে ";
+
             var token_test = '<span class="token_no"> মেমো নং : ' + data.token + " </span>";
             var loss = "success";
             if (data.profit < 0) {
@@ -361,36 +318,8 @@ function SellItem(form_data) {
           var prev = $("." + data.category + "_products_sold").children("div").length;
           //alert(prev);
           total = prev + 1;
-          if (data.category.toLowerCase() == "vrc") {
-            var bn_text = "অন্যান্যতে যোগ হয়েছে ";
-          }
-          if (data.category.toLowerCase() == "dsr") {
-            var bn_text = "ঢাকা সম্রাটে  যোগ হয়েছে ";
-          }
-          if (data.category.toLowerCase() == "esr") {
-            var bn_text = "ঈগল  সম্রাটে  যোগ হয়েছে ";
-          }
-          if (data.category.toLowerCase() == "css") {
-            var bn_text = "চৌধুরী  সম্রাটে  যোগ হয়েছে ";
-          }
-          if (data.category.toLowerCase() == "star") {
-            var bn_text = "ষ্টার যোগ হয়েছে ";
-          }
-          if (data.category.toLowerCase() == "indian") {
-            var bn_text = "INDIAN যোগ হয়েছে ";
-          }
-          if (data.category.toLowerCase() == "pega") {
-            var bn_text = "পেগাসাসে  যোগ হয়েছে ";
-          }
-          if (data.category.toLowerCase() == "lotto") {
-            var bn_text = "LOTTO  যোগ হয়েছে ";
-          }
-          if (data.category.toLowerCase() == "bata") {
-            var bn_text = "বাটাতে  যোগ হয়েছে ";
-          }
-          if (data.category.toLowerCase() == "apex") {
-            var bn_text = "এপেক্সে  যোগ হয়েছে ";
-          }
+          var bn_text = data.category + " তে যোগ হয়েছে ";
+
           var token_test = '<span class="token_no"> মেমো নং : ' + data.token + " </span>";
           var loss = "success";
           if (data.profit < 0) {
@@ -597,73 +526,7 @@ function show_add_money_info(hide, show) {
   $(show).show();
   $("#lenden").toggleClass("d-none");
 }
-function check_submit(e, obj, size, price, error, form, div, counter, total_taka, category) {
-  e.preventDefault();
 
-  var html = " সঠিক তথ্য দিন";
-  var fsize = $(size).val();
-  var fprice = $(price).val();
-  if (isNaN(fprice) || fprice == null || fprice == "") {
-    //$(obj).attr('disabled',true);
-    $(error).html('<span class="text-danger">সঠিক মূল্য দিন?</span>');
-    return false;
-  } else {
-    //$(obj).attr('disabled',false);
-    $(error).html(html);
-    var form_data = $(form).serialize();
-    var total = 0;
-    var prev = $(div).children("div").length;
-    // alert(prev);
-    total = prev + 1;
-
-    $.ajax({
-      dataType: "json",
-      type: "POST",
-      url: SITE_URL + "SimpleAjax/Sold?category=" + category,
-      data: form_data,
-      success: function (data) {
-        if (data.status == "success") {
-          var new_html =
-            '<div class="single-product-info">' +
-            '<div class="serial-no">' +
-            total +
-            ".</div>" +
-            '<div class="product-name">' +
-            data.article +
-            "</div>" +
-            '<div class="sell-no">' +
-            data.size +
-            "</div>" +
-            '<div class="author-name">' +
-            data.sells_man +
-            "</div>" +
-            '<div class="product-no">' +
-            data.price +
-            "</div>" +
-            '<div class="clear"></div>' +
-            "</div>";
-          //success
-
-          $(counter).html(total);
-          $(".total_sold_counter").html(parseInt($(".total_sold_counter").html()) + 1);
-          $(total_taka).html(parseInt($(total_taka).html()) + parseInt(fprice));
-
-          $(div).append(new_html);
-          $(obj).closest("form").find("input[type=text],input[type=number], select").val("");
-          $("#common_article").focus();
-        } else {
-          $(error).html('<span class="text-danger">সঠিক আর্টিকেল দিন?</span>');
-          return false;
-          //window.location = data.rurl;
-        }
-      },
-      error: function () {
-        console.log("ajax error");
-      },
-    });
-    // $('.total_sold_counter').html(parseInt($('.total_sold_counter').html())+1);
-  }
-}
 function multi_sell() {
   $(".paikari").show();
   $("#common_pair").val("0");
@@ -1012,9 +875,9 @@ function search_for_article(e, obj, article, error_div) {
           '</span></div><div> Total Pair: <span class="black">' +
           data.info.total_pair.toUpperCase() +
           '</span></div><div> Price: <span class="black">' +
-          (parseInt(data.info.actual_price) + 00) +
+          parseInt(data.info.actual_price) +
           '</span></div><div> Body Rate: <span class="black">' +
-          (parseInt(data.info.body_rate) + 00) +
+          parseInt(data.info.body_rate) +
           '</span></div><div> Company Name/Article: <span class="black">' +
           data.info.orginal_article +
           "</span></div>";
