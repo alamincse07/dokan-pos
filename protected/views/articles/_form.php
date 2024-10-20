@@ -35,6 +35,11 @@
 		<?php echo $form->error($model,'orginal_article'); ?>
 	</div>
 
+	<?php
+	if(@Yii::app()->session['user_type']!==1){ ?>
+	 <div class="row d-none">
+	 <?php } ?>
+	 
 	<div class="row">
 		<?php echo $form->labelEx($model,'total_pair'); ?>
 		<?php echo $form->textField($model,'total_pair'); ?>
@@ -79,7 +84,12 @@
 		<?php echo $form->error($model,'increment'); ?>
 	</div>
 
-	<div class="row buttons">
+	
+	<?php if(@Yii::app()->session['user_type']!==1){ ?>
+	</div>
+	 <?php } ?>
+
+	 <div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
 

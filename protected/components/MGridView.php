@@ -34,14 +34,15 @@ class MGridView extends CGridView{
                    $this->columns[$key]['header']='Options';
 
                    if(@Yii::app()->session['user_type']==1){
-                       if(isset( $this->columns[$key]['template'])){
-                       // $this->columns[$key]['template']='{view}{update}{delete}';
-                       }else{
-
-                           $this->columns[$key]['template']='{view}{update}{delete}';
-                       }
+                       $this->columns[$key]['template']='{view}{update}{delete}';
                    }else{
-                       $this->columns[$key]['template']='{view}';
+                        if(isset( $this->columns[$key]['template'])){
+                        // $this->columns[$key]['template']='{view}{update}{delete}';
+                        }else{
+ 
+                            $this->columns[$key]['template']='{view}';
+                        }
+                      
                    }
                    $this->columns[$key]['buttons'] =array
                    (

@@ -7,12 +7,23 @@ $this->breadcrumbs=array(
 	'Manage',
 );
 
+if(@Yii::app()->session['user_type']!==1){
+	$action = array(
+			'class'=>'CButtonColumn',
+            'template'=>'{update}',
+		);
+	}
+	else{
+		$action = array(
+			'class'=>'CButtonColumn',
+		);
+	}
 
-
+	// echo Yii::app()->session['user_type'];
 ?>
 
 
-<h1>Manage Articles</h1>
+<h1>Manage Articles </h1>
 
 
 <?php $this->widget('MGridView', array(
@@ -46,8 +57,6 @@ $this->breadcrumbs=array(
 		
 		'increment',
 
-		array(
-			'class'=>'CButtonColumn',
-		),
+		$action,
 	),
 )); ?>
