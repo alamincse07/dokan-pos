@@ -31,19 +31,19 @@ $this->breadcrumbs=array(
         ),
 		'category',
 
-		'total_pair',
+		array(
+            'name'=>'total_pair',
+            'footer'=>$model->getTotal($model->search(), 'total_pair'),
+
+        ),
 		//'total_taka',
 
 		'actual_price',
 		'body_rate',
 		'last_added_pair',
-		//'last_added_taka',
+		'tags',
         'added_date',
-		array(
-            'name'=>'orginal_article',
-            'footer'=>$model->getTotal($model->search(), 'total_pair'),
-
-        ),
+		
 		'increment',
 
 		array(
