@@ -264,6 +264,7 @@ class ArticlesController extends Controller
                 id,
                 article,
                 total_pair,
+                category,
                 orginal_article 
                 FROM
                     articles 
@@ -279,7 +280,7 @@ class ArticlesController extends Controller
            
     
             }
-            // Generic::_setTrace($data);
+             Generic::_setTrace($sql);
     
             $arrayDataProvider = new CArrayDataProvider($data, array(
                 'id'=>'id',

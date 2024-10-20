@@ -35,7 +35,7 @@ if(isset($_GET['tags'])){
     //'filter'=>$model,
     'columns'=>array(
         'article',
-        'total_pair',
+        'category',
 		array(
             'name'=>'total_pair',
             // 'footer'=>Articles::getTotalByTags($data, 'total_pair'),

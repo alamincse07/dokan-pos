@@ -6,7 +6,7 @@
 $this->menu=array(
 
 	array('label'=>'Manage Labels', 'url'=>array('admin')),
-	array('label'=>'এখানে নেই? যোগ করো', 'url'=>array('create')),
+	array('label'=>'এখানে নেই? যোগ করো', 'url'=>array('tags/create')),
 );
 ?>
 
