@@ -51,7 +51,7 @@
                 <?php $this->widget('zii.widgets.CMenu',array(
                     'items'=>array(
                         array('label'=>'Home', 'url'=>array('/site/index')),
-                        array('label'=>'বক্সের লেখা বানাও', 'url'=>array('/labels/create'), 'visible'=>$visible),
+                        array('label'=>'বক্সের লেখা বানাও', 'url'=>array('/labels/create'), 'visible'=>true),
                         array('label'=>'ষ্টক যোগ করো', 'url'=>array('/articles/add'), 'visible'=>$visible),
                         array('label'=>'Graph', 'url'=>array('/dailySellInformation/ChartView'), 'visible'=>$visible),
                         array('label'=>'Monthly Graph', 'url'=>array('/dailySellInformation/ChartViewWeekly'), 'visible'=>$visible),
