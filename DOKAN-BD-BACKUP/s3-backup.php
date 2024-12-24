@@ -1,7 +1,6 @@
 <?php
 
- define('AWS_S3_KEY', 'AKIAW6E5OG6JEXJV4W4I');
- define('AWS_S3_SECRET', '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');
+
  define('AWS_S3_REGION', 'us-west-2');
  define('AWS_S3_BUCKET', 'skalamin.com');
  define('AWS_S3_URL', 'http://s3.'.AWS_S3_REGION.'.amazonaws.com/'.AWS_S3_BUCKET.'/');
