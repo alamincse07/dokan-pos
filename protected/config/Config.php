@@ -43,14 +43,14 @@ class Config {
             'connectionString' => 'mysql:host=localhost;dbname=skalamin_dokan',
             'emulatePrepare' => true,
             'username' => 'skalamin_dokan',
-            'password' => 'skalamin_dokan',
+            'password' => 'skalamin_dokanR8',
 
         */
         return array(
-            'connectionString' => 'mysql:host=localhost;dbname=local',
+            'connectionString' => 'mysql:host=localhost;dbname=u634993003_skalamin_dokan',
             'emulatePrepare' => true,
-            'username' => 'root',
-            'password' => '',
+            'username' => 'u634993003_skalamin_dokan',
+            'password' => 'u634993003_skalamin_dokanR8',
             'charset' => 'utf8',
             'enableProfiling'=>true,
             'enableParamLogging'=>true,

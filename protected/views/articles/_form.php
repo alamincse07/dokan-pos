@@ -36,7 +36,7 @@
 	</div>
 
 	<?php
-	if(@Yii::app()->session['user_type']!==1){ ?>
+	if(@Yii::app()->session['user_type']!=1){ ?>
 	 <div class="row d-none">
 	 <?php } ?>
 	 

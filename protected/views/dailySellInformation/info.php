@@ -41,6 +41,25 @@ $base_url= Yii::app()->request->baseUrl;
 <script src="<?=$base_url?>/js/themes/jquery-ui.custom.min.js" type="text/javascript"></script>
 <script src="<?=$base_url?>/css/multi-select/js/jquery.multi-select.js" type="text/javascript"></script>
 
+<style>
+.single-page-content1 {
+    display: flex;
+    gap: 20px; /* Optional: adds some space between columns */
+}
+
+.search_admin_all {
+    flex: 1; /* Takes up available space */
+}
+
+.search_result.sticky-sidebar {
+    position: sticky;
+    top: 120px; /* Adjust as needed */
+    align-self: start;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    width: 300px; /* Or adjust to your desired width */
+}
+</style>    
 <!--Start index-body-container -->
 <div class="inner-wrappear">
     <div class="main-container single-page-container">
@@ -182,7 +201,7 @@ $base_url= Yii::app()->request->baseUrl;
 
 
             </div>
-            <div class="search_result" >
+            <div class="search_result sticky-sidebar" >
 
                 <div class="result_text">
                     Result

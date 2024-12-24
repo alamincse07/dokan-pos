@@ -38,7 +38,8 @@ class Controller extends CController
 
     public function getActions(){
 
-        if(Yii::app()->session['user_type'] ==1){
+       
+        if(Yii::app()->session['user_type'] == '1'){
             return array('ChartView','view','SearchByTags','admin','create','update','delete','add','dokanStock','get','index');
         }
         return array('view','admin','update', 'index','get','SearchByTags');

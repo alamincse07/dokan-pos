@@ -303,29 +303,7 @@ class DailySellInformationController extends Controller
                     </div>';
 
         }
-        if(isset($_POST['tags'],$_POST['all_tag_stock'])){
-
-            $tags = $_POST['tags'];
-            $tags = array_filter($tags);
-            $json = json_encode($tags, JSON_UNESCAPED_UNICODE);
-            $tags_sql = "SELECT
-                            count(total_pair)  as total
-                        FROM
-                            articles 
-                        WHERE
-                            JSON_CONTAINS( tags, '$json' )";
-
-            $which_result_div=' Stock info of   '.implode(',',$_POST['tags']);
-            
-            $res= Yii::app()->db->createCommand($tags_sql);
-            $data = $res->queryRow();
-            $result_div='
-                    <div class="single_result">
-
-                        Total Pair : '.$data['total'].'
-                    
-                    </div>';
-        }
+        
 
          
         
@@ -383,6 +361,29 @@ class DailySellInformationController extends Controller
                     Total Profit : '.$data['profit'].'
                     </div>';
 
+        }
+        if(isset($_POST['tags'])){
+
+            $tags = $_POST['tags'];
+            $tags = array_filter($tags);
+            $json = json_encode($tags, JSON_UNESCAPED_UNICODE);
+            $tags_sql = "SELECT
+                            count(total_pair)  as total
+                        FROM
+                            articles 
+                        WHERE
+                            JSON_CONTAINS( tags, '$json' )";
+
+            $which_result_div=' Stock info of   '.implode(',',$_POST['tags']);
+            
+            $res= Yii::app()->db->createCommand($tags_sql);
+            $data = $res->queryRow();
+            $result_div='
+                    <div class="single_result">
+
+                        Total Pair : '.$data['total'].'
+                    
+                    </div>';
         }
 
         $data = array(
